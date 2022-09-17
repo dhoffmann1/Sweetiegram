@@ -15,9 +15,23 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    #relationships 
-    posts = db.relationship("User", back_populates("user"))
+    #relationships
+    posts = db.relationship("Post", back_populates("user"))
+
     comments = db.relationship("Comment", back_populates("user"))
+
+    followers = db.relationship(
+        "User",
+        secondary= following,
+        primaryjoin=(following.c.followers_id == id),
+        secondaryjoin= (following.c.following_id == id),
+        backref=db.backref('following', lazy='dynamic'),
+        lazy= 'dynamic'
+    )
+
+    user_likes = db.relationship("Post", back_populates="post_likes", secondary=likes, cascade="all, delete")
+    print("posts iterable in relationship in User:", list(posts))
+
 
     @property
     def password(self):
@@ -38,5 +52,7 @@ class User(db.Model, UserMixin):
             "firstName": self.first_name,
             "lastName": self.last_name,
             "profilePicUrl": self.profile_pic_url,
-            "bio": self.bio
+            "bio": self.bio,
+            "numPosts": len(self.posts),
+            # we dont need numFollowing & numFollowers=> directly query from following table,
         }
