@@ -1,4 +1,4 @@
-from .db import db
+from .db import db, likes, following
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
@@ -16,10 +16,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     #relationships
-    posts = db.relationship("Post", back_populates("user"))
-
-    comments = db.relationship("Comment", back_populates("user"))
-
+    posts = db.relationship("Post", back_populates="user")
+    comments = db.relationship("Comment", back_populates="user")
+    user_likes = db.relationship("Post", back_populates="post_likes", secondary=likes, cascade="all, delete")
     followers = db.relationship(
         "User",
         secondary= following,
@@ -28,10 +27,6 @@ class User(db.Model, UserMixin):
         backref=db.backref('following', lazy='dynamic'),
         lazy= 'dynamic'
     )
-
-    user_likes = db.relationship("Post", back_populates="post_likes", secondary=likes, cascade="all, delete")
-    print("posts iterable in relationship in User:", list(posts))
-
 
     @property
     def password(self):

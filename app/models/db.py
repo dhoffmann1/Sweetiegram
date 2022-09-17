@@ -15,7 +15,6 @@ following = db.Table(
     db.Model.metadata,
     db.Column('followers_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
     db.Column('following_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-
 )
 
 class Post(db.Model):
@@ -31,22 +30,22 @@ class Post(db.Model):
     updated_at = db.Column(db.Datetime, default=datetime.now())
 
     #relationships
-    user = db.relationship("User", back_populates("posts"))
-    comments = db.relationship("Comment", back_populates("post"))
+    user = db.relationship("User", back_populates="posts")
+    comments = db.relationship("Comment", back_populates="post")
     post_likes = db.relationship("User", back_populates="user_likes", secondary=likes, cascade="all, delete")
 
     def to_dict(self):
         return {
-            "id" = self.id,
-            "postUrl" = self.post_url,
-            "ownerId" = self.owner_id,
-            "city" = self.city,
-            "state" = self.state,
-            "country" = self.country,
-            "caption" = self.caption,
-            "createdAt" = self.created_at,
-            "updatedAt" = self.updated_at,
-            "numLikes"= len(self.post_likes)
+            "id": self.id,
+            "postUrl": self.post_url,
+            "ownerId": self.owner_id,
+            "city": self.city,
+            "state": self.state,
+            "country": self.country,
+            "caption": self.caption,
+            "createdAt": self.created_at,
+            "updatedAt": self.updated_at,
+            "numLikes": len(self.post_likes)
         }
 
 
@@ -60,17 +59,17 @@ class Comment(db.Model):
     updated_at = db.Column(db.Datetime, default=datetime.now())
 
     #Relationships
-    post = db.relationship("Post", back_populates("comments"))
-    user = db.relationship("User", back_populates("comments"))
+    post = db.relationship("Post", back_populates="comments")
+    user = db.relationship("User", back_populates="comments")
 
     def to_dict(self):
         return {
-            "id" = self.id,
-            "postId" = self.post_id,
-            "userId" = self.user_id,
-            "content" = self.content,
-            "createdAt" = self.created_at,
-            "updatedAt" = self.updated_at,
+            "id": self.id,
+            "postId": self.post_id,
+            "userId": self.user_id,
+            "content": self.content,
+            "createdAt": self.created_at,
+            "updatedAt": self.updated_at,
         }
 
 

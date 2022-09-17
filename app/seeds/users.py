@@ -3,7 +3,7 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    Users = [
+    users = [
     {
         "email": "user1@gmail.com",
         "first_name": "Taylor",
@@ -103,7 +103,7 @@ def seed_users():
         "bio": "BlackPink",
         "profile_pic_url": "https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=1098,format=auto/sites/default/files/styles/1200x800/public/d8/images/methode/2020/04/21/00e9c17e-7ede-11ea-8736-98edddd9b5ca_image_hires_115812.jpg?itok=sYrAXKko&v=1587441500"
     },
-        {
+    {
         "email": "user12@gmail.com",
         "first_name": "Lisa",
         "last_name": "Manoban",
@@ -112,7 +112,7 @@ def seed_users():
         "bio": "BlackPink",
         "profile_pic_url": "https://cdn.asiatatler.com/generationt/i/ap/2019/06/19135555-lalisa-manoban-afp_cover_1331x1999.jpg"
     },
-        {
+    {
         "email": "user13@gmail.com",
         "first_name": "Rose",
         "last_name": "Park",
@@ -121,7 +121,7 @@ def seed_users():
         "bio": "Marvel",
         "profile_pic_url": "http://pm1.narvii.com/7253/224cfc14df7df113f648d7c2268531b73237a64br1-1080-1350v2_uhq.jpg"
     },
-        {
+    {
         "email": "user14@gmail.com",
         "first_name": "Gordon",
         "last_name": "Ramsey",
@@ -130,7 +130,7 @@ def seed_users():
         "bio": "Marvel",
         "profile_pic_url": "https://variety.com/wp-content/uploads/2017/09/gordon_ramsay.png?w=1024"
     },
-        {
+    {
         "email": "user15@gmail.com",
         "first_name": "Claudio",
         "last_name": "Aprile",
@@ -139,7 +139,7 @@ def seed_users():
         "bio": "Marvel",
         "profile_pic_url": "https://i0.wp.com/inbetween.ca/wp-content/uploads/2018/03/Claudio.jpg?fit=1024%2C712&ssl=1"
     },
-        {
+    {
         "email": "user16@gmail.com",
         "first_name": "Monkey D.",
         "last_name": "Luffy",
@@ -147,45 +147,34 @@ def seed_users():
         "username": "pirateking",
         "bio": "I am going to be the king of pirates",
         "profile_pic_url": "https://static1.cbrimages.com/wordpress/wp-content/uploads/2022/04/One-Piece-Luffy.jpg"
-    },
-    ]
+    }]
 
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    # demo = User(
+    #     username='Demo', email='demo@aa.io', password='password')
+    # marnie = User(
+    #     username='marnie', email='marnie@aa.io', password='password')
+    # bobbie = User(
+    #     username='bobbie', email='bobbie@aa.io', password='password')
 
+    for user in users:
+        new_user = User(
+            email = user["email"],
+            first_name = user["first_name"],
+            last_name = user["last_name"],
+            password = user["password"],
+            username = user["username"],
+            bio = user["bio"],
+            profile_pic_url = user["profile_pic_url"]
+        )
 
-    # for pokemon in pokemon_data:
-    #     print(pokemon)
-    #     # print(pokemon.number)
-    #     print(pokemon["number"])
-    #     pk = Pokemon(
-    #         number = pokemon["number"],
-    #         image_url = pokemon["imageUrl"],
-    #         name = pokemon["name"],
-    #         attack = pokemon["attack"],
-    #         defense = pokemon["defense"],
-    #         type = pokemon["type"],
-    #         moves = json.dumps(pokemon["moves"]),
-    #         captured = pokemon.get("captured", False)
+        db.session.add(new_user)
 
-    #         # captured = True if "captured" in pokemon.keys() else False
-    #         # pokemon["captured"] == True else pokemon["captured"] == False
-    #     )
-    #     db.session.add(pk)
-    # db.session.commit()
-    # print("DB has been seeded!")
-
-
-
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    # db.session.add(demo)
+    # db.session.add(marnie)
+    # db.session.add(bobbie)
 
     db.session.commit()
+    print('users was succesfully seeded')
 
 
 # Uses a raw SQL query to TRUNCATE the users table.
