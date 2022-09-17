@@ -1,8 +1,11 @@
 from app.models import db, User
+import random
 
+users_dictionary = {}
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
+    global users_dictionary
     users = [
     {
         "email": "user1@gmail.com",
@@ -156,8 +159,8 @@ def seed_users():
     # bobbie = User(
     #     username='bobbie', email='bobbie@aa.io', password='password')
 
-    for user in users:
-        new_user = User(
+    for i, user in enumerate(users):
+        users_dictionary[f'user{i+1}'] = User(
             email = user["email"],
             first_name = user["first_name"],
             last_name = user["last_name"],
@@ -167,7 +170,24 @@ def seed_users():
             profile_pic_url = user["profile_pic_url"]
         )
 
-        db.session.add(new_user)
+    for user in users_dictionary.values():
+        max_range = random.randint(0, 14)
+        new_set = set()
+        for i in range(max_range):
+            random_user=random.choice(list(users_dictionary.values()))
+            # if random_user is not current user, then add to set.  If it is current user, do nothing.
+            if random_user['username'] != user['username']:
+                new_set.add(random_user)
+
+        # for each user add following_id = list(new_set)
+        user["following_id"] = list(new_set)
+
+    for user in users_dictionary.values():
+        db.session.add(user)
+
+    print('users_dictionary after k,v for loop', users_dictionary)
+
+    # db.session.add(users_dictionary[f'user{i+1}'])
 
     # db.session.add(demo)
     # db.session.add(marnie)

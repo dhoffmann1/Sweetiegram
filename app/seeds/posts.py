@@ -1,5 +1,14 @@
 from app.models import db, Post
+from .users import users_dictionary
+import random
 
+def random_users_list():
+    max_range = random.randint(0, 8)
+    new_set = set()
+    for i in range(max_range):
+        random_user=random.choice(list(users_dictionary.values()))
+        new_set.add(random_user)
+    return list(new_set)
 
 def seed_posts():
     posts = [
@@ -203,7 +212,8 @@ def seed_posts():
             city = post["city"],
             state = post["state"],
             country = post["country"],
-            caption = post["caption"]
+            caption = post["caption"],
+            post_likes = random_users_list()
         )
 
         db.session.add(new_post)
