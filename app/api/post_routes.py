@@ -43,13 +43,18 @@ def create_post():
             )
         except:
             return {"error": "your post has an issue... please try again"}
-        print('post created:', post.to_dict())
+        print('post instantiated:', post.to_dict())
         db.session.add(post)
         db.session.commit()
         created_post = Post.query.filter(current_user.id == post.owner_id).order_by(Post.created_at.desc()).first()
         # return redirect("/")
         print('created post from db:', created_post.to_dict())
-        return created_post
+        return created_post.to_dict()
     if form.errors:
         print('errors:', form.errors)
         return form.errors
+
+
+@post_routes.route('', methods = ['PATCH'])
+@login_required
+def
