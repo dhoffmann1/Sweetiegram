@@ -38,7 +38,19 @@ class Post(db.Model):
             "caption": self.caption,
             "createdAt": self.created_at,
             "updatedAt": self.updated_at,
-            "numLikes": len(self.post_likes)
+            "numLikes": len(self.post_likes),
+            # added here
+            # "user": str(self.user.username),
+            "user": self.convert_user_to_dict(),
+            "comments": [comment.to_dict() for comment in self.comments]
+        }
+    # added here
+    def convert_user_to_dict(self):
+        return {
+            'id': self.user.id,
+            'username': self.user.username,
+            "firstName": self.user.first_name,
+            "lastName": self.user.last_name
         }
 
 
