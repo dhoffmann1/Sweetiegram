@@ -176,16 +176,18 @@ def seed_users():
         for i in range(max_range):
             random_user=random.choice(list(users_dictionary.values()))
             # if random_user is not current user, then add to set.  If it is current user, do nothing.
-            if random_user['username'] != user['username']:
+            if random_user.username != user.username:
                 new_set.add(random_user)
 
         # for each user add following_id = list(new_set)
-        user["following_id"] = list(new_set)
+        user.followers = list(new_set)
 
     for user in users_dictionary.values():
         db.session.add(user)
+        print('user', user)
+        print('user.following_id', user.followers)
 
-    print('users_dictionary after k,v for loop', users_dictionary)
+    # print('users_dictionary after k,v for loop', users_dictionary)
 
     # db.session.add(users_dictionary[f'user{i+1}'])
 

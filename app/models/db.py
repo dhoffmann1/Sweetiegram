@@ -10,13 +10,6 @@ likes = db.Table(
     db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 )
 
-following = db.Table(
-    'following',
-    db.Model.metadata,
-    db.Column('followers_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('following_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
-
 class Post(db.Model):
     __tablename__= "posts"
     id = db.Column(db.Integer, primary_key= True)
@@ -26,8 +19,8 @@ class Post(db.Model):
     state = db.Column(db.String)
     country = db.Column(db.String)
     caption = db.Column(db.String(500))
-    created_at = db.Column(db.Datetime, default=datetime.now())
-    updated_at = db.Column(db.Datetime, default=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.now())
 
     #relationships
     user = db.relationship("User", back_populates="posts")
@@ -55,8 +48,8 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     content = db.Column(db.String(250), nullable=False)
-    created_at = db.Column(db.Datetime, default=datetime.now())
-    updated_at = db.Column(db.Datetime, default=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.now())
 
     #Relationships
     post = db.relationship("Post", back_populates="comments")

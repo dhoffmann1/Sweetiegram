@@ -1,7 +1,13 @@
-from .db import db, likes, following
+from .db import db, likes
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+follows = db.Table(
+    'follows',
+    db.Model.metadata,
+    db.Column('follower_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column('following_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -21,9 +27,9 @@ class User(db.Model, UserMixin):
     user_likes = db.relationship("Post", back_populates="post_likes", secondary=likes, cascade="all, delete")
     followers = db.relationship(
         "User",
-        secondary= following,
-        primaryjoin=(following.c.followers_id == id),
-        secondaryjoin= (following.c.following_id == id),
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin= (follows.c.following_id == id),
         backref=db.backref('following', lazy='dynamic'),
         lazy= 'dynamic'
     )
