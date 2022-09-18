@@ -1,8 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
 from app.models import User, db, Post, follows
-from app.forms import LoginForm
-from app.forms import SignUpForm
+from app.forms import LoginForm, SignUpForm, PostForm
 # added here
 from sqlalchemy.orm import aliased
 
@@ -24,3 +23,24 @@ def index():
     posts = Post.query.join(User).filter(Post.owner_id.in_(following_ids)).all()
     print("length of posts:", len(posts))
     return {"posts": [post.to_dict() for post in posts]}
+
+@post_routes.route('/', methods = ['POST'])
+@login_required
+def create_post():
+    print('hitting right route!')
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(
+            "post_url": form.data["post_url"],
+            "city": form.data["city"],
+            "state": form.data["state"],
+            "country": form.data["country"],
+            "caption": form.data["caption"]
+        )
+        print('post created:', post.to_dict())
+        db.session.add(post)
+        db.session.commit()
+        return redirect("/")
+    if form.errors:
+        print('errors:', form.errors)
+        return form.errors
