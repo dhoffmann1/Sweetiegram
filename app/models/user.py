@@ -28,10 +28,10 @@ class User(db.Model, UserMixin):
     followers = db.relationship(
         "User",
         secondary=follows,
-        primaryjoin=(follows.c.follower_id == id),
-        secondaryjoin= (follows.c.following_id == id),
-        backref=db.backref('following', lazy='dynamic'),
-        lazy= 'dynamic'
+        primaryjoin=(follows.c.following_id == id),
+        secondaryjoin=(follows.c.follower_id == id),
+        backref=db.backref('following', lazy='joined'),
+        lazy='joined'
     )
 
     @property
@@ -55,6 +55,7 @@ class User(db.Model, UserMixin):
             "profilePicUrl": self.profile_pic_url,
             "bio": self.bio,
             "numPosts": len(self.posts),
-            # "Posts": user_posts
-            # we dont need numFollowing & numFollowers=> directly query from following table,
+            "numFollowers": len(self.followers),
+            "numFollowing": len(self.following),
+            "posts": [post.to_dict() for post in self.posts]
         }
