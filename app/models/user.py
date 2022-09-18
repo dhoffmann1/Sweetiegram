@@ -55,5 +55,6 @@ class User(db.Model, UserMixin):
             "profilePicUrl": self.profile_pic_url,
             "bio": self.bio,
             "numPosts": len(self.posts),
+            # "Posts": user_posts
             # we dont need numFollowing & numFollowers=> directly query from following table,
         }
