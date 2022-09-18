@@ -13,7 +13,8 @@ likes = db.Table(
 class Post(db.Model):
     __tablename__= "posts"
     id = db.Column(db.Integer, primary_key= True)
-    post_url = db.Column(db.String, nullable= False, unique= True)
+    # erased unique = true on post_url
+    post_url = db.Column(db.String, nullable= False)
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     city = db.Column(db.String)
     state = db.Column(db.String)

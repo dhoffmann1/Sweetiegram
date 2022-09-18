@@ -1,8 +1,8 @@
-"""create tables
+"""create all tables
 
-Revision ID: e5b8b0d72f7c
+Revision ID: ffb7a5a1e2fd
 Revises: 
-Create Date: 2022-09-17 19:13:35.237297
+Create Date: 2022-09-18 16:24:41.083068
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e5b8b0d72f7c'
+revision = 'ffb7a5a1e2fd'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -49,8 +49,7 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('post_url')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),

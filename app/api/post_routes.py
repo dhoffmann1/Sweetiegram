@@ -25,22 +25,28 @@ def index():
     return {"posts": [post.to_dict() for post in posts]}
 
 @post_routes.route('', methods = ['POST'])
-# @login_required
+@login_required
 def create_post():
     print('hitting right route!')
     form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        post = Post(
-            post_url= form.data["post_url"],
-            city= form.data["city"],
-            state= form.data["state"],
-            country= form.data["country"],
-            caption= form.data["caption"]
-        )
+        select_user = User.query.get(int(current_user.id))
+        try:
+            post = Post(
+                post_url= str(form.data["post_url"]),
+                city= str(form.data["city"]),
+                state= str(form.data["state"]),
+                country= str(form.data["country"]),
+                caption= str(form.data["caption"]),
+                user = select_user
+            )
+        except:
+            return {"error": "your post has an issue... please try again"}
         print('post created:', post.to_dict())
         db.session.add(post)
         db.session.commit()
-        created_post = Post.query.filter(current_user.id == post.ownerId).order_by(Post.created_at.desc()).first()
+        created_post = Post.query.filter(current_user.id == post.owner_id).order_by(Post.created_at.desc()).first()
         # return redirect("/")
         print('created post from db:', created_post.to_dict())
         return created_post
