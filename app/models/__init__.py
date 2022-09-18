@@ -1,2 +1,2 @@
-from .db import db, likes, following, Post, Comment
-from .user import User
+from .db import db, likes, Post, Comment
+from .user import User, follows

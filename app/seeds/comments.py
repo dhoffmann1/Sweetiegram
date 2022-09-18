@@ -1,3 +1,4 @@
+from random import seed
 from app.models import db, Comment
 
 # post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
@@ -114,5 +115,5 @@ def seed_comments():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_comments():
-    db.session.execute('TRUNCATE commentss RESTART IDENTITY CASCADE;')
-    db.session.commit()
+  db.session.execute('TRUNCATE comments RESTART IDENTITY CASCADE;')
+  db.session.commit()
