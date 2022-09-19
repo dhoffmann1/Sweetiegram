@@ -17,7 +17,9 @@ def add_following(id):
 
     user = User.query.get(id)
     # currentUser = User.query.filter( User.id == current_user.id)
-    print("THIS IS THE CURRENT_USER", current_user.following)
+    # print("THIS IS THE CURRENT_USER", current_user.following)
+    if user in current_user.following:
+        return {"message": f"You are already following user {id}"}
     current_user.following.append(user)
     db.session.commit()
     return current_user.to_dict_for_follows()
@@ -27,6 +29,9 @@ def add_following(id):
 @login_required
 def remove_following(id):
     user = User.query.get(id)
+    if user not in current_user.following:
+        return {"message": f"Currently not following user {id}"}
+
     current_user.following.remove(user)
     db.session.commit()
     return current_user.to_dict_for_follows()
