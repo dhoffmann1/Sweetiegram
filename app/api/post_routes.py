@@ -43,8 +43,7 @@ def create_post():
                 user = select_user
             )
         except:
-            # abort(404)
-            return {"error": "your post has an issue... please try again"}, 404
+            return {"error": "SHOULD NEVER REACH HERE EVER"}, 404
         print('post instantiated:', post.to_dict())
         db.session.add(post)
         db.session.commit()
@@ -66,6 +65,8 @@ def update_post(post_id):
     if form.validate_on_submit():
         try:
             post = Post.query.get(int(post_id))
+            if post.owner_id != current_user.id:
+                return {"message": "Forbidden"}, 403
             print('post retrieved:', post.to_dict())
             post_data_bytes = request.data
             new_data = json.loads(post_data_bytes.decode('utf-8'))
@@ -80,8 +81,22 @@ def update_post(post_id):
             updated_post = Post.query.get(int(post_id))
             return updated_post.to_dict()
         except:
-            return {"error": "your post has an issue... please try again"}, 404
+            return {"message": "Post couldn't be found"}, 404
     if form.errors:
         # abort(404)
         print('errors:', form.errors)
         return form.errors
+
+@post_routes.route('/<int:post_id>', methods = ['DELETE'])
+@login_required
+def delete_post(post_id):
+    # authorization: must be right user
+    try:
+        post = Post.query.get(post_id)
+        if post.owner_id != current_user.id:
+            return {"message": "Forbidden"}, 403
+        db.session.delete(post)
+        db.session.commit()
+        return {"message": "Successfully deleted"}
+    except:
+        return {"message": "Post couldn't be found"}, 404
