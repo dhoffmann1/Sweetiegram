@@ -4,6 +4,7 @@ from app.models import User, db, Post, follows
 from app.forms import LoginForm, SignUpForm, PostForm
 # added here
 from sqlalchemy.orm import aliased
+import json
 
 post_routes = Blueprint('posts', __name__)
 
@@ -63,19 +64,23 @@ def update_post(post_id):
     print("post id:", post_id)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-    # try:
-        post = Post.query.get(int(post_id))
-        print('post retrieved:', post.to_dict())
-        # ISSUE IS RIGHT BELOW 
-        for k,v in request.form:
-            setattr(post, k, v)
-        db.session.commit()
-        updated_post = Post.query.filter(current_user.id == post.owner_id).order_by(Post.updated_at.desc()).first()
-        print('updated post from db:', updated_post)
-        # return updated_post.to_dict()
-        return "finished update"
-    # except:
-        return {"error": "your post has an issue... please try again"}, 404
+        try:
+            post = Post.query.get(int(post_id))
+            print('post retrieved:', post.to_dict())
+            post_data_bytes = request.data
+            new_data = json.loads(post_data_bytes.decode('utf-8'))
+            print('converted from byte:', new_data)
+            for k,v in new_data.items():
+                setattr(post, k, v)
+
+            # print('request.data:', request.data)
+            # print('request.data TYPE:', type(request.data))
+            # print('request.form:', request.form.get('post_url'))
+            db.session.commit()
+            updated_post = Post.query.get(int(post_id))
+            return updated_post.to_dict()
+        except:
+            return {"error": "your post has an issue... please try again"}, 404
     if form.errors:
         # abort(404)
         print('errors:', form.errors)
