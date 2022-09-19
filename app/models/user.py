@@ -29,8 +29,8 @@ class User(db.Model, UserMixin):
     followers = db.relationship(
         "User",
         secondary=follows,
-        primaryjoin=(follows.c.follower_id == id),
-        secondaryjoin=(follows.c.following_id == id),
+        primaryjoin=(follows.c.following_id == id),
+        secondaryjoin=(follows.c.follower_id == id),
         backref=db.backref('following', lazy='joined'),
         lazy='joined'
     )
@@ -60,7 +60,8 @@ class User(db.Model, UserMixin):
             "numFollowing": len(self.following),
             "posts": [post.to_dict() for post in self.posts],
             # added here: got ids for easy querying
-            "users_following": [user.id for user in self.following]
+            "users_following": [user.id for user in self.following],
+            "followers": [user.id for user in self.followers]
         }
     # added here:
 
