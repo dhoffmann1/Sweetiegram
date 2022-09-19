@@ -31,8 +31,8 @@ def create_post():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        select_user = User.query.get(int(current_user.id))
         try:
+            select_user = User.query.get(int(current_user.id))
             post = Post(
                 post_url= str(form.data["post_url"]),
                 city= str(form.data["city"]),
@@ -42,19 +42,41 @@ def create_post():
                 user = select_user
             )
         except:
-            return {"error": "your post has an issue... please try again"}
+            # abort(404)
+            return {"error": "your post has an issue... please try again"}, 404
         print('post instantiated:', post.to_dict())
         db.session.add(post)
         db.session.commit()
         created_post = Post.query.filter(current_user.id == post.owner_id).order_by(Post.created_at.desc()).first()
         # return redirect("/")
         print('created post from db:', created_post.to_dict())
-        return created_post.to_dict()
+        return created_post.to_dict(), 201
     if form.errors:
         print('errors:', form.errors)
         return form.errors
 
 
-@post_routes.route('', methods = ['PATCH'])
+@post_routes.route('/<int:post_id>', methods = ['PATCH'])
 @login_required
-def
+def update_post(post_id):
+    form = PostForm()
+    print("post id:", post_id)
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+    # try:
+        post = Post.query.get(int(post_id))
+        print('post retrieved:', post.to_dict())
+        # ISSUE IS RIGHT BELOW 
+        for k,v in request.form:
+            setattr(post, k, v)
+        db.session.commit()
+        updated_post = Post.query.filter(current_user.id == post.owner_id).order_by(Post.updated_at.desc()).first()
+        print('updated post from db:', updated_post)
+        # return updated_post.to_dict()
+        return "finished update"
+    # except:
+        return {"error": "your post has an issue... please try again"}, 404
+    if form.errors:
+        # abort(404)
+        print('errors:', form.errors)
+        return form.errors
