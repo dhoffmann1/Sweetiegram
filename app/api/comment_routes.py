@@ -7,7 +7,9 @@ from sqlalchemy.orm import aliased
 
 comment_routes = Blueprint('comments', __name__, url_prefix="/api/posts")
 
-@comment_routes.route("/<int:postsid>/comments")
+@comment_routes.route("/<int:id>/comments")
 def get_comments(id):
-    postId = Post.query.get(id)
-    comments = Comment.query.all()
+    comments = Comment.query.get(id)
+    print("comments", comments)
+    # comments = Comment.query.all()
+    return comments.to_dict()

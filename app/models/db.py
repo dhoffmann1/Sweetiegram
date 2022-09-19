@@ -76,8 +76,16 @@ class Comment(db.Model):
             "content": self.content,
             "createdAt": self.created_at,
             "updatedAt": self.updated_at,
+            "User":self.convert_user_to_dict()
         }
 
+    def convert_user_to_dict(self):
+        return {
+            'id': self.user.id,
+            'username': self.user.username,
+            "firstName": self.user.first_name,
+            "lastName": self.user.last_name
+        }
 
 # class Like(db.Model):
 #     __tablename__ = "likes"
