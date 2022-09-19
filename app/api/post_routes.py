@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request, redirect
 from flask_login import login_required, current_user
 from app.models import User, db, Post, follows
-from app.forms import LoginForm, SignUpForm, PostForm
+from app.forms import LoginForm, SignUpForm, PostForm, LikeForm
 # added here
 from sqlalchemy.orm import aliased
 import json
@@ -123,4 +123,39 @@ def delete_post(post_id):
 
 
 # LIKES FEATURE
+# only like the posts you're following or belong to you
+@post_routes.route('/<int:post_id>/likes', methods = ['POST'])
+@login_required
+def like_a_post(post_id):
+    post = Post.query.get(post_id)
+    UserAlias = aliased(User)
+    following_ids = [
+        user.id for user in
+        User.query.join(UserAlias.followers)
+        .with_entities(UserAlias).filter(User.id == current_user.id).all()
+    ]
+    post_ids_viewable = [
+        post.id for post in
+        Post.query.join(User).filter(Post.owner_id.in_(following_ids)).all()
+    ]
+    print('post ids in likes route:', post_ids_viewable)
 
+    for user in post.post_likes:
+        if user.id == current_user.id:
+            # already liked
+            # TODO: trigger delete route => invoke the function delete_like?
+            return {"message": "User already liked post"}
+    form = LikeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if post_id in post_ids_viewable or post.owner_id == current_user.id:
+        if form.validate_on_submit():
+            user = User.query.get(current_user.id)
+            print('user to dict:', user.to_dict())
+            print("post likes before:", len(post.post_likes))
+            post.post_likes.append(user)
+            print("post likes after:", len(post.post_likes))
+            db.session.add(post)
+            db.session.commit()
+            return {"message": "Successfully liked"}
+        else:
+            return {"error": "SHOULD NEVER ENTER HERE"}, 404
