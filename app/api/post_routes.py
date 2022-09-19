@@ -120,3 +120,7 @@ def delete_post(post_id):
         return {"message": "Successfully deleted"}
     except:
         return {"message": "Post couldn't be found"}, 404
+
+
+# LIKES FEATURE
+
