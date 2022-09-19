@@ -15,12 +15,6 @@ def users():
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
-    # user = User.query.join(Post).filter(Post.owner_id == id)
+    print('user object in Post Class:', Post.user)
     user = User.query.get(id)
-    print('user', user)
-    # print('user.to_dict()', user.to_dict())
-    user_posts = Post.query.all()
-    print('user_posts', user_posts)
-    # do query for just the posts belonging to this user and name it user_posts
-    return str(user_posts)
-    # return user.to_dict()
+    return user.to_dict()

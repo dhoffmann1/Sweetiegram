@@ -25,13 +25,14 @@ class User(db.Model, UserMixin):
     posts = db.relationship("Post", back_populates="user")
     comments = db.relationship("Comment", back_populates="user")
     user_likes = db.relationship("Post", back_populates="post_likes", secondary=likes, cascade="all, delete")
+    # changed below: primaryjoin & secondary joins
     followers = db.relationship(
         "User",
         secondary=follows,
         primaryjoin=(follows.c.follower_id == id),
-        secondaryjoin= (follows.c.following_id == id),
-        backref=db.backref('following', lazy='dynamic'),
-        lazy= 'dynamic'
+        secondaryjoin=(follows.c.following_id == id),
+        backref=db.backref('following', lazy='joined'),
+        lazy='joined'
     )
 
     @property
@@ -55,6 +56,19 @@ class User(db.Model, UserMixin):
             "profilePicUrl": self.profile_pic_url,
             "bio": self.bio,
             "numPosts": len(self.posts),
-            # "Posts": user_posts
-            # we dont need numFollowing & numFollowers=> directly query from following table,
+            "numFollowers": len(self.followers),
+            "numFollowing": len(self.following),
+            "posts": [post.to_dict() for post in self.posts],
+            # added here: got ids for easy querying
+            "users_following": [user.id for user in self.following]
+        }
+    # added here:
+
+
+    def to_dict_for_all_posts(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            "firstName": self.first_name,
+            "lastName": self.last_name
         }

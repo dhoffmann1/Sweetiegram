@@ -13,7 +13,8 @@ likes = db.Table(
 class Post(db.Model):
     __tablename__= "posts"
     id = db.Column(db.Integer, primary_key= True)
-    post_url = db.Column(db.String, nullable= False, unique= True)
+    # erased unique = true on post_url
+    post_url = db.Column(db.String, nullable= False)
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     city = db.Column(db.String)
     state = db.Column(db.String)
@@ -38,7 +39,19 @@ class Post(db.Model):
             "caption": self.caption,
             "createdAt": self.created_at,
             "updatedAt": self.updated_at,
-            "numLikes": len(self.post_likes)
+            "numLikes": len(self.post_likes),
+            # added here
+            # "user": str(self.user.username),
+            "user": self.convert_user_to_dict(),
+            "comments": [comment.to_dict() for comment in self.comments]
+        }
+    # added here
+    def convert_user_to_dict(self):
+        return {
+            'id': self.user.id,
+            'username': self.user.username,
+            "firstName": self.user.first_name,
+            "lastName": self.user.last_name
         }
 
 
