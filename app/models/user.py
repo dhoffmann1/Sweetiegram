@@ -29,8 +29,8 @@ class User(db.Model, UserMixin):
     followers = db.relationship(
         "User",
         secondary=follows,
-        primaryjoin=(follows.c.follower_id == id),
-        secondaryjoin=(follows.c.following_id == id),
+        primaryjoin=(follows.c.following_id == id),
+        secondaryjoin=(follows.c.follower_id == id),
         backref=db.backref('following', lazy='joined'),
         lazy='joined'
     )
@@ -75,7 +75,9 @@ class User(db.Model, UserMixin):
 
     def to_dict_for_follows(self):
         return {
+            # want to add, username and profile picture to here? 
                 "id": self.id,
+                "followers": [user.to_dict_for_all_posts() for user in self.followers],
                 "following_users": [user.to_dict_for_all_posts() for user in self.following],
                 "count": len(self.following),
         }
