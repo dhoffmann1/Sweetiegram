@@ -4,6 +4,7 @@ import random
 users_dictionary = {}
 
 # Adds a demo user, you can add other users here if you want
+# Don't forget to add all profile pic urls
 def seed_users():
     global users_dictionary
     users = [
