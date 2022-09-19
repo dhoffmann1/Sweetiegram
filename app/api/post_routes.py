@@ -19,16 +19,38 @@ def index():
         User.query.join(UserAlias.followers)
         .with_entities(UserAlias).filter(User.id == current_user.id).all()
     ]
-    # print('num following')
-    # return {"following": str(users_following)}
     posts = Post.query.join(User).filter(Post.owner_id.in_(following_ids)).all()
     print("length of posts:", len(posts))
     return {"posts": [post.to_dict() for post in posts]}
 
+@post_routes.route('/<int:post_id>', methods=['GET'])
+@login_required
+def get_post(post_id):
+    # this will be through clicking
+    # you can only get the post that you own OR of the user you're following
+    post = Post.query.get(post_id)
+    UserAlias = aliased(User)
+    following_ids = [
+        user.id for user in
+        User.query.join(UserAlias.followers)
+        .with_entities(UserAlias).filter(User.id == current_user.id).all()
+    ]
+    post_ids_viewable = [
+        post.id for post in
+        Post.query.join(User).filter(Post.owner_id.in_(following_ids)).all()
+    ]
+    print("post ids viewable:", post_ids_viewable)
+    if post_id in post_ids_viewable or post.owner_id == current_user.id:
+        try:
+            return post.to_dict()
+        except:
+            return {"message": "Post couldn't be found"}, 404
+    else:
+        return {"message": "You must follow them in order to view their post"}, 403
+
 @post_routes.route('', methods = ['POST'])
 @login_required
 def create_post():
-    print('hitting right route!')
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -60,14 +82,12 @@ def create_post():
 @login_required
 def update_post(post_id):
     form = PostForm()
-    print("post id:", post_id)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         try:
             post = Post.query.get(int(post_id))
             if post.owner_id != current_user.id:
                 return {"message": "Forbidden"}, 403
-            print('post retrieved:', post.to_dict())
             post_data_bytes = request.data
             new_data = json.loads(post_data_bytes.decode('utf-8'))
             print('converted from byte:', new_data)
