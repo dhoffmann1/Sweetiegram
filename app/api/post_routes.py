@@ -124,6 +124,7 @@ def delete_post(post_id):
 
 # LIKES FEATURE
 # only like the posts you're following or belong to you
+# liking and unliking should always hit this route
 @post_routes.route('/<int:post_id>/likes', methods = ['POST'])
 @login_required
 def like_a_post(post_id):
@@ -144,7 +145,8 @@ def like_a_post(post_id):
         if user.id == current_user.id:
             # already liked
             # TODO: trigger delete route => invoke the function delete_like?
-            return {"message": "User already liked post"}
+            return delete_like(post_id, post)
+            # return {"message": "User already liked post"}
     form = LikeForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if post_id in post_ids_viewable or post.owner_id == current_user.id:
@@ -159,3 +161,22 @@ def like_a_post(post_id):
             return {"message": "Successfully liked"}
         else:
             return {"error": "SHOULD NEVER ENTER HERE"}, 404
+
+
+@post_routes.route('/<int:post_id>/likes', methods = ['DELETE'])
+@login_required
+def delete_like(post_id, post):
+    for user in post.post_likes:
+        post.post_likes.remove(user)
+        db.session.add(post)
+        db.session.commit()
+        return {"message": "Successfully deleted"}
+
+    # post = Post.query.get(post_id)
+    # for user in post.post_likes:
+    #     if user.id == current_user.id:
+    #         # trigger delete
+    #         post.post_likes.remove(user)
+    #         db.session.add(post)
+    #         db.session.commit()
+    #         return {"message": "Successfully deleted"}
