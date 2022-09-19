@@ -76,15 +76,15 @@ def delete_comment(id):
 
     #if the user logged in is the owner of the comment, i should be able to delete
   
-        comment = Comment.query.get(id)
-        if comment == None:
-            return {"message": "comment cannot be found"}
-        # print("THIS IS THE USER", userComment)
-        if comment.user_id != current_user.id:
-            return {"message": "Forbidden"}, 403
-            # return {'errors': validation_errors_to_error_messages(form.errors)}, 403
+    comment = Comment.query.get(id)
+    if comment == None:
+        return {"message": "comment cannot be found"}
+    # print("THIS IS THE USER", userComment)
+    if comment.user_id != current_user.id:
+        return {"message": "Forbidden"}, 403
+        # return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
-        db.session.delete(comment)
-        db.session.commit()
-        return {"message": "Successfully deleted"}
+    db.session.delete(comment)
+    db.session.commit()
+    return {"message": "Successfully deleted"}
  
