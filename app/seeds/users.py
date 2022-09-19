@@ -50,7 +50,7 @@ def seed_users():
         "password": "password",
         "username": "johnbob",
         "bio": "CA",
-        "profile_pic_url": ""
+        "profile_pic_url": "https://flyingcdn-942385.b-cdn.net/wp-content/uploads/2018/03/Awesome-Profile-Pictures-for-Guys-look-away2.jpg"
     },
     {
         "email": "user6@gmail.com",
