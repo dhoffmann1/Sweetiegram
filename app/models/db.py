@@ -53,6 +53,10 @@ class Post(db.Model):
             "firstName": self.user.first_name,
             "lastName": self.user.last_name
         }
+    def to_dict_comments(self):
+        return {
+            "Comments": [comment.to_dict() for comment in self.comments]
+        }
 
 
 class Comment(db.Model):

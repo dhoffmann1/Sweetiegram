@@ -9,5 +9,13 @@ comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route("/<int:id>/comments", methods=["GET"])
 def get_comments(id):
-    comments = Comment.query.get(id)
-    return comments.to_dict()
+    posts = Post.query.get(id)
+    
+    # error = {
+    #     "message": "Post couldn't be found",
+    #     "statusCode": 404
+    # }
+
+    #if the post id exists
+    
+    return posts.to_dict_comments()
