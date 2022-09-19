@@ -51,7 +51,8 @@ class Post(db.Model):
             'id': self.user.id,
             'username': self.user.username,
             "firstName": self.user.first_name,
-            "lastName": self.user.last_name
+            "lastName": self.user.last_name,
+            "profilePicUrl": self.user.profile_pic_url
         }
 
 
