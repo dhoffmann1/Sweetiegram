@@ -72,3 +72,10 @@ class User(db.Model, UserMixin):
             "firstName": self.first_name,
             "lastName": self.last_name
         }
+
+    def to_dict_for_follows(self):
+        return {
+                "id": self.id,
+                "following_users": [user.to_dict_for_all_posts() for user in self.following],
+                "count": len(self.following),
+        }
