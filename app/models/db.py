@@ -55,7 +55,9 @@ class Post(db.Model):
         }
     def to_dict_comments(self):
         return {
-            "Comments": [comment.to_dict() for comment in self.comments]
+            "Comments": [comment.to_dict() for comment in self.comments],
+            "numComments": len(self.comments)
+            
         }
 
 
@@ -91,6 +93,7 @@ class Comment(db.Model):
             "lastName": self.user.last_name,
             "profilePicUrl": self.user.profile_pic_url
         }
+
 
 # class Like(db.Model):
 #     __tablename__ = "likes"

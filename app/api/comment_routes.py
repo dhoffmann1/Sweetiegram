@@ -12,14 +12,17 @@ comment_routes = Blueprint('comments', __name__)
 def get_comments(id):
     posts = Post.query.get(id)
     
+    comments = Comment.query.order_by(Comment.created_at.asc()).filter(Comment.post_id == id).all()
     # error = {
     #     "message": "Post couldn't be found",
     #     "statusCode": 404
     # }
 
     #if the post id exists
-    
-    return posts.to_dict_comments()
+    print("THIS IS THE COMMMENT", comments)
+    return { "Comments": [comment.to_dict() for comment in comments],
+            "numComments": len(comments)
+    }
 
 
 @comment_routes.route("/<int:id>", methods=["POST"])
@@ -27,7 +30,11 @@ def get_comments(id):
 def new_comment(id):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    posts = Post.query.get(id)
+    post = Post.query.get(id)
+    if post == None:
+        return { "message": "Post couldn't be found"}, 404
+
+
     if form.validate_on_submit():
         new_comment = Comment(
             content=form.data['content'],
@@ -37,8 +44,8 @@ def new_comment(id):
 
         db.session.add(new_comment)
         db.session.commit()
-        #returning that posts comments
-        return posts.to_dict_comments()
+        #returning that post comments
+        return post.to_dict_comments()
     
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
@@ -53,7 +60,11 @@ def update_comment(id):
     # posts = Post.query.get(id)
     updateComment = Comment.query.get(id)
     if updateComment == None:
-        return {"message": "comment cannot be found"}
+        return {"message": "comment couldn't be found"}, 404
+
+
+    if current_user.id is not updateComment.user_id:
+        return {"message": "you don't have permission to update this comment"}
 
     if form.validate_on_submit():
         updateComment.content = form.data['content']
@@ -78,13 +89,13 @@ def delete_comment(id):
   
     comment = Comment.query.get(id)
     if comment == None:
-        return {"message": "comment cannot be found"}
-    # print("THIS IS THE USER", userComment)
-    if comment.user_id != current_user.id:
+        return {"message": "comment couldn't be found"}, 404
+
+    if comment.user_id != current_user.id and current_user.id != comment.post.owner_id:
         return {"message": "Forbidden"}, 403
-        # return {'errors': validation_errors_to_error_messages(form.errors)}, 403
 
     db.session.delete(comment)
     db.session.commit()
     return {"message": "Successfully deleted"}
  
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 403
