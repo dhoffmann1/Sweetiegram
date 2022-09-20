@@ -39,27 +39,41 @@ const LoginForm = () => {
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
+        <label htmlFor='email'>
+          <input
+            name='email'
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={updateEmail}
+            className='login-form-input-text-field'
+          />
+        </label>
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
+        <label htmlFor='password'>
+          <input
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={updatePassword}
+            className='login-form-input-text-field'
+          />
+        </label>
       </div>
+      {email.length > 0  && password.length > 0 &&
+      <button className='login-form-buttons' id='login-form-submit-button' type='submit'>Log In</button>}
+      {(email.length === 0  || password.length === 0) &&
+      <button className='login-form-buttons' id='login-form-submit-button-disabled' type='submit' disabled={true} >Log In</button>}
+
+      <button className='login-form-buttons' id='demo-user-login-button' onClick={(e) => {
+        e.preventDefault();
+        setEmail('demouser@gmail.com');
+        setPassword('password')
+      }}>Log In as Demo User</button>
     </form>
+
   );
 };
 
