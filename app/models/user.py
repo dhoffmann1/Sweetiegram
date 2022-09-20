@@ -71,5 +71,17 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             "firstName": self.first_name,
-            "lastName": self.last_name
+            "lastName": self.last_name,
+            "profilePicUrl": self.profile_pic_url
+        }
+
+    def to_dict_for_follows(self):
+        return {
+            # want to add, username and profile picture to here? 
+                "id": self.id,
+                "followers": [user.to_dict_for_all_posts() for user in self.followers],
+                "following_users": [user.to_dict_for_all_posts() for user in self.following],
+                "numFollowing": len(self.following),
+                "numFollowers": len(self.followers),
+                
         }
