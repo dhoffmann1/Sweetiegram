@@ -8,46 +8,46 @@ from sqlalchemy.orm import aliased
 
 comment_routes = Blueprint('comments', __name__)
 
-@comment_routes.route("/<int:id>", methods=["GET"])
-def get_comments(id):
-    posts = Post.query.get(id)
+# @comment_routes.route("/<int:id>", methods=["GET"])
+# def get_comments(id):
+#     posts = Post.query.get(id)
     
-    comments = Comment.query.order_by(Comment.created_at.asc()).filter(Comment.post_id == id).all()
-    # error = {
-    #     "message": "Post couldn't be found",
-    #     "statusCode": 404
-    # }
+#     comments = Comment.query.order_by(Comment.created_at.asc()).filter(Comment.post_id == id).all()
+#     # error = {
+#     #     "message": "Post couldn't be found",
+#     #     "statusCode": 404
+#     # }
 
-    #if the post id exists
-    print("THIS IS THE COMMMENT", comments)
-    return { "Comments": [comment.to_dict() for comment in comments],
-            "numComments": len(comments)
-    }
-
-
-@comment_routes.route("/<int:id>", methods=["POST"])
-@login_required
-def new_comment(id):
-    form = CommentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    post = Post.query.get(id)
-    if post == None:
-        return { "message": "Post couldn't be found"}, 404
+#     #if the post id exists
+#     print("THIS IS THE COMMMENT", comments)
+#     return { "Comments": [comment.to_dict() for comment in comments],
+#             "numComments": len(comments)
+#     }
 
 
-    if form.validate_on_submit():
-        new_comment = Comment(
-            content=form.data['content'],
-            post_id=id,
-            user_id=current_user.id
-        )
+# @comment_routes.route("/<int:id>", methods=["POST"])
+# @login_required
+# def new_comment(id):
+#     form = CommentForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     post = Post.query.get(id)
+#     if post == None:
+#         return { "message": "Post couldn't be found"}, 404
 
-        db.session.add(new_comment)
-        db.session.commit()
-        #returning that post comments
-        return post.to_dict_comments()
+
+#     if form.validate_on_submit():
+#         new_comment = Comment(
+#             content=form.data['content'],
+#             post_id=id,
+#             user_id=current_user.id
+#         )
+
+#         db.session.add(new_comment)
+#         db.session.commit()
+#         #returning that post comments
+#         return post.to_dict_comments()
     
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
 

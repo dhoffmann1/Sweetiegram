@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request, redirect
 from flask_login import login_required, current_user
-from app.models import User, db, Post, follows
-from app.forms import LoginForm, SignUpForm, PostForm, LikeForm
+from app.models import User, db, Post, follows, Comment
+from app.forms import LoginForm, SignUpForm, PostForm, LikeForm, CommentForm
 # added here
 from sqlalchemy.orm import aliased
 from .auth_routes import validation_errors_to_error_messages
@@ -168,3 +168,48 @@ def delete_like(post_id):
             db.session.add(post)
             db.session.commit()
             return {"message": "Successfully deleted"}
+
+
+#----------------------------------------------------------------------------
+
+
+@post_routes.route("/<int:id>/comments", methods=["GET"])
+def get_comments(id):
+    posts = Post.query.get(id)
+    
+    comments = Comment.query.order_by(Comment.created_at.asc()).filter(Comment.post_id == id).all()
+    # error = {
+    #     "message": "Post couldn't be found",
+    #     "statusCode": 404
+    # }
+
+    #if the post id exists
+    print("THIS IS THE COMMMENT", comments)
+    return { "Comments": [comment.to_dict() for comment in comments],
+            "numComments": len(comments)
+    }
+
+
+@post_routes.route("/<int:id>/comments", methods=["POST"])
+@login_required
+def new_comment(id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    post = Post.query.get(id)
+    if post == None:
+        return { "message": "Post couldn't be found"}, 404
+
+
+    if form.validate_on_submit():
+        new_comment = Comment(
+            content=form.data['content'],
+            post_id=id,
+            user_id=current_user.id
+        )
+
+        db.session.add(new_comment)
+        db.session.commit()
+        #returning that post comments
+        return post.to_dict_comments()
+    
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
