@@ -1,0 +1,32 @@
+.whole-page {
+    background-color: rgb(249, 249, 249);
+}
+
+.container-page {
+
+    margin-left: 10%;
+    display: flex;
+    width: 75%;
+
+}
+
+.left-main {
+    margin-top: 2.8%;
+    width: 65%;
+}
+
+.storiesbox {
+    width: 85%;
+    border: solid black;
+    background-color: white;
+    border-radius: 6px;
+}
+
+.postsbox {
+    margin-top: 20px;
+    width: 85%;
+    border: solid black;
+    height: 500px;
+    background-color: white;
+    border-radius: 6px;
+}
