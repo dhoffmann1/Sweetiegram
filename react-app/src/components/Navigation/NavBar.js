@@ -39,7 +39,7 @@ const NavBar = () => {
     <nav>
       <div className='navbar'>
         <div className='InstaLogo'>
-          <h1> Instagram</h1>
+          <h1> Sweetiegram</h1>
         </div>
         <div className='navLinks'>
           <div>

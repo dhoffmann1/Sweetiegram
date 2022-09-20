@@ -10,7 +10,14 @@ const load = (payload) => {
 }
 
 export const getPosts = () => async dispatch => {
-    const response = await fetch('/api/posts')
+    // @post_routes.route('', methods=["GET"])
+    const response = await fetch('/api/posts/', {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
     console.log(response)
     if (response.ok) {
         let posts = await response.json()

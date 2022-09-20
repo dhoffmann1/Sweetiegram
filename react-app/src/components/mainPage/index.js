@@ -9,18 +9,6 @@ import React from 'react'
 
 function MainPage() {
 
-    const dispatch = useDispatch();
-    const posts = useSelector(state => state.posts)
-    console.log(posts)
-
-
-    useEffect(() => {
-        dispatch(getPosts())
-    }, [dispatch])
-
-
-
-
     return (
         <>
             <div className='whole-page'>
@@ -29,7 +17,7 @@ function MainPage() {
                         <div className="storiesbox">
                             {Profiles()}
                         </div>
-                        <div className="postsbox">
+                        <div>
                             {Posts()}
                         </div>
 

@@ -16,7 +16,7 @@
 }
 
 .storiesbox {
-    width: 85%;
+    width: 400px;
     border: 1px solid rgb(249, 249, 249);
     background-color: white;
     border-radius: 6px;
@@ -25,10 +25,12 @@
 }
 
 .postsbox {
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
-    width: 85%;
+    width: 400px;
     border: 1px solid rgb(249, 249, 249);
-    height: 500px;
+    height: 600px;
     background-color: white;
     border-radius: 6px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
