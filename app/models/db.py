@@ -58,7 +58,7 @@ class Post(db.Model):
         return {
             "Comments": [comment.to_dict() for comment in self.comments],
             "numComments": len(self.comments)
-            
+
         }
 
 
