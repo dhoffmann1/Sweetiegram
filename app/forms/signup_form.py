@@ -4,6 +4,26 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 
+import requests
+
+
+def valid_image_url(form, field):
+    post_url = field.data
+    image_formats = ["image/png", "image/jpeg", "image/jpg", "image/bmp"]
+    # otherwise image type
+    try:
+        r = requests.head(post_url)
+        if r.headers["content-type"] not in image_formats:
+            raise ValidationError('Image url format must be "bmp", "png", or "jpeg."')
+    except:
+        raise ValidationError("Please enter a valid url link ")
+
+def valid_bio(form, field):
+    bio = field.data
+    if len(bio) > 500:
+        raise ValidationError("Bio cannot be more than 500 characters")
+
+
 def user_exists(form, field):
     # Checking if user exists
     email = field.data
@@ -25,3 +45,8 @@ class SignUpForm(FlaskForm):
         'username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
+    # added here
+    profile_pic_url = StringField('profile pic url', validators=[DataRequired(), valid_image_url])
+    bio = StringField('bio', validators=[valid_bio])
+    first_name = StringField('first name', validators = [DataRequired()])
+    last_name = StringField('last name', validators = [DataRequired()])

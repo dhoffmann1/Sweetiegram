@@ -9,9 +9,12 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import MainPage from './components/mainPage'
 import { authenticate } from './store/session';
+import Posts from './components/Posts';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,9 +24,15 @@ function App() {
     })();
   }, [dispatch]);
 
+  // // added here
+  // useEffect(()=>{
+  //   dispatch()
+  // }, [dispatch])
+
   if (!loaded) {
     return null;
   }
+
 
   return (
     <BrowserRouter>
@@ -35,6 +44,9 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route exact path= "/">
+          <Posts/>
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
@@ -44,6 +56,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
         </ProtectedRoute>
+        <Route>
+          <h2>Page Not Found</h2>
+        </Route>
       </Switch>
     </BrowserRouter>
   );
