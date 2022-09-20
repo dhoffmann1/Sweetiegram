@@ -1,4 +1,6 @@
 import './main.css'
+import Posts from '../Posts/index'
+import Profiles from '../profiles/index'
 
 
 function MainPage() {
@@ -9,10 +11,10 @@ function MainPage() {
                 <div className="container-page">
                     <div className="left-main">
                         <div className="storiesbox">
-                            <h1>profiles</h1>
+                            {Profiles()}
                         </div>
                         <div className="postsbox">
-                            <h1>posts</h1>
+                            {Posts()}
                         </div>
 
                     </div>

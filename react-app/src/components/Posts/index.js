@@ -10,7 +10,7 @@ const Posts = () => {
     const dispatch = useDispatch();
     // useEffect(())
     return (
-        <h1>posts page!</h1>
+        <h1>posts</h1>
     )
 }
 

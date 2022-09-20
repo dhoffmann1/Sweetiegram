@@ -9,21 +9,22 @@ const load = (payload) => {
     }
 }
 
-const getPosts = () => async dispatch => {
+export const getPosts = () => async dispatch => {
     const response = await fetch('/api/posts')
-    if (response.ok){
-        let posts = response.json()
+    if (response.ok) {
+        let posts = await response.json()
         dispatch(load(posts))
+        return posts
     }
 }
 
 
 const initialState = {}
 const postReducer = (state = initialState, action) => {
-    switch (action.type){
+    switch (action.type) {
         case GET_POSTS: {
             const newState = {}
-            action.payload.posts.forEach( post => newState[post.id] = post)
+            action.payload.posts.forEach(post => newState[post.id] = post)
             return newState
         }
         default:

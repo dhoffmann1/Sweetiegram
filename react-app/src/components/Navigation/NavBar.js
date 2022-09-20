@@ -47,11 +47,6 @@ const NavBar = () => {
               <i class="fa-solid fa-house"></i>
             </NavLink>
           </div>
-          <div >
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              Login
-            </NavLink>
-          </div>
           <div>
             <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>
               <i class="fa-regular fa-square-plus"></i>
