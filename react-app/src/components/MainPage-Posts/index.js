@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react'
 import { getPosts } from "../../store/post"
 import { NavLink } from "react-router-dom"
 import React from 'react'
-import './Posts.css'
+import './MainPagePosts.css'
 
 
-const Posts = () => {
+const MainPagePosts = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => Object.values(state.posts))
     console.log(posts)
@@ -115,4 +115,4 @@ const Posts = () => {
     )
 }
 
-export default Posts
+export default MainPagePosts

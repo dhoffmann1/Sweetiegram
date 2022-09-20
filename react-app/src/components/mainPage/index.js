@@ -1,5 +1,5 @@
 import './main.css'
-import Posts from '../Posts/index'
+import MainPagePosts from '../MainPage-Posts/index'
 import Profiles from '../profiles/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
@@ -18,7 +18,7 @@ function MainPage() {
                             {Profiles()}
                         </div>
                         <div>
-                            {Posts()}
+                            {MainPagePosts()}
                         </div>
 
                     </div>

@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import MainPage from './components/mainPage'
 import { authenticate } from './store/session';
-import Posts from './components/Posts';
+import Posts from './components/MainPage-Posts';
 
 
 function App() {
