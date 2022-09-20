@@ -5,14 +5,14 @@ import { NavLink } from "react-router-dom"
 import React from 'react'
 
 const Profiles = () => {
-    const dispatch = useDispatch();
-    const following_users = useSelector((state) => state.posts)
-    console.log(following_users)
+    // const dispatch = useDispatch();
+    // const posts = useSelector(state => state.posts)
+    // console.log(posts)
 
 
     // useEffect(() => {
     //     dispatch(getPosts())
-    // })
+    // }, [dispatch])
 
 
     return (
