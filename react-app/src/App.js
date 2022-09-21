@@ -9,8 +9,11 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Posts from './components/Posts';
-import ProfilePage from './components/ProfilePage'
+import UserProfilePage from './components/UserProfilePage'
+import YourProfilePage from './components/YourProfilePage';
 import CreatePostForm from './components/CreatePostForm';
+import PageNotFound from './components/PageNotFound';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
 
@@ -47,12 +50,14 @@ function App() {
           <Posts/>
         </Route>
         <ProtectedRoute exact path='/profile'>
-          <ProfilePage/>
+          <YourProfilePage/>
+        </ProtectedRoute>
+        <ProtectedRoute exact path='/users/:userId'>
+          <UserProfilePage/>
         </ProtectedRoute>
         <ProtectedRoute exact path='/posts/new'>
           <CreatePostForm/>
         </ProtectedRoute>
-
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -62,9 +67,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route>
-          <h2>Page Not Found</h2>
-        </Route>
+        {/* <Route exact path= '/unknown'>
+          <PageNotFound/>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );

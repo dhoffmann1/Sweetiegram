@@ -2,6 +2,7 @@
 
 // this is for main page
 const GET_POSTS = 'posts/getPosts'
+const GET_YOUR_PROFILE= 'posts/getYourProfile'
 // this is for user profile
 const GET_USER_PROFILE = 'posts/getUserProfile'
 const CREATE_POST = 'posts/createPost'
@@ -11,6 +12,13 @@ const DELETE_POST = 'posts/deletePost'
 const load = (payload) => {
     return {
         type: GET_POSTS,
+        payload
+    }
+}
+
+const loadYourPosts = (payload) => {
+    return {
+        type: GET_YOUR_PROFILE,
         payload
     }
 }
@@ -51,11 +59,21 @@ export const getPosts = () => async dispatch => {
     }
 }
 
-export const getUserPosts = () => async dispatch => {
-    const response = await fetch('/api/posts/profile')
+export const getYourPosts = () => async dispatch => {
+    const response = await fetch(`/api/users/posts`)
     if (response.ok){
         const posts = await response.json()
-        console.log('posts data from user profile route in thunk:', posts )
+        console.log('posts data from YOUR profile route in thunk:', posts )
+        dispatch(loadYourPosts(posts))
+    }
+
+}
+
+export const getUserPosts = (userId) => async dispatch => {
+    const response = await fetch(`/api/users/${userId}/posts`)
+    if (response.ok){
+        const posts = await response.json()
+        console.log('posts data from USER profile route in thunk:', posts )
         dispatch(loadUserPosts(posts))
     }
 }
@@ -100,6 +118,11 @@ const initialState = {}
 const postReducer = (state = initialState, action) => {
     switch (action.type){
         case GET_POSTS: {
+            const newState = {}
+            action.payload.posts.forEach( post => newState[post.id] = post)
+            return newState
+        }
+        case GET_YOUR_PROFILE: {
             const newState = {}
             action.payload.posts.forEach( post => newState[post.id] = post)
             return newState

@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session'
 import postReducer from './post';
 import followingReducer from './following';
+import userReducer from './user';
 
 const rootReducer = combineReducers({
   session,
   // added
   posts: postReducer,
-  followings: followingReducer
+  followings: followingReducer,
+  users: userReducer
 });
 
 

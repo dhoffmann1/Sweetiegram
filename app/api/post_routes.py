@@ -217,9 +217,9 @@ def new_comment(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-# TIFF ADDED HERE FOR profile page, add another route
-@post_routes.route("/profile", methods = ['GET'])
-@login_required
-def profile_page():
-    posts = Post.query.filter(Post.owner_id == current_user.id).all()
-    return {"posts": [post.to_dict() for post in posts]}
+# # TIFF ADDED HERE FOR profile page, add another route
+# @post_routes.route("/profile", methods = ['GET'])
+# @login_required
+# def profile_page():
+#     posts = Post.query.filter(Post.owner_id == current_user.id).all()
+#     return {"posts": [post.to_dict() for post in posts]}

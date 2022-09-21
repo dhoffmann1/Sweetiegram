@@ -1,22 +1,24 @@
 import {useDispatch, useSelector} from 'react-redux'
+import { useParams } from 'react-router-dom'
 import {useState, useEffect} from 'react'
-import {getUserPosts} from "../../store/post"
+import {getYourPosts} from "../../store/post"
 import { getFollowings } from '../../store/following'
 import {NavLink} from "react-router-dom"
 import React from 'react'
-import './ProfilePage.css'
+import './YourProfilePage.css'
 
 
-const ProfilePage = () => {
+const YourProfilePage = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => Object.values(state.posts))
-    const user = useSelector(state=> state.session.user)
+    const user = useSelector(state => state.session.user)
     const followings = useSelector(state => Object.values(state.followings))
     console.log('user obj:', user)
     console.log('followings:', followings)
+    // print('user id:', userId)
 
     useEffect(()=>{
-        dispatch(getUserPosts())
+        dispatch(getYourPosts())
 
     }, [dispatch])
 
@@ -107,4 +109,4 @@ const ProfilePage = () => {
     )
 }
 
-export default ProfilePage
+export default YourProfilePage
