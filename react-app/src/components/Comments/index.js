@@ -4,13 +4,22 @@ import { useSelector, useDispatch } from "react-redux";
 import "./Comments.css";
 import { readCommentsThunk } from "../../store/comments";
 
+
 const Comments = ({ postId }) => {
+
+  const logedInUser = useSelector(state => state.session.user);
+
   // useSelectors
   const postsObj = useSelector((state) => state.posts);
   // const post = posts[postId]
   // const allCommentsObj = useSelector(state => state.comments)
   const allCommentsArr = Object.values(postsObj.comments);
   console.log(allCommentsArr);
+
+  const deleteComment = async (id) => {
+    const deleteOneComment = await dispatch(deleteCommentThunk(id));
+    return 
+  }
 
   const dispatch = useDispatch();
   //   const readComment = async (postId) => {
@@ -31,8 +40,12 @@ const Comments = ({ postId }) => {
           <div>
             <div>{comment.profilePicUrl}</div>
             <div>{comment.username}</div>
-            <div>{comment.content}</div>
+            <div>{comment.content}
+            {comment?.user_id === logedInUser?.id ? <button className="delete-comment-button" onClick={() => deleteComment(comment.id)}>Delete Comment</button> : null}
+            </div>
             <div>{comment.createdAt}</div>
+
+
           </div>
         );
       })}

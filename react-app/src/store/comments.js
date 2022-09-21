@@ -96,6 +96,26 @@ export const deleteCommentThunk = (commentId) => async dispatch => {
 //Reducer
 const commentReducer = (state = {}, action) => {
     switch (action.type) {
+        case READ: {
+            const commentsDisplayed = {};
+            action.comments.forEach((comment) => {
+                commentsDisplayed[comment.id] = comment;
+            });
+            return commentsDisplayed
+        }
+        case CREATE: {
+            return {...state, [action.comment.id]: action.comment}
+        }
+        case UPDATE: {
+            const newComment = {...state};
+            newComment[action.comment.id] = action.comment
+        }
+
+        case DELETE: {
+            const deletedComment = {...state};
+            delete deletedComment[action.comment.id];
+            return deletedComment;
+        }
       
       default:
         return state;
