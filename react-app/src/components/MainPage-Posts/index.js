@@ -19,7 +19,7 @@ const MainPagePosts = () => {
 
     const allPosts = posts.map((post) => {
         if (!post) return null
-        const { caption, comments, numLikes, postUrl, user } = post
+        const { caption, comments, numLikes, postUrl, user, createdAt } = post
         let postHeader = (
 
             <div className='mainpage-post-header'>
@@ -87,10 +87,27 @@ const MainPagePosts = () => {
                 <div className='mainpage-comments-placeholder'>
                     {commentsLink}
                 </div>
+                <div className='mainpage-time'>
+                    X hours ago
+                </div>
             </>
 
         )
 
+        let commentForm = (
+            <>
+                <div className='comment-form-line'></div>
+                <div className='comment-post-form'>
+                    <div>
+                        Add a comment...
+                    </div>
+                    <div >
+                        <button className='comment-post-button'> Post</button>
+                    </div>
+                </div>
+            </>
+
+        )
 
         return (
             <div className='postsbox'>
@@ -102,6 +119,9 @@ const MainPagePosts = () => {
                 </div>
                 <div className='mainpage-interface-div'>
                     {userInterface}
+                </div>
+                <div className='mainpage-comment-form'>
+                    {commentForm}
                 </div>
             </div>
         )
