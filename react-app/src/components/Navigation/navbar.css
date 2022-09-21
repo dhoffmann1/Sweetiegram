@@ -1,0 +1,66 @@
+@import url(//db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=BillabongW00-Regular);
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px rgb(158, 153, 153);
+    background-color: white;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    height: 80px
+}
+
+.InstaLogo {
+    margin-left: 5%;
+    font-family: BillabongW00-Regular;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.navLinks {
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-around;
+    width: 26%;
+    align-items: center;
+}
+
+
+.nav-profile-bttn {
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+}
+
+.dropdown-menu {
+    border: solid 2px;
+    position: absolute;
+    margin-top: 1.4em;
+    width: 12em;
+    right: 4em;
+    z-index: 1;
+    background-color: white;
+    height: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.dropdown-profile-bttn {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.dropdown-divider {
+    border-bottom: solid 1px;
+}
+
+.dropdown-logout-bttn {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+
+}
+

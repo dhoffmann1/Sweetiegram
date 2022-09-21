@@ -80,7 +80,7 @@ export const updateCommentThunk = (commentId, comment ) => async dispatch => {
     }
 }
 
-
+//THUNK AC => DELETE
 export const deleteCommentThunk = (commentId) => async dispatch => {
     const response = await fetch (`/api/comments/${commentId}`, {
         method: "DELETE"

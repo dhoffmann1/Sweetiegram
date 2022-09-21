@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import MainPage from './components/mainPage'
 import { authenticate } from './store/session';
-import Posts from './components/Posts';
-
+import UserProfilePage from './components/UserProfilePage'
+import YourProfilePage from './components/YourProfilePage';
+import CreatePostForm from './components/CreatePostForm';
+import PageNotFound from './components/PageNotFound';
+import SplashPage from './components/SplashPage';
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const loggedInUser = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -36,29 +41,30 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {loggedInUser && <NavBar />}
+      {/* <NavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <SplashPage />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route exact path= "/">
-          <Posts/>
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute exact path='/profile'>
+          <YourProfilePage/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute exact path='/users/:userId'>
+          <UserProfilePage/>
+        </ProtectedRoute>
+        <ProtectedRoute exact path='/posts/new'>
+          <CreatePostForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <MainPage />
         </ProtectedRoute>
-        <Route>
-          <h2>Page Not Found</h2>
-        </Route>
+        {/* <Route exact path= '/unknown'>
+          <PageNotFound/>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );

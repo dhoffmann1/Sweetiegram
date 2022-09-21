@@ -1,0 +1,42 @@
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-input-text-field {
+  width: 200px;
+  height: 35px;
+  border-radius: 2px;
+  font-size: 16px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: lightgray solid 1px;
+  background-color: rgba(244, 243, 243, 0.891);
+}
+
+/* .login-form-input-text-field:hover {
+  border: 2.5px solid black;
+} */
+
+.login-form-buttons {
+  background-color: #458EFF;
+  color: white;
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#login-form-submit-button-disabled {
+  background-color: rgba(69, 142, 255, 50%);
+}
+
+#demo-user-login-button {
+  margin-bottom: 15px;
+}

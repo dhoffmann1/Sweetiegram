@@ -1,0 +1,91 @@
+@import url(//db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=BillabongW00-Regular);
+
+html {
+  background-color: rgb(241, 241, 241);
+}
+
+#splashpage-overall-container {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  display: block;
+  margin-top: 200px;
+  /* position: absolute;
+  margin-top: -125px;
+  background-color: white; */
+}
+
+#splashpage-grid {
+  display: grid;
+  padding-left: 80px;
+  padding-right: 80px;
+  grid-template-columns: 410px 350px;
+  column-gap: 20px;
+  justify-content: center;
+}
+
+#phone-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#splashpage-login-signup-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#splashpage-login-form {
+  border: lightgray solid 1.8px;
+  margin-bottom: 15px;
+  padding: 5px;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+#splashpage-login-form-sweetigram-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+#splashpage-sweetiegram-logo {
+  font-weight: 700;
+  font-size: 3em;
+  font-family: BillabongW00-Regular;
+}
+
+#splashpage-login-form-textfields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#splashpage-signup-button {
+  border: lightgray solid 1.8px;
+  padding: 5px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.15em;
+  background-color: white;
+}
+
+#splashpage-signup-button-text {
+  margin-right: 5px;
+}
+
+#splashpage-signup-navlink {
+  text-decoration: none;
+  color: #458EFF;
+}

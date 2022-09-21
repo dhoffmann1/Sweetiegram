@@ -1,0 +1,98 @@
+.mainpage-post-header {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+
+.image-container {
+    height: 30px;
+    width: 30px;
+}
+
+.mainpage-profile-pic {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.mainpage-username {
+    margin-left: 20px;
+    font-weight: bolder;
+}
+
+
+.mainpage-body-image-container {
+    height: 300px;
+    width: 400px;
+    margin-left: -1px;
+
+}
+
+
+.mainpage-body-image {
+    height: 100%;
+    width: 402px;
+}
+
+
+.mainpage-interface-div {
+    margin-left: 15px;
+}
+
+.mainpage-posts-icons {
+    display: flex;
+    margin-top: 12px;
+
+}
+
+.mainpage-interface-icons {
+    font-size: 24px;
+}
+
+.mainpage-posts-likes {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.mainpage-posts-bio {
+    display: flex;
+    margin-top: 10px;
+}
+
+.mainpage-posts-bio-username {
+    font-weight: bolder;
+    margin-right: 4px;
+}
+
+.mainpage-comments-placeholder {
+    margin-top: 15px;
+    color: rgb(174, 172, 172);
+}
+
+.mainpage-time {
+    margin-top: 15px;
+    color: lightgray;
+    font-size: 12px;
+}
+
+.comment-form-line {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgb(201, 197, 197);
+}
+
+.comment-post-form {
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-post-button {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-weight: bold;
+
+}
