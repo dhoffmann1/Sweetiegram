@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./Comments.css";
-import { readCommentsThunk } from "../../store/comments";
+import { deleteCommentThunk, readCommentsThunk, updateCommentThunk } from "../../store/comments";
+
 
 
 const Comments = ({ postId }) => {
@@ -17,8 +18,19 @@ const Comments = ({ postId }) => {
   console.log(allCommentsArr);
 
   const deleteComment = async (id) => {
-    const deleteOneComment = await dispatch(deleteCommentThunk(id));
-    return 
+    const deleteOneComment = await dispatch(deleteCommentThunk(id))
+    return deleteOneComment
+  }
+
+  const editComment = async (id) => {
+    const updateOneComment = await dispatch(updateCommentThunk(id))
+    return (
+      <div>
+        <input type="textarea" name="edit">
+        </input>
+        <button type="submit">Submit</button>
+      </div>
+    )
   }
 
   const dispatch = useDispatch();
@@ -42,10 +54,9 @@ const Comments = ({ postId }) => {
             <div>{comment.username}</div>
             <div>{comment.content}
             {comment?.user_id === logedInUser?.id ? <button className="delete-comment-button" onClick={() => deleteComment(comment.id)}>Delete Comment</button> : null}
+            {comment?.user_id === logedInUser?.id ? <button className="edit-comment-button" onClick={() => editComment(comment.id)}>Edit Comment</button> : null}
             </div>
             <div>{comment.createdAt}</div>
-
-
           </div>
         );
       })}
@@ -54,3 +65,6 @@ const Comments = ({ postId }) => {
 };
 
 export default Comments;
+
+
+
