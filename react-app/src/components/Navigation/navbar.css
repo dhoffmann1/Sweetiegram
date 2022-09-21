@@ -1,11 +1,15 @@
 @import url(//db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=BillabongW00-Regular);
 
 
-
 .navbar {
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 2px lightgray;
+    border-bottom: solid 1px rgb(158, 153, 153);
+    background-color: white;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    height: 80px
 }
 
 .InstaLogo {

@@ -1,5 +1,7 @@
 .whole-page {
     background-color: rgb(249, 249, 249);
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .container-page {
