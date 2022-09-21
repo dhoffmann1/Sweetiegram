@@ -1,5 +1,7 @@
 .whole-page {
     background-color: rgb(249, 249, 249);
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .container-page {
@@ -13,6 +15,10 @@
 .left-main {
     margin-top: 2.8%;
     width: 65%;
+}
+
+.right-main {
+    margin-top: 2.8%;
 }
 
 .storiesbox {
@@ -35,4 +41,75 @@
     border-radius: 6px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 
+}
+
+.mainpage-right-user-container {
+    height: 100px;
+    width: 300px;
+
+    display: flex;
+    align-items: center;
+}
+
+.mainpage-right-img-container {
+
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+
+}
+
+.mainpage-right-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.mainpage-right-username-name-container {
+    margin-left: 14px;
+    font-size: 12px;
+}
+
+.mainpage-right-username {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.mainpage-right-name {
+    font-size: 12px;
+    color: rgb(167, 157, 157);
+}
+
+.mainpage-groupMembers {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.mainpage-group-img-container {
+    height: 25px;
+    width: 25px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.mainpage-follow-button-container {
+    margin-left: 5rem;
+}
+
+.mainpage-suggestions-username {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.mainpage-suggestions-name {
+    font-size: 12px;
+    color: rgb(167, 157, 157);
+}
+
+.github-link {
+    text-decoration: none;
+    color: rgb(88, 116, 241);
+    font-size: 14px;
 }

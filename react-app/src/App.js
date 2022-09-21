@@ -9,7 +9,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import MainPage from './components/mainPage'
 import { authenticate } from './store/session';
-import Posts from './components/Posts';
 import UserProfilePage from './components/UserProfilePage'
 import YourProfilePage from './components/YourProfilePage';
 import CreatePostForm from './components/CreatePostForm';
