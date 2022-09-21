@@ -1,0 +1,223 @@
+.profile-page-main-container{
+    max-width: 935px;
+    width: 935px;
+    min-width:100px;
+    /* border: 30px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto
+
+}
+.first-profile-container{
+    display:flex;
+    /* background-color: aquamarine; */
+    width: 100%;
+    align-items: center;
+    height: 125px;
+
+}
+
+.profile-pic-box{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 38%;
+}
+
+.profile-page-profile-pic{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+
+
+}
+.profile-text-box{
+    /* background-color: goldenrod; */
+    height: 100%;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile-page-text-row{
+    /* background-color: lightpink; */
+    height: 25%;
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+/* 3 text rows that make up the user profile on top are below 3 classes */
+.username-box{
+    display:flex;
+    align-items: center;
+}
+
+.username-title{
+    display:flex;
+    align-items: center;
+}
+
+.posts-follows-following-box{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 50%;
+    /* text-align: left; */
+}
+
+.firstname-lastname-box{
+    display:flex;
+    align-items: flex-end;
+
+}
+
+.username-title{
+    font-size: 20px;;
+    /* font-size:var(--system-28-font-size) ; */
+}
+
+/* 2ND LAYER */
+.second-profile-container{
+    /* background-color: lightseagreen; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height:200px;
+    /* justify */
+
+}
+
+.users-following-links-box{
+    width: 100%;
+    /* background-color: bisque; */
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    /* TODO: auto or scroll */
+    overflow-x: auto;
+    margin-top: 40px;
+}
+
+.user-following-profile-pic{
+    /* position: absolute; */
+    /* top: -5px;
+    left: -5px; */
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+}
+
+.user-following-full-name{
+    margin-top: 2px;
+    /* background-color: lightsalmon; */
+    text-align:center;
+    justify-content: center;
+    display:flex;
+    flex-wrap: wrap;
+    width: 84px;
+    font-size: 14px;
+
+}
+/*  3RD LAYER */
+.third-profile-container{
+    width:100%;
+    background-color: lightcyan;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.posts-saved-container{
+    width: 20%;
+    background-color: lightpink;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.posts-saved-button{
+    display:flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* TODO: replace this with 2 different icons, duplicate this for other class icon */
+.fa-solid.fa-star{
+    display: flex;
+    align-items: center;
+}
+
+/* 4th LAYER */
+.four-profile-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill);
+    grid-column-gap:30px;
+    grid-row-gap: 30px;
+
+}
+
+/* .post-image-card-container{
+
+} */
+
+.profile-post-image-pic{
+    height: 100%;
+    width: 100%;
+    max-height: 291.663px;
+}
+
+/* NO POSTS message */
+.no-posts-message-container{
+    /* background-color: bisque; */
+    width: 200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height:140px;
+    margin-top: 80px;
+
+}
+
+.no-posts-camera-icon-container{
+    /* display:flex;
+    align-items: center;
+    background-color: green;
+    justify-content: center;
+    height: 70px; */
+    background-color: white;
+    height: 100%;
+    width: 58px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid black;
+    box-sizing: border-box;
+
+
+}
+
+.no-posts-top-row{
+    display:flex;
+    align-items: center;
+    /* background-color: green; */
+    justify-content: center;
+    height: 58px;
+}
+
+.no-posts-bottom-row{
+    display: flex;
+    justify-content: center;
+    /* align-items: cente; */
+}

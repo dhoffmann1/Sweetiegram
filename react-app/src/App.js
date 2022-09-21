@@ -9,8 +9,12 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import MainPage from './components/mainPage'
 import { authenticate } from './store/session';
+import Posts from './components/Posts';
+import UserProfilePage from './components/UserProfilePage'
+import YourProfilePage from './components/YourProfilePage';
+import CreatePostForm from './components/CreatePostForm';
+import PageNotFound from './components/PageNotFound';
 import SplashPage from './components/SplashPage';
-
 
 
 function App() {
@@ -47,18 +51,21 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
+        <ProtectedRoute exact path='/profile'>
+          <YourProfilePage/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute exact path='/users/:userId'>
+          <UserProfilePage/>
+        </ProtectedRoute>
+        <ProtectedRoute exact path='/posts/new'>
+          <CreatePostForm/>
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
         </ProtectedRoute>
-        <Route>
-          <h2>Page Not Found</h2>
-        </Route>
+        {/* <Route exact path= '/unknown'>
+          <PageNotFound/>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );
