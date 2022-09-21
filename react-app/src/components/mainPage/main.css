@@ -1,0 +1,38 @@
+.whole-page {
+    background-color: rgb(249, 249, 249);
+}
+
+.container-page {
+
+    margin-left: 10%;
+    display: flex;
+    width: 75%;
+
+}
+
+.left-main {
+    margin-top: 2.8%;
+    width: 65%;
+}
+
+.storiesbox {
+    width: 400px;
+    border: 1px solid rgb(249, 249, 249);
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+
+}
+
+.postsbox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 400px;
+    border: 1px solid rgb(249, 249, 249);
+    height: 600px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+
+}
