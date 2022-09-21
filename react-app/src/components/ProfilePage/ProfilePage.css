@@ -1,0 +1,147 @@
+.profile-page-main-container{
+    max-width: 935px;
+    width: 935px;
+    min-width:100px;
+    /* border: 30px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px auto
+
+}
+.first-profile-container{
+    display:flex;
+    background-color: aquamarine;
+    width: 100%;
+    align-items: center;
+    height: 125px;
+
+}
+
+.profile-pic-box{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 38%;
+}
+
+.profile-page-profile-pic{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+
+}
+.profile-text-box{
+    background-color: goldenrod;
+    height: 100%;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile-page-text-row{
+    background-color: lightpink;
+    height: 25%;
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+/* 3 text rows that make up the user profile on top are below 3 classes */
+.username-title{
+    display:flex;
+    align-items: center;
+}
+
+.posts-follows-following-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.firstname-lastname-box{
+    display:flex;
+    align-items: flex-end;
+
+}
+
+.username-title{
+    font-size: 20px;;
+    /* font-size:var(--system-28-font-size) ; */
+}
+
+/* 2ND LAYER */
+.second-profile-container{
+    background-color: lightseagreen;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height:160px;
+    /* justify */
+
+}
+
+.users-following-links-box{
+    width: 100%;
+    background-color: bisque;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.user-following-profile-pic{
+    /* position: absolute; */
+    /* top: -5px;
+    left: -5px; */
+    width: 87px;
+    height: 87px;
+    border-radius: 50%;
+}
+
+.user-following-full-name{
+    margin-top: 2px;
+    background-color: lightsalmon;
+    text-align:center;
+}
+/*  3RD LAYER */
+.third-profile-container{
+    width:100%;
+    background-color: lightcyan;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.posts-saved-container{
+    width: 20%;
+    background-color: lightpink;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.posts-saved-button{
+    display:flex;
+    background-color: green;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* TODO: replace this with 2 different icons, duplicate this for other class icon */
+.fa-solid.fa-star{
+    display: flex;
+    align-items: center;
+}
+
+.four-profile-container{
+    
+}

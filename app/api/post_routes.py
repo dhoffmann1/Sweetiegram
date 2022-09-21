@@ -9,6 +9,8 @@ import json
 
 post_routes = Blueprint('posts', __name__)
 
+
+
 @post_routes.route('/', methods=["GET"])
 @login_required
 def index():
@@ -176,7 +178,7 @@ def delete_like(post_id):
 @post_routes.route("/<int:id>/comments", methods=["GET"])
 def get_comments(id):
     posts = Post.query.get(id)
-    
+
     comments = Comment.query.order_by(Comment.created_at.asc()).filter(Comment.post_id == id).all()
     # error = {
     #     "message": "Post couldn't be found",
@@ -211,5 +213,13 @@ def new_comment(id):
         db.session.commit()
         #returning that post comments
         return post.to_dict_comments()
-    
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+# TIFF ADDED HERE FOR profile page, add another route
+@post_routes.route("/profile", methods = ['GET'])
+@login_required
+def profile_page():
+    posts = Post.query.filter(Post.owner_id == current_user.id).all()
+    return {"posts": [post.to_dict() for post in posts]}
