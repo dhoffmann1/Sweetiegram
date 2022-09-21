@@ -11,7 +11,7 @@ import MainPage from './components/mainPage'
 import { authenticate } from './store/session';
 import UserProfilePage from './components/UserProfilePage'
 import YourProfilePage from './components/YourProfilePage';
-import CreatePostForm from './components/CreatePostForm';
+import CreatePostForm from './components/CreatePostFormModal';
 import PageNotFound from './components/PageNotFound';
 import SplashPage from './components/SplashPage';
 

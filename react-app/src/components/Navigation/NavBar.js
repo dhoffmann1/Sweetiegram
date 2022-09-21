@@ -4,10 +4,18 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react'
 import LogoutButton from '../auth/LogoutButton';
+import CreatePostFormModal from '../CreatePostFormModal';
 
 const NavBar = () => {
 
   const [open, setOpen] = useState(false)
+  // added here
+  const [postFormModal, setPostFormModal] = useState(false)
+
+  const handleCreatePost = e => {
+    setPostFormModal(true)
+  }
+  console.log("Form Modal:", postFormModal)
 
   const profileMenu = () => {
 
@@ -47,10 +55,12 @@ const NavBar = () => {
               <i class="fa-solid fa-house"></i>
             </NavLink>
           </div>
-          <div>
-            <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>
-              <i class="fa-regular fa-square-plus"></i>
-            </NavLink>
+          <div className="create-post-button" onClick={handleCreatePost}>
+            {/* <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}> */}
+              <i class="fa-regular fa-square-plus" >
+                {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>)}
+              </i>
+            {/* </NavLink> */}
           </div>
           <div>
             <NavLink to='/users' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>

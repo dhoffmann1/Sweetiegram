@@ -1,0 +1,63 @@
+.create-post-title{
+    background-color: lightcoral;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 38px;
+}
+
+.create-post-submit-button{
+    position:absolute;
+    top:0px;
+    right:0px;
+    height:38px;
+}
+
+.create-post-form-profile-box{
+    background-color: bisque;
+    display: flex;
+
+}
+.create-post-form-username-text{
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+
+}
+
+.create-post-form-profile-image-container{
+    background-color: lightgreen;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+}
+
+.create-post-form-profile-pic{
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+}
+
+/* QUESTION do i need this? */
+.create-post-form-outer-container{
+    height: 100%;
+    background-color: coral;
+    width:40%
+}
+
+.create-post-form{
+    background-color: lightblue;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.create-post-input-field{
+    height: 38px;
+}
+
+.validation-errors{
+    color:red;
+}
