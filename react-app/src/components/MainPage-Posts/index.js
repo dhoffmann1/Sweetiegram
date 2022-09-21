@@ -4,18 +4,30 @@ import { getPosts } from "../../store/post"
 import { NavLink } from "react-router-dom"
 import React from 'react'
 import './MainPagePosts.css'
+import PostDetails from '../PostDetailsModal/PostDetails'
+import PostDetailsModal from '../PostDetailsModal'
 
 
 const MainPagePosts = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => Object.values(state.posts))
-    console.log(posts)
+    console.log('allPosts in mainpage', posts)
 
+    const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
+    const [postToShowInModal, setPostToShowInModal] = useState(null)
 
     useEffect(() => {
         dispatch(getPosts())
     }, [dispatch])
 
+    // let postForModal;
+    // const showModal = post => {
+    //     setShowPostDetailsModal(true)
+    //     // console.log(post)
+    //     postForModal = post;
+
+    //     return
+    // }
 
     const allPosts = posts.map((post) => {
         if (!post) return null
@@ -41,22 +53,32 @@ const MainPagePosts = () => {
 
         let commentsLink
         if (comments.length >= 2) {
+            console.log('post in commentsLink', post)
             commentsLink = (
                 // Going to add an onclick that directs to the profile id of that post
-                <div>
+                <div onClick={() => {
+                    setPostToShowInModal(post);
+                    setShowPostDetailsModal(true);
+                }}>
                     View all {comments.length} comments
                 </div>
             )
         } else if (comments.length === 1) {
             commentsLink = (
                 // Going to add an onclick that directs to the profile id of that post
-                <div>
+                <div onClick={() => {
+                    setPostToShowInModal(post);
+                    setShowPostDetailsModal(true);
+                }}>
                     View {comments.length} comment
                 </div>
             )
         } else {
             commentsLink = (
-                <div>
+                <div onClick={() => {
+                    setPostToShowInModal(post);
+                    setShowPostDetailsModal(true);
+                }}>
                     0 comments
                 </div>
             )
@@ -131,6 +153,7 @@ const MainPagePosts = () => {
     return (
         <>
             {allPosts}
+            {showPostDetailsModal && <PostDetailsModal setShowPostDetailsModal={setShowPostDetailsModal} post={postToShowInModal}/>}
         </>
     )
 }
