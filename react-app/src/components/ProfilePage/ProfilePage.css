@@ -86,7 +86,7 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height:180px;
+    height:200px;
     /* justify */
 
 }
@@ -97,9 +97,10 @@
     display:flex;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     /* TODO: auto or scroll */
     overflow-x: auto;
+    margin-top: 40px;
 }
 
 .user-following-profile-pic{
@@ -115,6 +116,12 @@
     margin-top: 2px;
     /* background-color: lightsalmon; */
     text-align:center;
+    justify-content: center;
+    display:flex;
+    flex-wrap: wrap;
+    width: 84px;
+    font-size: 14px;
+
 }
 /*  3RD LAYER */
 .third-profile-container{
@@ -165,4 +172,50 @@
 .profile-post-image-pic{
     height: 100%;
     width: 100%;
+}
+
+/* NO POSTS message */
+.no-posts-message-container{
+    /* background-color: bisque; */
+    width: 200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height:140px;
+    margin-top: 80px;
+
+}
+
+.no-posts-camera-icon-container{
+    /* display:flex;
+    align-items: center;
+    background-color: green;
+    justify-content: center;
+    height: 70px; */
+    background-color: white;
+    height: 100%;
+    width: 58px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid black;
+    box-sizing: border-box;
+
+
+}
+
+.no-posts-top-row{
+    display:flex;
+    align-items: center;
+    /* background-color: green; */
+    justify-content: center;
+    height: 58px;
+}
+
+.no-posts-bottom-row{
+    display: flex;
+    justify-content: center;
+    /* align-items: cente; */
 }

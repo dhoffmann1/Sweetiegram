@@ -10,7 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Posts from './components/Posts';
 import ProfilePage from './components/ProfilePage'
-
+import CreatePostForm from './components/CreatePostForm';
 function App() {
   const [loaded, setLoaded] = useState(false);
 
@@ -46,9 +46,13 @@ function App() {
         <Route exact path= "/">
           <Posts/>
         </Route>
-        <Route exact path='/profile'>
+        <ProtectedRoute exact path='/profile'>
           <ProfilePage/>
-        </Route>
+        </ProtectedRoute>
+        <ProtectedRoute exact path='/posts/new'>
+          <CreatePostForm/>
+        </ProtectedRoute>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>

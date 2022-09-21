@@ -52,16 +52,18 @@ const ProfilePage = () => {
                         </div>
                     </div>
                 </div>
-                <div className='second-profile-container'>
-                    <div className='users-following-links-box'>
-                        {followings.length>0 && followings.map(user=> (
-                            <div className='user-following-profile-link-container'>
-                                {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
-                                <p className="user-following-full-name">{user.firstName} {user.lastName}</p>
-                            </div>
-                        ))}
+                {followings.length>0 && (
+                    <div className='second-profile-container'>
+                        <div className='users-following-links-box'>
+                            {followings.length>0 && followings.map(user=> (
+                                <div className='user-following-profile-link-container'>
+                                    {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
+                                    <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
                 <div className="third-profile-container">
                     <div className='posts-saved-container'>
                             <div className='posts-saved-button'>
@@ -75,29 +77,29 @@ const ProfilePage = () => {
                     </div>
                 </div>
                 {/* grid container below */}
-                <div className= "four-profile-container">
-                    {posts.length>0? (
-                        posts.map(post => (
-                            <div className="post-image-card-container">
-                                <img className='profile-post-image-pic' src={post.postUrl}/>
-                            </div>
-                        ))
-                    ) : (
-                        <div className='no-posts-message-container'>
+                {posts.length>0? (
+                    <div className= "four-profile-container">
+                        {
+                            posts.map(post => (
+                                <div className="post-image-card-container">
+                                    <img className='profile-post-image-pic' src={post.postUrl}/>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                ): (
+                    <div className='no-posts-message-container'>
+                        <div className="no-posts-top-row">
                             <div className='no-posts-camera-icon-container'>
-                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-camera"></i>
                             </div>
-                            <p>No posts yet</p>
                         </div>
-                    )}
-                </div>
-                {/* <>
-                            {
-                                posts.map(post => (
-                                    <img src= {post.postPicUrl}/>
-                                ))
-                            }
-                        </> */}
+                        <div className='no-posts-bottom-row'>
+                            <p style={{fontSize:"24px"}}>No posts yet</p>
+                        </div>
+                    </div>
+                )}
             </div>
 
 
