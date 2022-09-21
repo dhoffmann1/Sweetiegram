@@ -6,8 +6,8 @@ import {getUserDetail} from "../../store/user"
 import { getFollowings } from '../../store/following'
 import {NavLink} from "react-router-dom"
 import React from 'react'
-import './UserProfilePage.css'
-
+// import './UserProfilePage.css'
+import '../YourProfilePage/YourProfilePage.css'
 
 const UserProfilePage = () => {
     const dispatch = useDispatch();

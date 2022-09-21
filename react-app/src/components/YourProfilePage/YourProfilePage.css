@@ -31,6 +31,7 @@
     height: 125px;
     border-radius: 50%;
 
+
 }
 .profile-text-box{
     /* background-color: goldenrod; */
@@ -172,6 +173,7 @@
 .profile-post-image-pic{
     height: 100%;
     width: 100%;
+    max-height: 291.663px;
 }
 
 /* NO POSTS message */
