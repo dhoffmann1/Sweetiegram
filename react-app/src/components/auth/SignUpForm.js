@@ -68,7 +68,7 @@ const SignUpForm = () => {
   return (
     <div className='whole-signup-page'>
       <div className='whole-signup-form-container'>
-        <div style={{ fontSize: '50px', fontFamily: 'BillabongW00-Regular', marginTop: '30px'}} >
+        <div style={{ fontSize: '50px', fontFamily: 'BillabongW00-Regular', marginTop: '30px' }} >
           Sweetiegram
         </div>
         <div className='spacer-form'>
@@ -170,7 +170,15 @@ const SignUpForm = () => {
                 placeholder="Repeat Password"
               ></input>
             </div>
-            <button type='submit' className='signup-form-signup-button'>Sign Up</button>
+            {username.length > 0 && email.length > 0 && password.length > 0 && firstName.length > 0
+              && lastName.length > 0 && profilePicUrl.length > 0 && bio.length > 0 &&
+              <button type='submit' className='signup-form-signup-button'>Sign Up</button>
+            }
+            {(username.length === 0 || email.length === 0 || password.length === 0 || firstName.length === 0
+              || lastName.length === 0 || profilePicUrl.length === 0 || bio.length === 0) &&
+              <button type='submit' className='signup-form-signup-button' id='signup-form-signup-button-id' disabled={true}>Sign Up</button>
+            }
+
           </form>
         </div>
 
@@ -178,7 +186,7 @@ const SignUpForm = () => {
 
       <div className='signup-form-login-container'>
         <div id='login-button-on-signup-page'>
-          Have an account? <NavLink to='/login' style={{textDecoration: 'None', color: '#458EFF'}}>Log in</NavLink>
+          Have an account? <NavLink to='/login' style={{ textDecoration: 'None', color: '#458EFF' }}>Log in</NavLink>
         </div>
       </div>
     </div>

@@ -65,3 +65,7 @@
     width: 350px;
     border: lightgray solid 1px;
 }
+
+#signup-form-signup-button-id {
+    background-color: rgba(69, 142, 255, 50%);
+}
