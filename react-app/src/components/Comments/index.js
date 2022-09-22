@@ -53,32 +53,31 @@ const Comments = ({ post }) => {
         <div id="comments-caption-profile-pic-container">
           <img id="comments-caption-profile-pic-image" src={post.user.profilePicUrl} alt='userProfilePic' />
         </div>
-        <div id="comments-caption-username">{post.user.username}</div>
-        {/* <div>{post.user.profilePicUrl}</div> */}
+        <div id="comments-caption-username-caption"><span id="comments-caption-username">{post.user.username}</span> {post.caption}</div>
         </div>
-        <div id="comments-caption-caption-text">{post.caption}</div>
+        {/* <div id="comments-caption-caption-text">{post.caption}</div> */}
       </div>
       <div id="comments-all-comments-section">
         {allCommentsArr.map((comment) => {
           return (
             <div id="comments-single-comment-container" key={comment.id}>
               {/* {console.log('comment in comments Component', comment)} */}
-              <div id="image-username-container">
-              <div id="comments-single-comment-image">
-                <img id="comments-single-comment-images" src={comment.User.profilePicUrl} alt="profilePicUrl" />
+              <div id="comments-single-comment-image-username-createdAt-container">
+                <div id="comments-single-comment-image">
+                  <img id="comments-single-comment-images" src={comment.User.profilePicUrl} alt="profilePicUrl" />
+                </div>
+                <div id="comments-single-comment-username-createdAt-wrapper">
+                  <div id="comments-single-comment-username-content"><span id="comments-single-comment-username">{comment.User.username}</span> {comment.content}</div>
+                  <div id="comments-single-comment-createdAt">{comment.createdAt}</div>
+                </div>
               </div>
-              <div id="comments-single-comment-username">{comment.User.username}</div>
-              </div>
-            
-              <div id="comments-single-comment-content">{comment.content}</div>
-              <div id="comments-single-comment-createdAt">{comment.createdAt}</div>
               {comment?.userId === loggedInUser?.id && <button id="comments-single-comment-edit-button" onClick={() => {
                 showEditTextField === false ? setShowEditTextField(true) : setShowEditTextField(false);
                 setShowEditTextFieldCommentId(comment.id)}}>Edit</button>}
               {comment?.userId === loggedInUser?.id && <button id="comments-single-comment-delete-button" onClick={() => dispatch(deleteCommentThunk(comment.id))}>Delete</button>}
               {showEditTextField && showEditTextFieldCommentId === comment.id &&
                 <EditComment comment={comment} setShowEditTextField={setShowEditTextField} />}
-              <br />
+              {/* <br /> */}
             </div>
           );
         })}

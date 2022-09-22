@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
+import { getPosts } from "../../store/post";
 import "./NewCommentForm.css"
 
 const CommentForm = ({ postId }) => {
@@ -12,14 +13,16 @@ const CommentForm = ({ postId }) => {
     e.preventDefault();
     const contentObj = { "content": content }
     dispatch(createCommentThunk(postId, contentObj));
+    setContent('');
+    dispatch(getPosts())
   };
 
   return (
-   
-      
+
+
         <form id="create-new-comment-form" onSubmit={handleSubmit}>
           <label>
-            <input
+            <textarea
               id="content-area-input"
               type="textarea"
               value={content}

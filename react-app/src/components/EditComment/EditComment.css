@@ -8,18 +8,18 @@
 
 
 #comments-single-comment-edit-button {
-background-color: transparent;
-border: none;
-color: blue;
-font-weight: bold;
-cursor: pointer;
-border-radius: 5px;
-padding: 6px;
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 6px;
 }
 
-#comments-single-comment-edit-button:hover{
+/* #comments-single-comment-edit-button:hover{
     background-color: rgb(240, 240, 240)
-}
+} */
 
 
 #edit-comment-input-textarea {
@@ -45,6 +45,6 @@ border-radius: 5px;
 padding: 6px;
 }
 
-#edit-comment-submit-button:hover{
+/* #edit-comment-submit-button:hover{
     background-color: rgb(240, 240, 240)
-}
+} */

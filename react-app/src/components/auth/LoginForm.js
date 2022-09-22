@@ -69,7 +69,7 @@ const LoginForm = () => {
 
       <button className='login-form-buttons' id='demo-user-login-button' onClick={(e) => {
         e.preventDefault();
-        setEmail('demouser@gmail.com');
+        setEmail('user1@gmail.com');
         setPassword('password')
       }}>Log In as Demo User</button>
     </form>

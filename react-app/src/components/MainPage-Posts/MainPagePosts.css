@@ -80,6 +80,8 @@
 .mainpage-comments-placeholder {
     margin-top: 15px;
     color: rgb(174, 172, 172);
+    cursor: pointer;
+    width: fit-content;
 }
 
 .mainpage-time {
