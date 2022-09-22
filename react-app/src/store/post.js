@@ -61,7 +61,7 @@ export const getPosts = () => async dispatch => {
         }
     })
 
-    console.log(response)
+    // console.log(response)
     if (response.ok) {
         let posts = await response.json()
         dispatch(load(posts))

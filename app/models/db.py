@@ -29,6 +29,7 @@ class Post(db.Model):
     post_likes = db.relationship("User", back_populates="user_likes", secondary=likes, cascade="all, delete")
 
     def to_dict(self):
+        print('LIST COMPREHENSION',[user for user in self.post_likes])
         return {
             "id": self.id,
             "postUrl": self.post_url,
@@ -43,7 +44,10 @@ class Post(db.Model):
             # added here
             # "user": str(self.user.username),
             "user": self.convert_user_to_dict(),
-            "comments": [comment.to_dict() for comment in self.comments]
+            "comments": [comment.to_dict() for comment in self.comments],
+            "likesUsername": [likes.username for likes in self.post_likes],
+            "likesUserId": [likesId.id for likesId in self.post_likes]
+            # "userLikes": self.to_dict_likes()
         }
     # added here
     def convert_user_to_dict(self):

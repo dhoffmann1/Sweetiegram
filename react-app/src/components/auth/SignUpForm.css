@@ -1,0 +1,67 @@
+@import url(//db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=BillabongW00-Regular);
+
+
+.whole-signup-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+.whole-signup-form-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 350px;
+    border: lightgray solid 1px;
+    background-color: white;
+}
+
+.spacer-form {
+    margin-left: 10px;
+}
+
+.signup-form-text {
+    width: 270px;
+    font-size: 17px;
+    font-weight: 600;
+    color: rgb(141, 133, 133);
+    margin-bottom: 20px;
+}
+
+.signup-form-boxes {
+    margin-top: 5px;
+    width: 240px;
+    height: 35px;
+    background-color: rgba(244, 243, 243, 0.891);
+    border: lightgray solid 1px;
+    border-radius: 2px;
+}
+
+.signup-form-signup-button {
+    margin-top: 15px;
+    width: 250px;
+    height: 30px;
+    background-color: #458EFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-bottom: 40px;
+}
+
+
+.signup-form-login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: white;
+    height: 60px;
+    width: 350px;
+    border: lightgray solid 1px;
+}
