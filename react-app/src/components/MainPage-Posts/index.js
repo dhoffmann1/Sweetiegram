@@ -10,6 +10,7 @@ import { createLikesThunk, deleteLikesThunk } from '../../store/likes'
 
 const MainPagePosts = () => {
     const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
     const posts = useSelector(state => Object.values(state.posts))
     console.log(posts)
 
@@ -67,18 +68,18 @@ const MainPagePosts = () => {
 
         let likesComponent
         //user hasnt like the post
-        if (likesUserId.includes(user.id)) {
+        if (likesUserId.includes(sessionUser.id)) {
             likesComponent = (
-                <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
+                <>
                     <i class="fa-solid fa-heart" id='likesHeart' onClick={() => { dispatch(deleteLikesThunk(id)).then(() => dispatch(getPosts())) }}></i>
-                </div>
+                </>
             )
 
         } else {
             likesComponent = (
-                <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
+                <>
                     <i class="fa-regular fa-heart" onClick={() => { dispatch(createLikesThunk(id)).then(() => dispatch(getPosts())) }}></i>
-                </div>
+                </>
             )
         }
 
@@ -107,7 +108,9 @@ const MainPagePosts = () => {
         let userInterface = (
             <>
                 <div className='mainpage-posts-icons'>
-                    {likesComponent}
+                    <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
+                        {likesComponent}
+                    </div>
                     <div className="mainpage-interface-icons">
                         <i class="fa-regular fa-comment fa-flip-horizontal" ></i>
                     </div>
