@@ -8,6 +8,7 @@ const GET_USER_PROFILE = 'posts/getUserProfile'
 const CREATE_POST = 'posts/createPost'
 const UPDATE_POST = 'posts/updatePost'
 const DELETE_POST = 'posts/deletePost'
+const RESET_POSTS = 'posts/resetPosts'
 
 const load = (payload) => {
     return {
@@ -126,6 +127,12 @@ export const deletePost = (id) => async dispatch => {
     }
 }
 
+export const resetPosts = () => {
+    return {
+        type: RESET_POSTS
+    }
+}
+
 const initialState = {}
 const postReducer = (state = initialState, action) => {
     let newState
@@ -161,6 +168,9 @@ const postReducer = (state = initialState, action) => {
             const newState = {...state}
             delete newState[action.id]
             return newState
+        }
+        case RESET_POSTS: {
+            return {}
         }
         default:
             return state

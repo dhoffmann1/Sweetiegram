@@ -1,5 +1,5 @@
 const GET_FOLLOWINGS = 'followings/getFollowings'
-
+const RESET_FOLLOWINGS = 'followings/resetFollowings'
 const load = (payload) => {
     return {
         type: GET_FOLLOWINGS,
@@ -15,6 +15,12 @@ export const getFollowings = (userId) => async dispatch => {
     }
 }
 
+export const resetFollowings = () => {
+    return {
+        type: RESET_FOLLOWINGS
+    }
+}
+
 
 const initialState = {}
 const followingReducer = (state = initialState, action) =>{
@@ -23,6 +29,9 @@ const followingReducer = (state = initialState, action) =>{
             const newState = {}
             action.payload.following_users.forEach( user => newState[user.id] = user)
             return newState
+        }
+        case RESET_FOLLOWINGS: {
+            return {}
         }
         default:
             return state

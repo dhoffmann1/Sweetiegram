@@ -8,6 +8,8 @@ import {NavLink} from "react-router-dom"
 import React from 'react'
 // import './UserProfilePage.css'
 import '../YourProfilePage/YourProfilePage.css'
+import { resetFollowings } from '../../store/following'
+import { resetUserPosts } from '../../store/user'
 
 const UserProfilePage = () => {
     const dispatch = useDispatch();
@@ -30,6 +32,7 @@ const UserProfilePage = () => {
     // console.log('profile pic url:', user.profilePicUrl)
     useEffect(()=>{
         dispatch(getUserPosts(userId))
+        return () => resetUserPosts()
     }, [dispatch])
 
     // TODO: how to stop someone from sending a bad url request (eg. with ID?)
@@ -46,6 +49,7 @@ const UserProfilePage = () => {
 
     useEffect(()=>{
             dispatch(getFollowings(userId))
+            return () => resetFollowings()
     }, [dispatch])
 
     let is_following = false
