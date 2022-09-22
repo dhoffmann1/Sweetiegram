@@ -36,7 +36,7 @@ const Profiles = () => {
                 </>
             )
         }
-        console.log(maxUsername)
+        
         return (
             <div className='storiesBar-profile'>
                 <div className='storiesBar-profile-container'>

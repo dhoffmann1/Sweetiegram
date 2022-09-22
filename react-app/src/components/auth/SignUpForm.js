@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignUpForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -65,92 +66,120 @@ const SignUpForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={onSignUp}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+    <div className='whole-signup-page'>
+      <div className='whole-signup-form-container'>
+        <div style={{ fontSize: '50px', fontFamily: 'BillabongW00-Regular', marginTop: '30px'}} >
+          Sweetiegram
         </div>
-        <div>
-          <label>User Name</label>
-          <input
-            type='text'
-            name='username'
-            onChange={updateUsername}
-            value={username}
-          ></input>
+        <div className='spacer-form'>
+          <div className='signup-form-text'>
+            Sign up to see photoes and videos from your friends
+          </div>
+          <form onSubmit={onSignUp}>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
+            <div>
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='text'
+                name='username'
+                onChange={updateUsername}
+                value={username}
+                placeholder="User Name"
+              ></input>
+            </div>
+            <div >
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='text'
+                name='email'
+                onChange={updateEmail}
+                value={email}
+                placeholder="Email"
+              ></input>
+            </div>
+            <div >
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='text'
+                name='firstName'
+                onChange={updateFirstName}
+                value={firstName}
+                placeholder="First Name"
+              ></input>
+            </div>
+            <div >
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='text'
+                name='lastName'
+                onChange={updateLastName}
+                value={lastName}
+                placeholder="Last Name"
+              ></input>
+            </div>
+            <div >
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='text'
+                name='profilePicUrl'
+                onChange={updateProfilePicUrl}
+                value={profilePicUrl}
+                placeholder="Profile Pic URL"
+              ></input>
+            </div>
+            <div >
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='textarea'
+                name='bio'
+                onChange={updateBio}
+                value={bio}
+                placeholder="Bio"
+              ></input>
+            </div>
+            <div >
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='password'
+                name='password'
+                onChange={updatePassword}
+                value={password}
+                placeholder="Password"
+              ></input>
+            </div>
+            <div >
+              <label></label>
+              <input
+                className='signup-form-boxes'
+                type='password'
+                name='repeat_password'
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+                placeholder="Repeat Password"
+              ></input>
+            </div>
+            <button type='submit' className='signup-form-signup-button'>Sign Up</button>
+          </form>
         </div>
-        <div>
-          <label>Email</label>
-          <input
-            type='text'
-            name='email'
-            onChange={updateEmail}
-            value={email}
-          ></input>
-        </div>
-        <div>
-          <label>First Name</label>
-          <input
-            type='text'
-            name='firstName'
-            onChange={updateFirstName}
-            value={firstName}
-          ></input>
-        </div>
-        <div>
-          <label>Last Name</label>
-          <input
-            type='text'
-            name='lastName'
-            onChange={updateLastName}
-            value={lastName}
-          ></input>
-        </div>
-        <div>
-          <label>Profile Pic URL</label>
-          <input
-            type='text'
-            name='profilePicUrl'
-            onChange={updateProfilePicUrl}
-            value={profilePicUrl}
-          ></input>
-        </div>
-        <div>
-          <label>Bio</label>
-          <input
-            type='textarea'
-            name='bio'
-            onChange={updateBio}
-            value={bio}
-          ></input>
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type='password'
-            name='password'
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        <div>
-          <label>Repeat Password</label>
-          <input
-            type='password'
-            name='repeat_password'
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <button type='submit'>Sign Up</button>
-      </form>
 
-      <div id='login-button-on-signup-page'>
-        <div id=''>Have an account?</div>
-        <NavLink to='/login'>Log in</NavLink>
+      </div>
+
+      <div className='signup-form-login-container'>
+        <div id='login-button-on-signup-page'>
+          Have an account? <NavLink to='/login' style={{textDecoration: 'None', color: '#458EFF'}}>Log in</NavLink>
+        </div>
       </div>
     </div>
   );
