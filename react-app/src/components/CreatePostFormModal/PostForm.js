@@ -92,7 +92,7 @@ const PostForm = ({setPostFormModal, post}) => {
             country,
             caption
         }
-        dispatch(createPost(post))
+        dispatch(createPost(post)).then(()=> setPostFormModal(false))
         alert('Post successfully created!')
         setHasSubmitted(false)
         // console.log('post form submitted')
