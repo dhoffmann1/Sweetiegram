@@ -3,17 +3,14 @@ import MainPagePosts from '../MainPage-Posts/index'
 import Profiles from '../profiles/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { getPosts } from "../../store/post"
 import { NavLink } from "react-router-dom"
 import React from 'react'
 
 function MainPage() {
-
     const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser)
+    // console.log(sessionUser)
 
     let displaySuggestions = () => {
-
 
 
         let user = (
@@ -134,13 +131,14 @@ function MainPage() {
             <div className='whole-page'>
                 <div className="container-page">
                     <div className="left-main">
-                        <div className="storiesbox">
-                            {Profiles()}
+                        <div className='left-main-container'>
+                            <div className="storiesbox">
+                                {Profiles()}
+                            </div>
+                            <div>
+                                {MainPagePosts()}
+                            </div>
                         </div>
-                        <div>
-                            {MainPagePosts()}
-                        </div>
-
                     </div>
                     <div className="right-main">
                         {displaySuggestions()}

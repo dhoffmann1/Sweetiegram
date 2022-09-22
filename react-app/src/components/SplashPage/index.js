@@ -11,7 +11,7 @@ const SplashPage = () => {
         <div id='splashpage-grid'>
           <div id='phone-image-container'>
             {/* <div id='phone-image'>Image of phones here</div> */}
-            <img src={phonesImage} alt='Image of Phones' />
+            <img src={phonesImage} alt='phones' />
           </div>
           <div id='splashpage-login-signup-wrapper'>
             <div id='splashpage-login-form'>

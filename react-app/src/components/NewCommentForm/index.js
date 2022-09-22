@@ -9,8 +9,8 @@ const CommentForm = ({ postId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    dispatch(createCommentThunk(postId, content));
+    const contentObj = { "content": content }
+    dispatch(createCommentThunk(postId, contentObj));
   };
 
   return (
@@ -27,13 +27,10 @@ const CommentForm = ({ postId }) => {
               placeholder="Add a comment..."
             />
           </label>
+          <button id="comment-submit-button" type="submit">
+            Post
+          </button>
         </form>
-      </div>
-
-      <div>
-        <button id="comment-submit-button" type="Submit">
-          Post
-        </button>
       </div>
     </div>
   );

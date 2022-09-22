@@ -23,7 +23,7 @@
 
 .mainpage-body-image-container {
     height: 300px;
-    width: 400px;
+    width: 450px;
     margin-left: -1px;
 
 }
@@ -31,7 +31,8 @@
 
 .mainpage-body-image {
     height: 100%;
-    width: 402px;
+    width: 452px;
+    object-fit: cover;
 }
 
 
@@ -47,6 +48,16 @@
 
 .mainpage-interface-icons {
     font-size: 24px;
+}
+
+.likeButtonTest {
+    background-color: transparent;
+    border: none;
+
+}
+
+#likesHeart {
+    color: red;
 }
 
 .mainpage-posts-likes {

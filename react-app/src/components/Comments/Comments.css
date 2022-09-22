@@ -1,0 +1,17 @@
+#comments-single-comment-image-container, #comments-caption-profile-pic-container {
+    /* height: 40px; */
+    width: 40px;
+    display: flex;
+    /* background-color: black; */
+    align-items: center;
+    justify-content: center;
+    /* margin-right: 20px; */
+    padding: 10px;
+}
+
+#comments-single-comment-images, #comments-caption-profile-pic-image {
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
