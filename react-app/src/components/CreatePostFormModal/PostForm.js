@@ -11,20 +11,64 @@ const PostForm = ({setPostFormModal}) => {
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
     const [caption, setCaption] = useState('')
-    const [errors, setErrors] = useState([])
+    // you only need to check errors for post url
+    const [postUrlErrors, setPostUrlErrors] = useState([])
+    const [captionErrors, seCaptionErrors] = useState([])
+    const [image, setImage] = useState(null)
     // optional: video or image type
+    const [picLoaded, setPicLoaded] = useState(false)
     const [isImage,setIsImage] = useState(false)
     const [isVideo,setVideo] = useState(false)
 
-
+    console.log('form step:', formStep)
     useEffect(()=>{
         let errors = []
 
+    }, [postUrl])
 
-    }, [postUrl, city, state, country, caption])
+    useEffect(()=> {
+        let errors = []
+        if (postUrlErrors.length == 0 && captionErrors.length ==0){
+
+        }
+    }, [caption])
+
+    const onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+          setImage(URL.createObjectURL(event.target.files[0]));
+        }
+    }
+
+    // // // validation funciton for post url
+    // const validateImage = (url) => {
+    //     var test = new Image();
+    //     test.onload = imageFound;
+    //     test
+    // }
+
+    // const completeFormStep = e => {
+    //     setFormStep( prev=> prev + 1)
+    // }
+
+    // this is from JUST the input field. do validation check here
+    // MIME type
+    // const handlePostUrl = e => {
+    //     const files = e.dataTransfer.files
+    //     console.log('post url image file:', files)
+    //     // for ()
+    // }
 
     const handleSubmit = e => {
         e.preventDefault();
+        const post = {
+            ...post,
+            post_url: postUrl,
+            city,
+            state,
+            country,
+            caption
+        }
+
         console.log('post form submitted')
         return
     }
@@ -32,8 +76,15 @@ const PostForm = ({setPostFormModal}) => {
     return (
         <>
             <div className='create-post-title'>
+                {/* can only see the previous button if you're on 2nd part */}
+                {formStep == 1 && (<button type='button' onClick={setFormStep(prev=> prev - 1)}>🠔</button>)}
                 <h3>Create new post</h3>
-                <button type="submit" className="create-post-submit-button">Share</button>
+                {formStep === 0 && picLoaded && (
+                    <button onClick={setFormStep(prev=> prev+1)} type='button'>Next</button>
+                )}
+                {formStep === 1 && (
+                    <button type="submit" className="create-post-submit-button">Share</button>
+                )}
             </div>
             <div className="create-post-form-outer-container">
                 <div className='create-post-form-profile-box'>
@@ -46,51 +97,67 @@ const PostForm = ({setPostFormModal}) => {
                 </div>
                 <form className='create-post-form' onSubmit={handleSubmit} >
                     {formStep === 0 && (
-                        <div className = 'create-form-post-url-main-container'>
+                        <>
+                            <div className = 'create-form-post-url-main-container'>
+                                {/* <input
+                                    type='text'
+                                    value = {postUrl}
+                                    placeholder = 'Post Image Url'
+                                    onChange= {handlePostUrl}
+                                    required
+                                    className ='create-post-input-field'
+                                /> */}
+                                <input type="file" onChange={onImageChange} className="filetype" />
+                                <img src={image} alt="preview image" />
+                            </div>
+                        </>
+                    )}
+                    {formStep === 1 && (
+                        <>
+                            <input
+                                id='create-post-caption-input'
+                                type='textarea'
+                                value = {caption}
+                                placeholder = "Write a Caption..."
+                                onChange= {e=> setCaption(e.target.value)}
+                                style={{height:"160px", display:"flex", marginTop:"0px", alignItems:"flex-start", textAlign: "left", verticalAlign: "text-top" }}
+                                />
+                            {/* either video input or text input; do conditional for image or video */}
                             <input
                                 type='text'
-                                value = {postUrl}
-                                placeholder = 'Post Image Url'
-                                onChange= {e=> setPostUrl(e.target.value)}
-                                required
+                                value = {city}
+                                placeholder='City (Optional)'
+                                onChange= {e=> setCity(e.target.value)}
                                 className ='create-post-input-field'
                             />
-                        </div>
-                    )}
-                        <input
-                            id='create-post-caption-input'
-                            type='textarea'
-                            value = {caption}
-                            placeholder = "Write a Caption..."
-                            onChange= {e=> setCaption(e.target.value)}
-                            style={{height:"160px", display:"flex", marginTop:"0px", alignItems:"flex-start", textAlign: "left", verticalAlign: "text-top" }}
+                            <input
+                                type='text'
+                                value = {state}
+                                placeholder = "State (Optional)"
+                                onChange= {e=> setState(e.target.value)}
+                                className ='create-post-input-field'
                             />
-                        {/* either video input or text input; do conditional for image or video */}
+                            <input
+                                type='text'
+                                value = {country}
+                                placeholder = "Country (Optional)"
+                                onChange= {e=> setCountry(e.target.value)}
+                                className ='create-post-input-field'
+                            />
+                        </>
 
-                        <input
-                            type='text'
-                            value = {city}
-                            placeholder='City (Optional)'
-                            onChange= {e=> setCity(e.target.value)}
-                            className ='create-post-input-field'
-                        />
-                        <input
-                            type='text'
-                            value = {state}
-                            placeholder = "State (Optional)"
-                            onChange= {e=> setState(e.target.value)}
-                            className ='create-post-input-field'
-                        />
-                        <input
-                            type='text'
-                            value = {country}
-                            placeholder = "Country (Optional)"
-                            onChange= {e=> setCountry(e.target.value)}
-                            className ='create-post-input-field'
-                        />
+                    )}
+                    {formStep === 0 && postUrlErrors.length>0 && (
                         <ul className='validation-errors'>
-                            {errors.length>0 && (errors.map((error, idx) => <li key={idx}>{error}</li>))}
+                            {postUrlErrors.map((error, idx) => <li key={idx}>{error}</li>)}
                         </ul>
+                    )}
+                    {formStep === 1 && captionErrors.length>0 && (
+                        <ul className='validation-errors'>
+                            {captionErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                    )}
+
                 </form>
             </div>
         </>

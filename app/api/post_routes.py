@@ -223,3 +223,4 @@ def new_comment(id):
 # def profile_page():
 #     posts = Post.query.filter(Post.owner_id == current_user.id).all()
 #     return {"posts": [post.to_dict() for post in posts]}
+
