@@ -15,3 +15,61 @@
   width: 40px;
   border-radius: 50%;
 }
+
+
+
+#comments-single-comment-delete-button {
+  background-color: transparent;
+  border: none;
+  color: blue;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+#comments-single-comment-delete-button:hover{
+  background-color: rgb(240, 240, 240)
+}
+
+#image-username-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#comments-caption-username{
+  padding-top: 20px;
+  font-weight: bold;
+}
+
+#comments-caption-caption-text{
+  padding-bottom: 20px;
+}
+
+
+#comments-single-comment-username{
+  padding-top: 11px;
+  padding-left: 6px;
+  font-weight: bold;
+}
+
+#comments-single-comment-content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#comments-single-comment-createdAt{
+  padding-bottom: 10px;
+}
+
+#profileimg-username-container{
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* #comments-caption-username {
+
+} */
+

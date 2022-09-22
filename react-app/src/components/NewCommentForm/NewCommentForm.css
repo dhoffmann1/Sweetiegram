@@ -1,0 +1,56 @@
+#create-new-comment-form{
+    width: 100%;
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 80px;
+    /* padding-right: 20px; */
+}
+
+
+
+
+#content-area-input {
+    
+    width: 200px;
+    height: 35px;
+    border-radius: 2px;
+    font-size: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    overscroll-behavior-y: contain;
+    overflow-y: auto;
+}
+
+
+#post-details-comments-form-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+
+
+
+#comment-submit-button {
+background-color: transparent;
+border: none;
+color: blue;
+font-weight: bold;
+cursor: pointer;
+}
+
+/* #comment-submit-button:hover{
+    background-color: rgb(240, 240, 240)
+} */
+
+
+/* #create-new-comment-form-container{
+
+} */

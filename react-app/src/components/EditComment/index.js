@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateCommentThunk } from "../../store/comments";
+import "./EditComment.css"
 
 
 const EditComment = ({ comment, setShowEditTextField }) => {
@@ -25,13 +26,14 @@ const EditComment = ({ comment, setShowEditTextField }) => {
 
 
     return (
-        <form onSubmit={editSubmitted}>
+        <form id="edit-comment-form" onSubmit={editSubmitted}>
             <input
+            id="edit-comment-input-textarea"
             type="textarea"
             value={commentContent}
             onChange={(e) => setCommentContent(e.target.value)}>
             </input>
-            <button type="submit">Submit</button>
+            <button id="edit-comment-submit-button" type="submit">Submit</button>
         </form>
     )
 }

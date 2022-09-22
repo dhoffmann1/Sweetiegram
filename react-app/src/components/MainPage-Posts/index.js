@@ -6,6 +6,8 @@ import React from 'react'
 import './MainPagePosts.css'
 import PostDetailsModal from '../PostDetailsModal'
 import { createLikesThunk, deleteLikesThunk } from '../../store/likes'
+import CommentForm from '../NewCommentForm';
+
 
 
 
@@ -161,12 +163,7 @@ const MainPagePosts = () => {
             <>
                 <div className='comment-form-line'></div>
                 <div className='comment-post-form'>
-                    <div>
-                        Add a comment...
-                    </div>
-                    <div >
-                        <button className='comment-post-button'> Post</button>
-                    </div>
+                    <CommentForm postId={post.id} />
                 </div>
             </>
 
