@@ -8,7 +8,7 @@
 
 .container-page {
 
-    
+
     display: flex;
     width: 75%;
 
@@ -33,13 +33,52 @@
 }
 
 .storiesbox {
+    display: flex;
+    height: 110px;
     width: 450px;
     border: 1px solid rgb(249, 249, 249);
     background-color: white;
     border-radius: 6px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    justify-content: space-around;
+    margin: auto;
 
 }
+
+.storiesBar-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.storiesBar-profile-container {
+
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background: linear-gradient(to left top, rgba(255,0,0,.8), rgba(255,0,0,0)),
+            linear-gradient(to bottom right, rgba(184, 199, 15, 0.97), rgba(255, 34, 0, 0));
+
+}
+
+.storiesBar-profile-pic {
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: white;
+}
+.storiesBar-username {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+
 
 .postsbox {
     display: flex;
@@ -78,6 +117,7 @@
 
 .mainpage-right-username-name-container {
     margin-left: 14px;
+    width: 160px;
     font-size: 12px;
 }
 
@@ -106,7 +146,7 @@
 }
 
 .mainpage-follow-button-container {
-    margin-left: 5rem;
+    margin-left: 3rem;
 }
 
 .mainpage-suggestions-username {

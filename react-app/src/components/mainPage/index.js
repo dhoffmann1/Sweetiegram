@@ -3,17 +3,14 @@ import MainPagePosts from '../MainPage-Posts/index'
 import Profiles from '../profiles/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { getPosts } from "../../store/post"
 import { NavLink } from "react-router-dom"
 import React from 'react'
 
 function MainPage() {
-
     const sessionUser = useSelector((state) => state.session.user);
     // console.log(sessionUser)
 
     let displaySuggestions = () => {
-
 
 
         let user = (
