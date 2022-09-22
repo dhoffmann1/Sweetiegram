@@ -4,7 +4,7 @@ import { deleteCommentThunk } from "../../store/comments";
 
 
 
-const DeleteComment = () => {
+const DeleteComment = ({ commentId }) => {
   const dispatch = useDispatch();
 
   const deleteComment = async (commentId) => {
@@ -16,7 +16,7 @@ const DeleteComment = () => {
 
   return (
     <div>
-      <button onClick={deleteComment(comment)}> Delete Comment </button>
+      <button onClick={deleteComment(commentId)}> Delete Comment </button>
     </div>
   );
 };

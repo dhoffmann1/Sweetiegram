@@ -9,6 +9,8 @@ const CommentForm = ({ postId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('content from handleSubmit function', content)
+    console.log('postId in handleSubmit function', postId)
 
     dispatch(createCommentThunk(postId, content));
   };
@@ -27,13 +29,10 @@ const CommentForm = ({ postId }) => {
               placeholder="Add a comment..."
             />
           </label>
+          <button id="comment-submit-button" type="submit">
+            Post
+          </button>
         </form>
-      </div>
-
-      <div>
-        <button id="comment-submit-button" type="Submit">
-          Post
-        </button>
       </div>
     </div>
   );

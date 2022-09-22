@@ -1,20 +1,20 @@
 
 
-// Action Type Variables 
+// Action Type Variables
 const CREATE = "comment/CREATE"
 const READ = "comment/READ"
 const UPDATE = "comment/UPDATE"
 const DELETE = "comment/DELETE"
 
 
-// AC => CREATE 
+// AC => CREATE
 export const createComment = (comment) => ({
     type: CREATE,
     comment
 })
 
 
-// AC => READ 
+// AC => READ
 export const readComments = (comments) => {
     return {
         type: READ,
@@ -23,7 +23,7 @@ export const readComments = (comments) => {
 }
 
 
-// AC => UPDATE 
+// AC => UPDATE
 
 export const updateComment = (comment) => {
     return {
@@ -33,7 +33,7 @@ export const updateComment = (comment) => {
 }
 
 
-// AC => DELETE 
+// AC => DELETE
 
 export const commentDelete = (commentId) => {
     return {
@@ -48,6 +48,7 @@ export const readCommentsThunk = (postId) => async dispatch => {
     const response = await fetch(`/api/posts/${postId}/comments`)
     if (response.ok) {
         const comments = await response.json();
+        console.log('comments from readCommentsThunk', comments)
         dispatch(readComments(comments))
         return comments
     }
@@ -55,11 +56,12 @@ export const readCommentsThunk = (postId) => async dispatch => {
 }
 
 export const createCommentThunk = (postId, comment) => async dispatch => {
-    const response = await fetch (`/api/posts/${postId}/comments`, {
-        method: "POST", 
+    const response = await fetch(`/api/posts/${postId}/comments`, {
+        method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(comment)
     })
+    console.log(response)
     if (response.ok) {
         const comment = await response.json();
         dispatch(createComment(comment))
@@ -69,7 +71,7 @@ export const createCommentThunk = (postId, comment) => async dispatch => {
 
 export const updateCommentThunk = (commentId, comment ) => async dispatch => {
     const response = await fetch (`/api/comments/${commentId}`, {
-        method: "PUT", 
+        method: "PUT",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(comment)
     })
@@ -89,19 +91,22 @@ export const deleteCommentThunk = (commentId) => async dispatch => {
         dispatch(commentDelete(commentId))
     }
 }
- 
+
 
 
 
 //Reducer
 const commentReducer = (state = {}, action) => {
+    let newState = {};
     switch (action.type) {
         case READ: {
-            const commentsDisplayed = {};
-            action.comments.forEach((comment) => {
-                commentsDisplayed[comment.id] = comment;
+            // newState = { ...state };
+            console.log('action.comments in comments reducer', action.comments)
+            console.log('action.comments.Comments in comments reducer', action.comments.Comments)
+            action.comments.Comments.forEach((comment) => {
+                newState[comment.id] = comment;
             });
-            return commentsDisplayed
+            return newState
         }
         case CREATE: {
             return {...state, [action.comment.id]: action.comment}
@@ -110,15 +115,13 @@ const commentReducer = (state = {}, action) => {
             const newComment = {...state};
             newComment[action.comment.id] = action.comment
         }
-
         case DELETE: {
             const deletedComment = {...state};
             delete deletedComment[action.comment.id];
             return deletedComment;
         }
-      
-      default:
-        return state;
+        default:
+            return state;
     }
   };
 

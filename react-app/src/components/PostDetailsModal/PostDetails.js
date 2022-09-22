@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Comments from '../Comments'
+import CommentForm from "../NewCommentForm";
 import './PostDetails.css';
 
 function PostDetails({ setShowPostDetailsModal, post }) {
@@ -33,7 +35,8 @@ function PostDetails({ setShowPostDetailsModal, post }) {
                 <div id="post-details-caption-section-grid"></div>
               </div> */}
               <div id="post-details-comment-component-section">
-                insert comments component from Ladan
+                {/* insert comments component from Ladan */}
+                <Comments post={post}/>
               </div>
               <div id="post-details-liked-section">
                 <div className='mainpage-posts-icons'>
@@ -50,15 +53,15 @@ function PostDetails({ setShowPostDetailsModal, post }) {
                 </div>
               </div>
               <div id="post-details-comments-form-section">
-                {/* <div className='comment-form-line'></div> */}
-                <div className='comment-post-form'>
+                {/* <div className='comment-post-form'>
                     <div>
                         Add a comment...
                     </div>
                     <div >
                         <button className='comment-post-button'>Post</button>
                     </div>
-                </div>
+                </div> */}
+                <CommentForm postId={post.id} />
               </div>
             </div>
           </div>

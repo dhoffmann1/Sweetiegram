@@ -10,7 +10,7 @@ const EditComment = ({comment, showEditTextField, setShowEditTextField}) => {
     const dispatch = useDispatch();
 
 
-    const editSubmitted = async () => {
+    const editSubmitted = async (e) => {
         e.preventDefault()
 
         const editOneComment = dispatch(updateCommentThunk(commentContent))
@@ -20,7 +20,7 @@ const EditComment = ({comment, showEditTextField, setShowEditTextField}) => {
         }
 
     }
- 
+
     // useEffect(() => {
     //     setCommentContent(comment.content)
     // }, [commentContent])
@@ -28,9 +28,9 @@ const EditComment = ({comment, showEditTextField, setShowEditTextField}) => {
 
     return (
         <>
-        {showEditTextField && 
+        {showEditTextField &&
         <form onSubmit={editSubmitted}>
-            <input 
+            <input
             type="textarea"
             value={comment}
             onChange={(e) => setCommentContent(e.target.value)}>
