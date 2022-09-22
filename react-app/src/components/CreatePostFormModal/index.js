@@ -9,7 +9,6 @@ import PostForm from "./PostForm"
 import "../../context/Modal.css"
 
 const CreatePostFormModal = ({setPostFormModal, postFormModal}) => {
-    console.log("modal import:", Modal)
     const post = {
         post_url: "",
         city: "",

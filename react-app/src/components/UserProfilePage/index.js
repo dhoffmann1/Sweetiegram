@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {getUserPosts} from "../../store/post"
 import {getUserDetail} from "../../store/user"
@@ -39,11 +39,6 @@ const UserProfilePage = () => {
             dispatch(getFollowings(userId))
     }, [dispatch])
 
-    // check if you're folloiwng him
-    // for (let i =0;i<currentUser.users_following.length; i++){
-    //     let user_id = currentUser.user_following[i]
-    //     if user.id
-    // }
     let is_following = false
     let following_id;
     if (user){
@@ -80,10 +75,14 @@ const UserProfilePage = () => {
                     {followings.length>0 && (
                         <div className='second-profile-container'>
                             <div className='users-following-links-box'>
-                                {followings.length>0 && followings.map(user=> (
-                                    <div className='user-following-profile-link-container'>
-                                        {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
-                                        <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
+                                {followings.map(user=> (
+                                    <div key={user.id}>
+                                        <NavLink to={`/users/${user.id}`}>
+                                            <div className='user-following-profile-link-container'>
+                                                {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
+                                                <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
+                                            </div>
+                                        </NavLink>
                                     </div>
                                 ))}
                             </div>
