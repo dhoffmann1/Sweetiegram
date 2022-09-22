@@ -3,11 +3,13 @@ import MainPagePosts from '../MainPage-Posts/index'
 import Profiles from '../profiles/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { NavLink } from "react-router-dom"
+import { NavLink, useHistory } from "react-router-dom"
 import React from 'react'
 
 function MainPage() {
     const sessionUser = useSelector((state) => state.session.user);
+    const followings = useSelector(state => Object.values(state.followings))
+    const history = useHistory()
     // console.log(sessionUser)
 
     let displaySuggestions = () => {
@@ -15,18 +17,20 @@ function MainPage() {
 
         let user = (
             <div className='mainpage-right-user-container'>
-                <div className='mainpage-right-img-container'>
-                    <img src={sessionUser.profilePicUrl} className='mainpage-right-img'></img>
-                </div>
+                <NavLink to={`/users/${sessionUser.id}`}>
+                    <div className='mainpage-right-img-container'>
+                        <img src={sessionUser.profilePicUrl} className='mainpage-right-img'></img>
+                    </div>
+                </NavLink>
                 <div className='mainpage-right-username-name-container'>
-                    <div className='mainpage-right-username'>
+                    <div className='mainpage-right-username' onClick={() => { history.push(`/users/${sessionUser.id}`) }}>
                         {sessionUser.username}
                     </div>
                     <div className='mainpage-right-name'>
                         {sessionUser.firstName} {sessionUser.lastName}
                     </div>
                 </div>
-            </div>
+            </div >
 
         )
 

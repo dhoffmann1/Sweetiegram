@@ -7,7 +7,7 @@ import LogoutButton from '../auth/LogoutButton';
 import CreatePostFormModal from '../CreatePostFormModal';
 
 const NavBar = () => {
-
+  const sessionUser = useSelector((state) => state.session.user);
   const [open, setOpen] = useState(false)
   // added here
   const [postFormModal, setPostFormModal] = useState(false)
@@ -25,9 +25,11 @@ const NavBar = () => {
           <div>
             <i class="fa-regular fa-circle-user"></i>
           </div>
-          <div style={{marginLeft: '8px'}}>
-            Profile
-          </div>
+          <NavLink to={`/users/${sessionUser.id}`} className='mainpage-posts-navlink-profile'>
+            <div style={{ marginLeft: '8px' }}>
+              Profile
+            </div>
+          </NavLink>
         </div>
         <div className='dropdown-divider'></div>
         <div className='navbar-logout-button'>

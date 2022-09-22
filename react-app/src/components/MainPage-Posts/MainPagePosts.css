@@ -20,6 +20,10 @@
     font-weight: bolder;
 }
 
+.mainpage-posts-navlink-profile{
+    text-decoration: none;
+    color: black;
+}
 
 .mainpage-body-image-container {
     height: 300px;
