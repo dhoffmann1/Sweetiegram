@@ -1,0 +1,50 @@
+#edit-comment-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 15px;
+}
+
+
+
+#comments-single-comment-edit-button {
+background-color: transparent;
+border: none;
+color: blue;
+font-weight: bold;
+cursor: pointer;
+border-radius: 5px;
+padding: 6px;
+}
+
+#comments-single-comment-edit-button:hover{
+    background-color: rgb(240, 240, 240)
+}
+
+
+#edit-comment-input-textarea {
+  width: 200px;
+  height: 35px;
+  border-radius: 2px;
+  font-size: 16px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 5px;
+  box-sizing: border-box;
+  border: lightgray solid 1px;
+  background-color: rgba(244, 243, 243, 0.891);
+}
+
+#edit-comment-submit-button {
+background-color: transparent;
+border: none;
+color: blue;
+font-weight: bold;
+cursor: pointer;
+border-radius: 5px;
+padding: 6px;
+}
+
+#edit-comment-submit-button:hover{
+    background-color: rgb(240, 240, 240)
+}

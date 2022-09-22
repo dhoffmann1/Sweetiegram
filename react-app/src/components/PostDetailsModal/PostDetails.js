@@ -53,14 +53,6 @@ function PostDetails({ setShowPostDetailsModal, post }) {
                 </div>
               </div>
               <div id="post-details-comments-form-section">
-                {/* <div className='comment-post-form'>
-                    <div>
-                        Add a comment...
-                    </div>
-                    <div >
-                        <button className='comment-post-button'>Post</button>
-                    </div>
-                </div> */}
                 <CommentForm postId={post.id} />
               </div>
             </div>

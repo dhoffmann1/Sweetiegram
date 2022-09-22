@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
+import "./NewCommentForm.css"
 
 const CommentForm = ({ postId }) => {
   const dispatch = useDispatch();
@@ -14,9 +15,9 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-    <div>
-      <div>
-        <form onSubmit={handleSubmit}>
+   
+      
+        <form id="create-new-comment-form" onSubmit={handleSubmit}>
           <label>
             <input
               id="content-area-input"
@@ -31,8 +32,6 @@ const CommentForm = ({ postId }) => {
             Post
           </button>
         </form>
-      </div>
-    </div>
   );
 };
 
