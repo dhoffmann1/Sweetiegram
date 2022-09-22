@@ -57,9 +57,9 @@ const NavBar = () => {
               <i class="fa-solid fa-house"></i>
             </NavLink>
           </div>
-          <div className="create-post-button" onClick={handleCreatePost}>
+          <div className="create-post-button" onClick={()=> setPostFormModal(true)}>
             {/* <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}> */}
-                {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>)}
+                {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} />)}
               <i class="fa-regular fa-square-plus" >
               </i>
             {/* </NavLink> */}

@@ -76,14 +76,12 @@ const UserProfilePage = () => {
                         <div className='second-profile-container'>
                             <div className='users-following-links-box'>
                                 {followings.map(user=> (
-                                    <div key={user.id}>
-                                        <NavLink to={`/users/${user.id}`}>
-                                            <div className='user-following-profile-link-container'>
-                                                {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
-                                                <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
-                                            </div>
-                                        </NavLink>
-                                    </div>
+                                    <NavLink key={user.id} to={`/users/${user.id}`}>
+                                        <div className='user-following-profile-link-container'>
+                                            {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
+                                            <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
+                                        </div>
+                                    </NavLink>
                                 ))}
                             </div>
                         </div>
