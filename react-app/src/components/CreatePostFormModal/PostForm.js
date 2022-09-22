@@ -12,7 +12,7 @@ const PostForm = ({setPostFormModal, post}) => {
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
     const [caption, setCaption] = useState('')
-    const [errors, setErrors] = useState('')
+    const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     // you only need to check errors for post url
     // const [postUrlErrors, setPostUrlErrors] = useState([])
@@ -111,8 +111,7 @@ const PostForm = ({setPostFormModal, post}) => {
                     </button>
                 )}
                 <h3>Create new post</h3>
-                {formStep==1 && shareButton}                }
-
+                {formStep==1 && shareButton}
             </div>
             <div>
                 <form id='create-post-actual-form' className="create-post-form-outer-container" onSubmit={handleSubmit} >
@@ -189,19 +188,6 @@ const PostForm = ({setPostFormModal, post}) => {
                         </div>
 
                     )}
-
-                    {/* {formStep === 0 && postUrlErrors.length>0 && (
-                        <ul className='validation-errors'>
-                            {postUrlErrors.map((error, idx) => <li key={idx}>{error}</li>)}
-                        </ul>
-                    )}
-                    {formStep === 1 && captionErrors.length>0 && (
-                        <ul className='validation-errors'>
-                            {captionErrors.map((error, idx) => <li key={idx}>{error}</li>)}
-                        </ul>
-                    )} */}
-
-
                 </form>
             </div>
         </>

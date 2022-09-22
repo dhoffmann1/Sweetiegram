@@ -1,0 +1,44 @@
+.update-post-image-container{
+    width: 520px;
+    height: 632px;
+    background-color: #FAFAFA;
+    display:flex;
+    align-items: center;
+    width: 65%;
+
+}
+
+.update-post-main-content-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.update-post-left-pic{
+    width: 100%;
+    height: 70%;
+
+}
+
+.update-post-form-outer-container{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    max-height: 632px;
+    min-height: 632px;
+}
+
+/* this will have the validation errors and allow you to structure it */
+.update-post-inside-form-container{
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    width:100%;
+}
+
+.update-post-title{
+    height: 38px;
+    display: flex;
+    align-items: center;
+}

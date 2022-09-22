@@ -107,6 +107,7 @@ export const editPost = (payload) => async dispatch => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
     })
+    console.log('response in editPost:', response)
     if (response.ok){
         const post = await response.json()
         dispatch(update(post))

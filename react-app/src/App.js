@@ -14,7 +14,8 @@ import YourProfilePage from './components/YourProfilePage';
 import CreatePostForm from './components/CreatePostFormModal';
 import PageNotFound from './components/PageNotFound';
 import SplashPage from './components/SplashPage';
-
+import UpdatePostForm from './components/UpdatePostFormModal';
+import UpdatePostFormModal from './components/UpdatePostFormModal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -58,6 +59,10 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute exact path='/posts/new'>
           <CreatePostForm/>
+        </ProtectedRoute>
+        <ProtectedRoute exact path='/posts/:postId/edit'>
+          {/* <UpdatePostForm/> */}
+          <UpdatePostFormModal/>
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
