@@ -134,13 +134,14 @@ function MainPage() {
             <div className='whole-page'>
                 <div className="container-page">
                     <div className="left-main">
-                        <div className="storiesbox">
-                            {Profiles()}
+                        <div className='left-main-container'>
+                            <div className="storiesbox">
+                                {Profiles()}
+                            </div>
+                            <div>
+                                {MainPagePosts()}
+                            </div>
                         </div>
-                        <div>
-                            {MainPagePosts()}
-                        </div>
-
                     </div>
                     <div className="right-main">
                         {displaySuggestions()}

@@ -2,27 +2,38 @@
     background-color: rgb(249, 249, 249);
     margin-left: -10px;
     margin-right: -10px;
+    display: flex;
+    justify-content: center;
 }
 
 .container-page {
 
-    margin-left: 10%;
+    
     display: flex;
     width: 75%;
 
 }
 
 .left-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 2.8%;
-    width: 65%;
+    width: 75%;
 }
 
 .right-main {
     margin-top: 2.8%;
 }
 
+.mainpage-suggestions {
+    margin-left: 5%;
+
+}
+
 .storiesbox {
-    width: 400px;
+    width: 450px;
     border: 1px solid rgb(249, 249, 249);
     background-color: white;
     border-radius: 6px;
@@ -34,7 +45,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    width: 400px;
+    width: 450px;
     border: 1px solid rgb(249, 249, 249);
     height: 600px;
     background-color: white;
