@@ -64,6 +64,11 @@ const PostForm = ({post}) => {
                 {shareButton}
             </div> */}
             <div className="update-page-main-outer-container">
+                <div className='submit-container-row'>
+                    <button form='update-post-actual-form' style={{fontSize:'14px',color:"#39B5F9", backgroundColor:'white', border:'none'}} type="submit" className='update-post-submit-button'>
+                        Done
+                    </button>
+                </div>
                 <div className='update-post-main-content-container'>
                     <div className='update-post-image-container'>
                         {post && (<img className='update-post-left-pic' src={post.post_url? post.post_url: null}/>)}
@@ -117,9 +122,7 @@ const PostForm = ({post}) => {
                             )}
 
                         </div>
-                        <button form='update-post-actual-form' style={{fontSize:'14px',color:"#39B5F9", backgroundColor:'white', border:'none'}} type="submit" className="create-post-submit-button">
-                            Done
-                        </button>
+
                     </form>
                 </div>
             </div>

@@ -50,6 +50,8 @@
     display: flex;
     /* background-color: #FAFAFA; */
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 80%;
     height: 650px;
     margin: 50px auto;
@@ -62,4 +64,11 @@
 
 .create-post-form-profile-box{
     box-sizing: border-box;
+}
+
+.submit-container-row{
+    display: flex;
+    /* background-color: green; */
+    justify-content: end;
+    width: 650px;
 }
