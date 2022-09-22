@@ -49,6 +49,16 @@
     font-size: 24px;
 }
 
+.likeButtonTest {
+    background-color: transparent;
+    border: none;
+
+}
+
+#likesHeart {
+    color: red;
+}
+
 .mainpage-posts-likes {
     margin-top: 10px;
     font-size: 16px;

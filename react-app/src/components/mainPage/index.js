@@ -10,7 +10,7 @@ import React from 'react'
 function MainPage() {
 
     const sessionUser = useSelector((state) => state.session.user);
-    console.log(sessionUser)
+    // console.log(sessionUser)
 
     let displaySuggestions = () => {
 

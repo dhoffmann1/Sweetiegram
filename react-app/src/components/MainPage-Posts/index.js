@@ -4,6 +4,8 @@ import { getPosts } from "../../store/post"
 import { NavLink } from "react-router-dom"
 import React from 'react'
 import './MainPagePosts.css'
+import { createLikesThunk, deleteLikesThunk } from '../../store/likes'
+
 
 
 const MainPagePosts = () => {
@@ -19,7 +21,7 @@ const MainPagePosts = () => {
 
     const allPosts = posts.map((post) => {
         if (!post) return null
-        const { caption, comments, numLikes, postUrl, user, createdAt } = post
+        const { id, caption, comments, numLikes, postUrl, user, createdAt, likesUserId, likesUername } = post
         let postHeader = (
 
             <div className='mainpage-post-header'>
@@ -63,14 +65,51 @@ const MainPagePosts = () => {
         }
 
 
+        let likesComponent
+        //user hasnt like the post
+        if (likesUserId.includes(user.id)) {
+            likesComponent = (
+                <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
+                    <i class="fa-solid fa-heart" id='likesHeart' onClick={() => { dispatch(deleteLikesThunk(id)).then(() => dispatch(getPosts())) }}></i>
+                </div>
+            )
+
+        } else {
+            likesComponent = (
+                <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
+                    <i class="fa-regular fa-heart" onClick={() => { dispatch(createLikesThunk(id)).then(() => dispatch(getPosts())) }}></i>
+                </div>
+            )
+        }
+
+
+        const datePosted = new Date(createdAt)
+        const now = Date.now()
+        const milliseconds = Math.abs(now - datePosted)
+        const hours = Math.ceil(milliseconds / (1000 * 60 * 60))
+        const days = Math.ceil(milliseconds / (1000 * 60 * 60 * 24))
+
+        let postTimer
+        if (hours < 24) {
+            postTimer = (
+                <>
+                    {hours} hours ago
+                </>
+            )
+        } else {
+            postTimer = (
+                <>
+                    {days} days ago
+                </>
+            )
+        }
+
         let userInterface = (
             <>
                 <div className='mainpage-posts-icons'>
-                    <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
-                        <i class="fa-regular fa-heart"></i>
-                    </div>
+                    {likesComponent}
                     <div className="mainpage-interface-icons">
-                        <i class="fa-regular fa-comment fa-flip-horizontal"></i>
+                        <i class="fa-regular fa-comment fa-flip-horizontal" ></i>
                     </div>
                 </div>
                 <div className='mainpage-posts-likes'>
@@ -88,7 +127,7 @@ const MainPagePosts = () => {
                     {commentsLink}
                 </div>
                 <div className='mainpage-time'>
-                    X hours ago
+                    {postTimer}
                 </div>
             </>
 
