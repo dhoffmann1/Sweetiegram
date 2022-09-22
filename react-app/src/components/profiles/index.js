@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom"
 import { getFollowings } from '../../store/following'
 import React from 'react'
+import './profile.css'
 
 const Profiles = () => {
     const dispatch = useDispatch();
