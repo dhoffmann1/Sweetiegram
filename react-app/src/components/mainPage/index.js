@@ -8,6 +8,7 @@ import React from 'react'
 
 function MainPage() {
     const sessionUser = useSelector((state) => state.session.user);
+    const followings = useSelector(state => Object.values(state.followings))
     const history = useHistory()
     // console.log(sessionUser)
 
@@ -22,7 +23,7 @@ function MainPage() {
                     </div>
                 </NavLink>
                 <div className='mainpage-right-username-name-container'>
-                    <div className='mainpage-right-username' onClick={() => {history.push(`/users/${sessionUser.id}`) }}>
+                    <div className='mainpage-right-username' onClick={() => { history.push(`/users/${sessionUser.id}`) }}>
                         {sessionUser.username}
                     </div>
                     <div className='mainpage-right-name'>

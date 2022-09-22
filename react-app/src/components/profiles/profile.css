@@ -1,15 +1,21 @@
 .storiesbox {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(9, 90px);
+    grid-template-rows: 1;
     height: 110px;
     width: 450px;
     border: 1px solid rgb(249, 249, 249);
     background-color: white;
     border-radius: 6px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
-    justify-content: space-around;
+    /* justify-content: space-around; */
     margin: auto;
-    overflow-x: auto;
+    overflow: hidden;
 
+}
+
+.storiesbox:hover{
+    overflow-x: scroll;
 }
 
 .storiesBar-profile {

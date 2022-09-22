@@ -20,6 +20,8 @@ const Profiles = () => {
         if (followers <= 0) return null
         const { profilePicUrl, username, id } = followers
 
+
+
         let storiesUsername
         let maxUsername
         if (username.length > 10) {
