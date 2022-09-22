@@ -132,7 +132,7 @@ const MainPagePosts = () => {
         )
 
         return (
-            <div className='postsbox'>
+            <div className='postsbox' key={post.id}>
                 <div>
                     {postHeader}
                 </div>

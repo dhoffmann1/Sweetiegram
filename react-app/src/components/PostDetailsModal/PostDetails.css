@@ -114,6 +114,8 @@
 #post-details-comment-component-section {
   border-bottom: lightgrey solid 1px;
   padding: 10px;
+  overscroll-behavior-y: contain;
+  overflow-y: auto;
 }
 
 #post-details-liked-section {

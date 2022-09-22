@@ -212,7 +212,11 @@ def new_comment(id):
         db.session.add(new_comment)
         db.session.commit()
         #returning that post comments
-        return post.to_dict_comments()
+        # print('\n')
+        # print(new_comment)
+        # print('\n')
+
+        return new_comment.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 

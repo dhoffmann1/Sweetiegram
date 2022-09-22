@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./Comments.css";
-import { readCommentsThunk, updateCommentThunk } from "../../store/comments";
-import DeleteComment from "../DeleteComment/index";
+import { readCommentsThunk, deleteCommentThunk } from "../../store/comments";
+// import DeleteComment from "../DeleteComment/index";
 import EditComment from "../EditComment/index";
 
 
@@ -11,21 +11,16 @@ import EditComment from "../EditComment/index";
 const Comments = ({ post }) => {
 
   const loggedInUser = useSelector(state => state.session.user);
-
-
-
-  // useSelectors
   const commentsObj = useSelector((state) => state.comments);
-  // const postsObj = useSelector(state => state.posts)
-  // const
-  const [showEditTextField, setShowEditTextField] = useState(false)
+  const [showEditTextField, setShowEditTextField] = useState(false);
+  const [showEditTextFieldCommentId, setShowEditTextFieldCommentId] = useState(0);
   const dispatch = useDispatch();
 
-  console.log(commentsObj)
+  // console.log('commentsObj in Comments Component', commentsObj)
 
   useEffect(() => {
     dispatch(readCommentsThunk(post.id));
-  }, [dispatch]);
+  }, [dispatch, post.id]);
 
   if (!commentsObj) return (
     <>
@@ -33,45 +28,49 @@ const Comments = ({ post }) => {
     </>
   )
 
-
   const allCommentsArr = Object.values(commentsObj);
     // Thunk action dispatch for READ
 
 
-  const editComment = async (comment) => {
-    setShowEditTextField(true)
-    return (
-      <EditComment comment = {comment} setShowEditTextField = {setShowEditTextField} showEditTextField={showEditTextField} />
-
-    )
-  }
-
-  //   const readComment = async (postId) => {
-  //     const comment = await dispatch(readCommentsThunk)
-  //   }
-
-
+  // const editComment = async (comment) => {
+  //   console.log("showEditTextField before set", showEditTextField)
+  //   setShowEditTextField(true)
+  //   console.log("showEditTextField after set", showEditTextField)
+  //   return (
+  //     <>
+  //     {showEditTextField &&
+  //     <EditComment comment={comment} setShowEditTextField={setShowEditTextField} />}
+  //     </>
+  //   )
+  // }
 
   return (
     <div>
       <div id="comments-caption-section">
-        <div id="comments-caption-username">{post.user.username}</div>
         <div id="comments-caption-profile-pic-container">
-          {/* <img id="comments-caption-profile-pic-image" src={post.user.profilePicUrl} alt='userProfilePic' /> */}
+          <img id="comments-caption-profile-pic-image" src={post.user.profilePicUrl} alt='userProfilePic' />
         </div>
+        <div id="comments-caption-username">{post.user.username}</div>
         {/* <div>{post.user.profilePicUrl}</div> */}
         <div id="comments-caption-caption-text">{post.caption}</div>
       </div>
       <div id="comments-all-comments-section">
         {allCommentsArr.map((comment) => {
           return (
-            <div id="comments-single-comment-container">
-              <div>{comment.profilePicUrl}</div>
-              <div>{comment.username}</div>
-              <div>{comment.content}</div>
-              {comment?.user_id === loggedInUser?.id ? <DeleteComment commentId={comment.id} /> : null}
-              {comment?.user_id === loggedInUser?.id ? <button className="edit-comment-button" onClick={() => editComment(comment)}>Edit Comment</button> : null}
-              <div>{comment.createdAt}</div>
+            <div id="comments-single-comment-container" key={comment.id}>
+              {/* {console.log('comment in comments Component', comment)} */}
+              <div id="comments-single-comment-image-container">
+                <img id="comments-single-comment-images" src={comment.User.profilePicUrl} alt="profilePicUrl" />
+              </div>
+              <div id="comments-single-comment-username">{comment.User.username}</div>
+              <div id="comments-single-comment-content">{comment.content}</div>
+              <div id="comments-single-comment-createdAt">{comment.createdAt}</div>
+              {comment?.userId === loggedInUser?.id && <button id="comments-single-comment-edit-button" onClick={() => {
+                showEditTextField === false ? setShowEditTextField(true) : setShowEditTextField(false);
+                setShowEditTextFieldCommentId(comment.id)}}>Edit</button>}
+              {comment?.userId === loggedInUser?.id && <button id="comments-single-comment-delete-button" onClick={() => dispatch(deleteCommentThunk(comment.id))}>Delete</button>}
+              {showEditTextField && showEditTextFieldCommentId === comment.id &&
+                <EditComment comment={comment} setShowEditTextField={setShowEditTextField} />}
               <br />
             </div>
           );

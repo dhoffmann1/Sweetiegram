@@ -48,7 +48,6 @@ export const readCommentsThunk = (postId) => async dispatch => {
     const response = await fetch(`/api/posts/${postId}/comments`)
     if (response.ok) {
         const comments = await response.json();
-        console.log('comments from readCommentsThunk', comments)
         dispatch(readComments(comments))
         return comments
     }
@@ -61,7 +60,6 @@ export const createCommentThunk = (postId, comment) => async dispatch => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(comment)
     })
-    console.log(response)
     if (response.ok) {
         const comment = await response.json();
         dispatch(createComment(comment))
@@ -75,6 +73,7 @@ export const updateCommentThunk = (commentId, comment ) => async dispatch => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(comment)
     })
+    // console.log('response in updateCommentThunk', response)
     if (response.ok) {
         const comment = await response.json();
         dispatch(updateComment(comment))
@@ -101,24 +100,28 @@ const commentReducer = (state = {}, action) => {
     switch (action.type) {
         case READ: {
             // newState = { ...state };
-            console.log('action.comments in comments reducer', action.comments)
-            console.log('action.comments.Comments in comments reducer', action.comments.Comments)
+            // console.log('action.comments in commentReducer READ', action.comments)
+            // console.log('action.comments.Comments in commentReducer READ', action.comments.Comments)
             action.comments.Comments.forEach((comment) => {
                 newState[comment.id] = comment;
             });
             return newState
         }
         case CREATE: {
-            return {...state, [action.comment.id]: action.comment}
+            newState = { ...state }
+            newState[action.comment.id] = action.comment
+            return newState
         }
         case UPDATE: {
-            const newComment = {...state};
-            newComment[action.comment.id] = action.comment
+            newState = { ...state };
+            // console.log('action.comment in commentReducer UPDATE', action.comment)
+            newState[action.comment.id] = action.comment
+            return newState
         }
         case DELETE: {
-            const deletedComment = {...state};
-            delete deletedComment[action.comment.id];
-            return deletedComment;
+            newState = { ...state }
+            delete newState[action.commentId];
+            return newState;
         }
         default:
             return state;

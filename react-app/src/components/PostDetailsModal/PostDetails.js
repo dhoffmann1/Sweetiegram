@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import React from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { Redirect } from "react-router-dom";
 import Comments from '../Comments'
 import CommentForm from "../NewCommentForm";
 import './PostDetails.css';
 
 function PostDetails({ setShowPostDetailsModal, post }) {
-  console.log('post in line7 of PostDetails file', post)
+  // console.log('post in line7 of PostDetails file', post)
   const { caption, comments, numLikes, postUrl, user, createdAt } = post
   return (
       <div id="post-details-overall-container">

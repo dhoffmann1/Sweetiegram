@@ -9,10 +9,8 @@ const CommentForm = ({ postId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('content from handleSubmit function', content)
-    console.log('postId in handleSubmit function', postId)
-
-    dispatch(createCommentThunk(postId, content));
+    const contentObj = { "content": content }
+    dispatch(createCommentThunk(postId, contentObj));
   };
 
   return (
