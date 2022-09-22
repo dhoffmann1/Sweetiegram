@@ -12,7 +12,8 @@ import '../YourProfilePage/YourProfilePage.css'
 const UserProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const {userId} = useParams()
+    const {userId} = useParams();
+
     const posts = useSelector(state => Object.values(state.posts))
     const currentUser = useSelector(state => state.session.user)
     const user = useSelector(state => state.users.user)
@@ -21,6 +22,7 @@ const UserProfilePage = () => {
     // print('user id:', userId)
     // get user id from posts response from db
     // const user = posts[0]?.user
+
     console.log("current user logged in:", currentUser)
     console.log('SEARCHED user obj:', user)
     console.log('POSTS:', posts)
@@ -32,8 +34,15 @@ const UserProfilePage = () => {
 
     // TODO: how to stop someone from sending a bad url request (eg. with ID?)
     useEffect(()=>{
-        dispatch(getUserDetail(userId))
-    }, [dispatch])
+        let response = dispatch(getUserDetail(userId))
+        .then(res=> {
+            if (res.status>=400 && res.status< 600) return Promise.reject(res)
+        })
+        .catch( async (res)=>{
+            history.push('/unknown')
+            return
+        });
+    }, [dispatch, user])
 
     useEffect(()=>{
             dispatch(getFollowings(userId))

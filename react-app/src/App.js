@@ -66,9 +66,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
         </ProtectedRoute>
-        {/* <Route exact path= '/unknown'>
+        <Route exact path= '/unknown'>
           <PageNotFound/>
-        </Route> */}
+        </Route>
       </Switch>
     </BrowserRouter>
   );
