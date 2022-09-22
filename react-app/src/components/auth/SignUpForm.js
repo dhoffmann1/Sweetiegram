@@ -171,11 +171,11 @@ const SignUpForm = () => {
               ></input>
             </div>
             {username.length > 0 && email.length > 0 && password.length > 0 && firstName.length > 0
-              && lastName.length > 0 && profilePicUrl.length > 0 && bio.length > 0 &&
+              && lastName.length > 0 && profilePicUrl.length > 0 && bio.length > 0 && repeatPassword.length > 0 &&
               <button type='submit' className='signup-form-signup-button'>Sign Up</button>
             }
             {(username.length === 0 || email.length === 0 || password.length === 0 || firstName.length === 0
-              || lastName.length === 0 || profilePicUrl.length === 0 || bio.length === 0) &&
+              || lastName.length === 0 || profilePicUrl.length === 0 || bio.length === 0 || repeatPassword.length === 0) &&
               <button type='submit' className='signup-form-signup-button' id='signup-form-signup-button-id' disabled={true}>Sign Up</button>
             }
 
