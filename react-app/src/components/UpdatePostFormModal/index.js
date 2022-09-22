@@ -15,8 +15,22 @@ const UpdatePostFormModal = () => {
     const dispatch = useDispatch()
     const posts = useSelector(state=> state.posts)
     // console.log("post obj in update form:", posts)
-    const post = posts[postId]
-    console.log('post:', post)
+    const postObj = posts[postId]
+    // console.log('post object:', postObj)
+
+    //payload should only include 4 fields... , pass postId as another prop
+    let post;
+    if (postObj){
+        post = {
+            id: postObj.id,
+            post_url: postObj.postUrl? postObj.postUrl: "",
+            city: postObj.city? postObj.city: "",
+            state: postObj.state? postObj.state: "",
+            country: postObj.country? postObj.country: "",
+            caption: postObj.caption? postObj.caption: ""
+        }
+    }
+    // console.log('post:', post)
 
     // TODO: change this to a prop later after merge
     useEffect(()=> {
@@ -25,11 +39,10 @@ const UpdatePostFormModal = () => {
 
     return (
         <>
-            <h3> update post form</h3>
             {post && (
-                <Modal onClose={()=> setPostFormModal(false)}>
-                    <PostForm post={post} setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>
-                </Modal>
+                // <Modal onClose={()=> setPostFormModal(false)}>
+                <PostForm post={post} setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>
+                // </Modal>
             )}
         </>
     )

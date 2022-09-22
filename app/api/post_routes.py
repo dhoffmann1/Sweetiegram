@@ -83,6 +83,12 @@ def create_post():
 def update_post(post_id):
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # print('form.data:', form.data)
+    post = Post.query.get(post_id)
+    # print('post obj url:', post.post_url)
+    # form.data['post_url'] = post.post_url
+    # print('new form.data:', form.data)
+
     if form.validate_on_submit():
         post = Post.query.get(int(post_id))
         if post == None:
@@ -223,4 +229,3 @@ def new_comment(id):
 # def profile_page():
 #     posts = Post.query.filter(Post.owner_id == current_user.id).all()
 #     return {"posts": [post.to_dict() for post in posts]}
-

@@ -7,9 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: grey; */
 }
-
 #modal-background {
   position: fixed;
   top: 0;
@@ -17,20 +15,14 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  /* background-color:green */
-
 }
-
 /* use this to center content inside modal! */
 #modal-content {
   position: absolute;
   background-color: white;
-
-  /* added here */
-  height: 550px;
-  width: 700px;
+  height: 85%;
+  width: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }

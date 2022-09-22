@@ -26,7 +26,7 @@
 
 .create-form-post-url-main-container{
     width:100%;
-    height: 670px;
+    height: 620px;
     /* border-radius: 20px; */
     background-color: rgb(237, 171, 181);
 }
@@ -65,9 +65,8 @@
 }
 
 
-/* QUESTION do i need this? */
 .create-post-form-outer-container{
-    height: 670px;
+    height: 620px;
     /* background-color: coral; */
     width:920px;
     display:flex;
@@ -87,14 +86,14 @@
 
 .create-post-image-left-container{
     width: 520px;
-    height: 670px;
+    height: 100%;
 }
 
 .create-form-post-preview-image{
     height:100%;
     width: 100%;
-    max-height: 670px;
-    min-height: 670px;
+    max-height: 602px;
+    min-height: 602px;
 }
 
 .create-post-input-field{
@@ -111,6 +110,7 @@
 .form-step-1-main-content-container{
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 
 .validation-errors{

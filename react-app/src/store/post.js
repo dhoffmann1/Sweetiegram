@@ -101,8 +101,8 @@ export const createPost = (payload) => async dispatch => {
     }
 }
 
-export const editPost = (payload) => async dispatch => {
-    const response = await fetch(`/api/posts/${payload.id}`,{
+export const editPost = (id, payload) => async dispatch => {
+    const response = await fetch(`/api/posts/${id}`,{
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)

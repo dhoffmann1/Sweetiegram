@@ -124,9 +124,7 @@ const PostForm = ({setPostFormModal, post}) => {
                                     placeholder="Post url"
                                 />
                                 {/* <input type="file" onChange={onImageChange} className="create-post-filetype" /> */}
-                                <div>
-                                    <img className='create-form-post-preview-image' src={postUrl? postUrl: null} />
-                                </div>
+                                <img className='create-form-post-preview-image' src={postUrl? postUrl: null} />
                             </div>
                         </>
                     )}

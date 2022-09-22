@@ -14,7 +14,6 @@ import YourProfilePage from './components/YourProfilePage';
 import CreatePostForm from './components/CreatePostFormModal';
 import PageNotFound from './components/PageNotFound';
 import SplashPage from './components/SplashPage';
-import UpdatePostForm from './components/UpdatePostFormModal';
 import UpdatePostFormModal from './components/UpdatePostFormModal';
 
 function App() {
