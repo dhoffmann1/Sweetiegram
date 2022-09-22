@@ -6,7 +6,8 @@ import { getFollowings } from '../../store/following'
 import {NavLink} from "react-router-dom"
 import React from 'react'
 import './YourProfilePage.css'
-
+import { resetFollowings } from '../../store/following'
+import { resetPosts } from '../../store/post'
 
 const YourProfilePage = () => {
     const dispatch = useDispatch();
@@ -15,11 +16,10 @@ const YourProfilePage = () => {
     const followings = useSelector(state => Object.values(state.followings))
     console.log('user obj:', user)
     console.log('followings:', followings)
-    // print('user id:', userId)
 
     useEffect(()=>{
         dispatch(getYourPosts())
-
+        return ()=> resetPosts()
     }, [dispatch])
 
     useEffect(()=>{
@@ -27,6 +27,7 @@ const YourProfilePage = () => {
         //     dispatch(getFollowings(user.users_following[i]))
         // }
         dispatch(getFollowings(user.id))
+        return () => resetFollowings()
     }, [dispatch, user])
 
 

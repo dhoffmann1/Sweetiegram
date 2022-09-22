@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {getUserPosts} from "../../store/post"
 import {getUserDetail} from "../../store/user"
@@ -8,11 +8,14 @@ import {NavLink} from "react-router-dom"
 import React from 'react'
 // import './UserProfilePage.css'
 import '../YourProfilePage/YourProfilePage.css'
+import { resetFollowings } from '../../store/following'
+import { resetUserPosts } from '../../store/user'
 
 const UserProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const {userId} = useParams()
+    const {userId} = useParams();
+
     const posts = useSelector(state => Object.values(state.posts))
     const currentUser = useSelector(state => state.session.user)
     const user = useSelector(state => state.users.user)
@@ -21,6 +24,7 @@ const UserProfilePage = () => {
     // print('user id:', userId)
     // get user id from posts response from db
     // const user = posts[0]?.user
+
     console.log("current user logged in:", currentUser)
     console.log('SEARCHED user obj:', user)
     console.log('POSTS:', posts)
@@ -28,22 +32,26 @@ const UserProfilePage = () => {
     // console.log('profile pic url:', user.profilePicUrl)
     useEffect(()=>{
         dispatch(getUserPosts(userId))
+        return () => resetUserPosts()
     }, [dispatch])
 
     // TODO: how to stop someone from sending a bad url request (eg. with ID?)
     useEffect(()=>{
-        dispatch(getUserDetail(userId))
-    }, [dispatch])
+        let response = dispatch(getUserDetail(userId))
+        .then(res=> {
+            if (res.status>=400 && res.status< 600) return Promise.reject(res)
+        })
+        .catch( async (res)=>{
+            history.push('/unknown')
+            return
+        });
+    }, [dispatch, user])
 
     useEffect(()=>{
             dispatch(getFollowings(userId))
+            return () => resetFollowings()
     }, [dispatch])
 
-    // check if you're folloiwng him
-    // for (let i =0;i<currentUser.users_following.length; i++){
-    //     let user_id = currentUser.user_following[i]
-    //     if user.id
-    // }
     let is_following = false
     let following_id;
     if (user){
@@ -80,11 +88,13 @@ const UserProfilePage = () => {
                     {followings.length>0 && (
                         <div className='second-profile-container'>
                             <div className='users-following-links-box'>
-                                {followings.length>0 && followings.map(user=> (
-                                    <div className='user-following-profile-link-container'>
-                                        {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
-                                        <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
-                                    </div>
+                                {followings.map(user=> (
+                                    <NavLink key={user.id} to={`/users/${user.id}`}>
+                                        <div className='user-following-profile-link-container'>
+                                            {user && (<img className="user-following-profile-pic" src={user.profilePicUrl}/>)}
+                                            <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
+                                        </div>
+                                    </NavLink>
                                 ))}
                             </div>
                         </div>

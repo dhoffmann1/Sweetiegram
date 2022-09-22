@@ -1,5 +1,5 @@
 const GET_USER = 'session/GET_USER';
-
+const RESET_USER_POSTS = 'session/resetUserPosts'
 const getUser = (payload) => {
     return {
       type: GET_USER,
@@ -16,6 +16,12 @@ if (response.ok){
 }
 }
 
+export const resetUserPosts = () => {
+    return {
+        type: RESET_USER_POSTS
+    }
+}
+
 const initialState = { user: null };
 const userReducer = (state = initialState, action) => {
     switch (action.type){
@@ -25,6 +31,9 @@ const userReducer = (state = initialState, action) => {
             // newState.user = action.payload
             // return newState
             return {user: action.payload}
+        }
+        case RESET_USER_POSTS: {
+            return {}
         }
         default:
             return state

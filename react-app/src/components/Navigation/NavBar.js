@@ -39,10 +39,12 @@ const NavBar = () => {
 
     return (
       <>
-        <button className='nav-profile-bttn' onClick={() => setOpen(!open)} >
-          <i class="fa-regular fa-circle-user"></i>
-        </button>
-        {open && dropDownMenu}
+        <NavLink exact to="/profile">
+          <button className='nav-profile-bttn' onClick={() => setOpen(!open)} >
+            <i class="fa-regular fa-circle-user"></i>
+          </button>
+          {open && dropDownMenu}
+        </NavLink>
       </>
     )
   }
@@ -61,10 +63,10 @@ const NavBar = () => {
               <i class="fa-solid fa-house"></i>
             </NavLink>
           </div>
-          <div className="create-post-button" onClick={handleCreatePost}>
+          <div className="create-post-button" onClick={()=> setPostFormModal(true)}>
             {/* <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}> */}
+                {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} />)}
               <i class="fa-regular fa-square-plus" >
-                {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>)}
               </i>
             {/* </NavLink> */}
           </div>

@@ -8,6 +8,7 @@ const GET_USER_PROFILE = 'posts/getUserProfile'
 const CREATE_POST = 'posts/createPost'
 const UPDATE_POST = 'posts/updatePost'
 const DELETE_POST = 'posts/deletePost'
+const RESET_POSTS = 'posts/resetPosts'
 
 const load = (payload) => {
     return {
@@ -101,12 +102,13 @@ export const createPost = (payload) => async dispatch => {
     }
 }
 
-export const editPost = (payload) => async dispatch => {
-    const response = await fetch(`/api/posts/${payload.id}`,{
+export const editPost = (id, payload) => async dispatch => {
+    const response = await fetch(`/api/posts/${id}`,{
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
     })
+    console.log('response in editPost:', response)
     if (response.ok){
         const post = await response.json()
         dispatch(update(post))
@@ -122,6 +124,12 @@ export const deletePost = (id) => async dispatch => {
     })
     if (response.ok) {
         dispatch(remove(id))
+    }
+}
+
+export const resetPosts = () => {
+    return {
+        type: RESET_POSTS
     }
 }
 
@@ -160,6 +168,9 @@ const postReducer = (state = initialState, action) => {
             const newState = {...state}
             delete newState[action.id]
             return newState
+        }
+        case RESET_POSTS: {
+            return {}
         }
         default:
             return state

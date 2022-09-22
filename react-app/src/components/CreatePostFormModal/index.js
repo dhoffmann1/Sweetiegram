@@ -9,11 +9,17 @@ import PostForm from "./PostForm"
 import "../../context/Modal.css"
 
 const CreatePostFormModal = ({setPostFormModal, postFormModal}) => {
-    console.log("modal import:", Modal)
+    const post = {
+        post_url: "",
+        city: "",
+        state: "",
+        country: "",
+        caption: ""
+    }
     return (
         <>
             <Modal onClose={()=> setPostFormModal(false)}>
-                <PostForm setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>
+                <PostForm post={post} setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>
             </Modal>
         </>
     )

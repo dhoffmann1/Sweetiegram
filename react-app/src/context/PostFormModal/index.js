@@ -11,8 +11,8 @@ export function Modal({ onClose, children }) {
 
   return ReactDOM.createPortal(
     <div id="modal">
-      <div id="modal-background" className='post-form-modal-background' onClick={onClose} />
-      <div id="modal-content" className='post-form-modal-content'>
+      <div id="modal-background" style={{zIndex:'150'}} onClick={onClose} className='post-form-modal-background'/>
+      <div id="modal-content" style={{zIndex:'200'}} className='post-form-modal-content'>
         {children}
       </div>
     </div>
