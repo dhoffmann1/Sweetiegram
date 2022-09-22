@@ -6,6 +6,9 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    /* box-sizing: border-box; */
     /* align-items: flex-end; */
+    /* border: 30px red solid;
+    border-radius: 50%; */
 
 }

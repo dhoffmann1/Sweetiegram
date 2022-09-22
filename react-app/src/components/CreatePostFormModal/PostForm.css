@@ -1,10 +1,34 @@
 .create-post-title{
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
     width:100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     height: 38px;
+    border-bottom:#DBDBDB solid 1px;
+}
+/* className='create-post-form'  */
+
+.create-post-back-button{
+    height:38px;
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+
+.create-post-next-button{
+    height:38px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.create-form-post-url-main-container{
+    width:100%;
+    height: 670px;
+    /* border-radius: 20px; */
+    background-color: rgb(237, 171, 181);
 }
 
 .create-post-submit-button{
@@ -17,6 +41,7 @@
 .create-post-form-profile-box{
     background-color: bisque;
     display: flex;
+    width: 100%;
 
 }
 .create-post-form-username-text{
@@ -27,7 +52,7 @@
 }
 
 .create-post-form-profile-image-container{
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     display: flex;
     align-items: center;
     height: fit-content;
@@ -39,23 +64,53 @@
     border-radius: 50%;
 }
 
+
 /* QUESTION do i need this? */
 .create-post-form-outer-container{
-    height: 100%;
-    background-color: coral;
-    width:40%
+    height: 670px;
+    /* background-color: coral; */
+    width:920px;
+    display:flex;
+    align-items: end;
+    border-radius: 30px;
+    /* justify-content: end; */
 }
 
 .create-post-form{
     background-color: lightblue;
-    height: 55%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    width: 400px;
+    align-items: end;
+}
+
+.create-post-image-left-container{
+    width: 520px;
+    height: 670px;
+}
+
+.create-form-post-preview-image{
+    height:100%;
     width: 100%;
+    max-height: 670px;
+    min-height: 670px;
 }
 
 .create-post-input-field{
     height: 38px;
+    width:100%;
+    box-sizing: border-box;
+}
+
+.create-post-left-pic{
+    width:100%;
+    height: 100%;
+}
+
+.form-step-1-main-content-container{
+    display: flex;
+    flex-direction: row;
 }
 
 .validation-errors{
