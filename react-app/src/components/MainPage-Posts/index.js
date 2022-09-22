@@ -40,9 +40,11 @@ const MainPagePosts = () => {
                 <div className='image-container'>
                     <img src={user.profilePicUrl} className='mainpage-profile-pic'></img>
                 </div>
-                <div className='mainpage-username'>
-                    {user.username}
-                </div>
+                <NavLink to={`/users/${user.id}`} className='mainpage-posts-navlink-profile'>
+                    <div className='mainpage-username'>
+                        {user.username}
+                    </div>
+                </NavLink>
             </div>
 
         )
@@ -194,7 +196,7 @@ const MainPagePosts = () => {
     return (
         <>
             {allPosts}
-            {showPostDetailsModal && <PostDetailsModal setShowPostDetailsModal={setShowPostDetailsModal} post={postToShowInModal}/>}
+            {showPostDetailsModal && <PostDetailsModal setShowPostDetailsModal={setShowPostDetailsModal} post={postToShowInModal} />}
         </>
     )
 }
