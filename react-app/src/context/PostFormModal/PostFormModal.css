@@ -1,0 +1,11 @@
+#modal-content.post-form-modal-content{
+    /* background-color: green; */
+    height: 670px;
+    width: 920px;
+    flex-direction: column;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* align-items: flex-end; */
+
+}
