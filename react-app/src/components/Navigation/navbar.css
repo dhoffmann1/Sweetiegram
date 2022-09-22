@@ -19,6 +19,11 @@
     font-weight: 500;
 }
 
+.Sweetiegram-logo {
+    color: black;
+
+}
+
 .navLinks {
     margin-right: 5%;
     display: flex;
@@ -35,7 +40,7 @@
 }
 
 .dropdown-menu {
-    border: solid 2px;
+    border: 1px solid rgba(55, 43, 43, 0.3);
     position: absolute;
     margin-top: 1.4em;
     width: 12em;
@@ -46,21 +51,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
 .dropdown-profile-bttn {
+    display: flex;
     font-size: 16px;
-    margin-left: 5px;
+    margin-left: 12px;
 }
 
 .dropdown-divider {
-    border-bottom: solid 1px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.3);
 }
 
 .dropdown-logout-bttn {
+    margin-left: 10px;
     background-color: transparent;
     border: none;
     font-size: 16px;
+    
 
 }
-

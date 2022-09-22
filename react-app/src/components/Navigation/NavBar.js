@@ -14,11 +14,15 @@ const NavBar = () => {
     let dropDownMenu = (
       <div className='dropdown-menu'>
         <div className='dropdown-profile-bttn'>
-          <i class="fa-regular fa-circle-user"></i>
-          Profile
+          <div>
+            <i class="fa-regular fa-circle-user"></i>
+          </div>
+          <div style={{marginLeft: '8px'}}>
+            Profile
+          </div>
         </div>
         <div className='dropdown-divider'></div>
-        <div>
+        <div className='navbar-logout-button'>
           <LogoutButton />
         </div>
       </div>
@@ -39,7 +43,9 @@ const NavBar = () => {
     <nav>
       <div className='navbar'>
         <div className='InstaLogo'>
-          <h1> Sweetiegram</h1>
+          <NavLink to='/' style={{ textDecoration: 'none' }}>
+            <h1 className='Sweetiegram-logo'> Sweetiegram</h1>
+          </NavLink>
         </div>
         <div className='navLinks'>
           <div>
