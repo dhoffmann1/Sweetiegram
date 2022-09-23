@@ -7,6 +7,7 @@ import {getPosts} from "../../store/post"
 import { Modal } from "../../context/PostFormModal"
 import "../../context/Modal.css"
 
+
 // setPostFormModal should be send as props needs to be declared in GET post component (daniel's)
 // postID should be sent as props from GET post component
 const UpdatePostFormModal = () => {

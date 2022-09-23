@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import "./PostForm.css"
 import { editPost } from '../../store/post';
+import { useHistory } from 'react-router-dom';
 
 const PostForm = ({post}) => {
     const dispatch = useDispatch();
+    const history= useHistory();
     console.log('post:', post)
     const sessionUser = useSelector(state => state.session.user)
     // const [postUrl, setPostUrl] = useState(post.postUrl? post.postUrl : '')
@@ -53,7 +55,7 @@ const PostForm = ({post}) => {
         dispatch(editPost(post.id, post))
         alert("Post updated!")
         setHasSubmitted(false)
-        return
+        history.push(`/users/${sessionUser.id}`)
 
     }
 
