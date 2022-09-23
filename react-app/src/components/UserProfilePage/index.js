@@ -10,11 +10,14 @@ import React from 'react'
 import '../YourProfilePage/YourProfilePage.css'
 import { resetFollowings } from '../../store/following'
 import { resetUserPosts } from '../../store/user'
+import PostDetailsModal from '../PostDetailsModal'
 
 const UserProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const {userId} = useParams();
+    const [showPostDetailsModal , setShowPostDetailsModal] = useState(false)
+    const [postToShowInModal, setPostToShowInModal] = useState(null)
 
     const posts = useSelector(state => Object.values(state.posts))
     const currentUser = useSelector(state => state.session.user)
@@ -28,6 +31,11 @@ const UserProfilePage = () => {
     console.log("current user logged in:", currentUser)
     console.log('SEARCHED user obj:', user)
     console.log('POSTS:', posts)
+
+    const handleOpenPost = (e, post) => {
+        setPostToShowInModal(post)
+        setShowPostDetailsModal(true)
+    }
 
     // console.log('profile pic url:', user.profilePicUrl)
     useEffect(()=>{
@@ -116,7 +124,8 @@ const UserProfilePage = () => {
                         <div className= "four-profile-container">
                             {
                                 posts.map(post => (
-                                    <div className="post-image-card-container">
+                                    <div onClick={handleOpenPost} className="post-image-card-container">
+                                        {/* {showPostDetailsModal && <PostDetailsModal setShowPostDetailsModal={setShowPostDetailsModal} post={post}/>} */}
                                         <img className='profile-post-image-pic' src={post.postUrl}/>
                                     </div>
                                 ))
