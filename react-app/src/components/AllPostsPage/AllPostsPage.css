@@ -1,47 +1,69 @@
-.all-posts-user-profile-pic{
+.all-posts-user-profile-pic {
     border-radius: 50%;
     height: 38px;
     width: 38px;
 }
 
-.all-posts-main-container{
+.all-posts-main-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.all-posts-main-grid-container{
+.all-posts-main-grid-container {
     display: grid;
     /* background-color: lightblue; */
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(auto-fill);
     grid-column-gap: 2%;
     grid-row-gap: 5%;
     width: 80vw;
-    height:100%;
+    height: 400px;
 
 }
 
-.all-posts-post-container{
+.all-posts-post-container {
     background-color: white;
     width: 100%;
     border: 2px #DBDBDB solid;
     /* border-radius: 3%; */
     display: flex;
     flex-direction: row;
-    height:100%;
+    height: 100%;
 
 
 }
 
-.all-posts-user-profile-pic-container{
+.all-posts-user-profile-pic-container {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20%;
+    width: 25%;
 }
 
-.all-posts-navlink{
+.all-posts-navlink {
     text-decoration: none;
+}
+
+
+.allposts-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+
+}
+
+.allposts-username {
+    color: black;
+    font-size: 14x;
+    font-weight: bold;
+}
+
+.allposts-fullname {
+    color: black;
+    font-size: 12px;
+    color: rgb(167, 157, 157);
 }
