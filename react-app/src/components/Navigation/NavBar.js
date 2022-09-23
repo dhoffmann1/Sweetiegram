@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react'
 import LogoutButton from '../auth/LogoutButton';
 import CreatePostFormModal from '../CreatePostFormModal';
+// import AllPostsPage from '../AllPostsPage';
 
 const NavBar = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -59,6 +60,12 @@ const NavBar = () => {
               <h1 className='Sweetiegram-logo'> Sweetiegram</h1>
             </NavLink>
           </div>
+          {/* here */}
+          <NavLink to='/allposts'>
+            <div className='link-to-all-posts-container'>
+              <button className='see-all-posts-button'> See all posts </button>
+            </div>
+          </NavLink>
           <div className='navLinks'>
             <div>
               <NavLink to='/' exact={true} activeClassName='active' style={{ fontSize: "20px", color: "black" }}>

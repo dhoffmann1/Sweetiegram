@@ -1,0 +1,26 @@
+.all-posts-user-profile-pic{
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+}
+
+.all-posts-main-container{
+    
+}
+
+.all-posts-main-grid-container{
+    display: grid;
+    background-color: lightblue;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(auto-fill);
+    grid-column-gap: 2%;
+    grid-row-gap: 5%;
+    width: 80vw;
+
+}
+
+.all-posts-post-container{
+    background-color: bisque;
+    width: 100%;
+
+}

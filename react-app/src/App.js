@@ -15,6 +15,7 @@ import CreatePostForm from './components/CreatePostFormModal';
 import PageNotFound from './components/PageNotFound';
 import SplashPage from './components/SplashPage';
 import UpdatePostFormModal from './components/UpdatePostFormModal';
+import AllPostsPage from './components/AllPostsPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -63,6 +64,11 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
         </ProtectedRoute>
+        {/* here */}
+        <ProtectedRoute exact path='/allposts'>
+          <AllPostsPage/>
+        </ProtectedRoute>
+
         <Route exact path= '/unknown'>
           <PageNotFound/>
         </Route>

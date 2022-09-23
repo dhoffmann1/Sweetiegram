@@ -9,8 +9,17 @@ import json
 
 post_routes = Blueprint('posts', __name__)
 
+# ADDED: get all posts
+@post_routes.route('/all', methods=['GET'])
+@login_required
+def get_all_posts():
+    posts = Post.query.all()
+    return {"posts": [post.to_dict() for post in posts]}
 
 
+
+
+# get posts that you're following and belong to you
 @post_routes.route('/', methods=["GET"])
 @login_required
 def index():

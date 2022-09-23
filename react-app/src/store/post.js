@@ -1,6 +1,7 @@
 // import { csrfFetch } from "./csrf"
 
-// this is for main page
+// ADDED NOW:
+const GET_ALL_POSTS = 'posts/getAllPosts'
 const GET_POSTS = 'posts/getPosts'
 const GET_YOUR_PROFILE= 'posts/getYourProfile'
 // this is for user profile
@@ -9,6 +10,13 @@ const CREATE_POST = 'posts/createPost'
 const UPDATE_POST = 'posts/updatePost'
 const DELETE_POST = 'posts/deletePost'
 const RESET_POSTS = 'posts/resetPosts'
+
+const loadAll = (payload) => {
+    return {
+        type: GET_ALL_POSTS,
+        payload
+    }
+}
 
 const load = (payload) => {
     return {
@@ -50,6 +58,14 @@ const remove = (id) => {
     return {
         type: DELETE_POST,
         id
+    }
+}
+
+export const getAllPosts =() => async dispatch => {
+    const response = await fetch('/api/posts/all')
+    if(response.ok){
+        let posts = await response.json()
+        dispatch(loadAll(posts))
     }
 }
 
@@ -137,6 +153,11 @@ const initialState = {}
 const postReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
+        case GET_ALL_POSTS: {
+            newState={}
+            action.payload.posts.forEach(post => newState[post.id] = post)
+            return newState
+        }
         case GET_POSTS: {
             newState = {}
             action.payload.posts.forEach(post => newState[post.id] = post)
