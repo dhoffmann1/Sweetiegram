@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from sqlalchemy.sql import func
 
 db = SQLAlchemy()
 
@@ -20,13 +21,13 @@ class Post(db.Model):
     state = db.Column(db.String)
     country = db.Column(db.String)
     caption = db.Column(db.String(500))
-    created_at = db.Column(db.DateTime, default=datetime.now())
-    updated_at = db.Column(db.DateTime, default=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     #relationships
     user = db.relationship("User", back_populates="posts")
-    comments = db.relationship("Comment", back_populates="post")
-    post_likes = db.relationship("User", back_populates="user_likes", secondary=likes, cascade="all, delete")
+    comments = db.relationship("Comment", back_populates="post", cascade="all, delete")
+    post_likes = db.relationship("User", back_populates="user_likes", secondary=likes)
 
     def to_dict(self):
         print('LIST COMPREHENSION',[user for user in self.post_likes])
@@ -72,8 +73,8 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     content = db.Column(db.String(250), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now())
-    updated_at = db.Column(db.DateTime, default=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     #Relationships
     post = db.relationship("Post", back_populates="comments")
