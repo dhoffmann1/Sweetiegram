@@ -70,7 +70,7 @@
     /* background-color: coral; */
     width:920px;
     display:flex;
-    align-items: end;
+    align-items: flex-end;
     border-radius: 30px;
     /* justify-content: end; */
 }
@@ -81,7 +81,7 @@
     display: flex;
     flex-direction: column;
     width: 400px;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .create-post-image-left-container{

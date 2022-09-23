@@ -15,7 +15,6 @@ const NavBar = () => {
   const handleCreatePost = e => {
     setPostFormModal(true)
   }
-  console.log("Form Modal:", postFormModal)
 
   const profileMenu = () => {
 

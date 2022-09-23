@@ -6,7 +6,7 @@
     /* align-items: center; */
 }
 
-#content-area-input {
+#content-area-input, #content-area-input-modal {
     display: flex;
     width: 100%;
     max-height: 60px;
@@ -29,11 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
-
-
-
 
 #comment-submit-button {
 background-color: transparent;
@@ -42,12 +38,3 @@ color: blue;
 font-weight: bold;
 cursor: pointer;
 }
-
-/* #comment-submit-button:hover{
-    background-color: rgb(240, 240, 240)
-} */
-
-
-/* #create-new-comment-form-container{
-
-} */

@@ -4,7 +4,7 @@
     width: 920px;
     flex-direction: column;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     /* box-sizing: border-box; */
     /* align-items: flex-end; */

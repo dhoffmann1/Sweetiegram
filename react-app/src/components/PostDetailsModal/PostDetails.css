@@ -9,15 +9,11 @@
 
 #post-details-main-grid {
   display: grid;
-  /* padding-left: 10px; */
-  /* padding-right: 10px; */
   grid-template-columns: 50% 50%;
   grid-template-rows: 100%;
-  /* column-gap: 10px; */
   justify-content: center;
   height: 100%;
   width: 100%;
-  /* max-height: 100%; */
 }
 
 #post-details-left-main-container {
@@ -38,7 +34,7 @@
 
 #post-details-post-image {
   display: block;
-  height: 65%;
+  max-height: 95%;
   width: 100%;
 }
 
@@ -51,7 +47,6 @@
 #post-details-right-grid {
   display: grid;
   grid-template-rows: 80px auto 90px 90px;
-  /* justify-content: center; */
   height: 100%;
   width: 100%;
 }
@@ -60,7 +55,6 @@
   display: flex;
   height: 100%;
   width: 100%;
-  /* background-color: red; */
   border-bottom: lightgrey solid 1px;
   max-height: 80px;
 }
@@ -72,48 +66,83 @@
   align-items: center;
 }
 
-#post-details-owner-info-pic-username-container {
+#post-details-owner-info-pic-username-edit-delete-container {
   display: flex;
   height: 100%;
   width: 100%;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: flex-start;
+}
+
+#post-details-owner-info-pic-username-container {
+  display: flex;
+  height: 100%;
+  width: 60%;
+  align-items: center;
   padding-left: 10px;
 }
 
 #post-details-owner-info-profile-pic-container {
-  /* height: 40px; */
-  width: 40px;
   display: flex;
-  /* background-color: black; */
-  align-items: center;
   justify-content: center;
-  /* margin-right: 20px; */
-  padding: 10px;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: linear-gradient(to left top, rgba(255, 0, 0, .8), rgba(255, 0, 0, 0)),
+      linear-gradient(to bottom right, rgba(184, 199, 15, 0.97), rgba(255, 34, 0, 0));
 }
 
 #post-details-owner-info-profile-image {
   display: block;
-  height: 40px;
-  width: 40px;
+  height: 85%;
+  width: 85%;
   border-radius: 50%;
+  border: white 1px solid;
 }
 
 #post-details-owner-info-username {
   display: flex;
-  /* width: 100%; */
   padding: 10px;
   cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
 }
+
+#delete-edit-buttons-container {
+  display: flex;
+  padding-right: 20px;
+  width: 50%;
+  justify-content: space-between;
+}
+
+#post-details-edit-button, #post-details-delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: blue;
+  font-weight: bold;
+}
+
+#post-details-delete-button {
+  color: red;
+  cursor: pointer;
+}
+
+
 
 #post-details-owner-info-three-dots {
   padding: 10px;
   cursor: pointer;
 }
 
+
+
 #post-details-comment-component-section {
   border-bottom: lightgrey solid 1px;
-  padding: 10px;
   overscroll-behavior-y: contain;
   overflow-y: auto;
 }
@@ -124,16 +153,13 @@
   padding: 10px;
 }
 
-#heart-icon, #new-comment-icon {
+#likesHeart, #likes-heart-2, #new-comment-icon {
   cursor: pointer;
 }
 
 
 #post-details-comments-form-section {
   display: flex;
-
-  /* width: 100%; */
   padding: 10px;
   justify-content: space-between;
-  /* background-color: red; */
 }

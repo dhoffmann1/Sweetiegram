@@ -1,16 +1,46 @@
-import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Comments from '../Comments'
 import CommentForm from "../NewCommentForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getPosts, deletePost } from "../../store/post";
+import { createLikesThunk, deleteLikesThunk } from "../../store/likes";
 import './PostDetails.css';
 
 function PostDetails({ setShowPostDetailsModal, post }) {
-  // console.log('post in line7 of PostDetails file', post)
-  const { caption, comments, numLikes, postUrl, user, createdAt } = post
-  const currentUser = useSelector(state => state.session.user)
+  const { caption, comments, numLikes, postUrl, user, createdAt, likesUserId } = post
+  const sessionUser = useSelector(state => state.session.user)
+  const [showPostOptions, setShowPostOptions] = useState(false)
+  const [likePost, setLikePost] = useState(likesUserId.includes(sessionUser.id))
+  const [numberLikes, setNumberLikes] = useState(numLikes)
+  const dispatch = useDispatch();
+
+  const handleDelete = postId => {
+    dispatch(deletePost(postId));
+    setShowPostDetailsModal(false);
+  }
+
+  const likeFunc = () => {
+    dispatch(createLikesThunk(post.id))
+      .then(() => dispatch(getPosts()))
+    setLikePost(!likePost)
+    setNumberLikes(numberLikes+1)
+  }
+
+  const unlikeFunc = () => {
+    dispatch(deleteLikesThunk(post.id))
+      .then(() => dispatch(getPosts()))
+    setLikePost(!likePost)
+    setNumberLikes(numberLikes-1)
+  }
+
+  let likesComponent
+  if (likePost) likesComponent = (<i class="fa-solid fa-heart" id='likesHeart' onClick={() => unlikeFunc()}></i>)
+  else likesComponent = (<i class="fa-regular fa-heart" id="likes-heart-2" onClick={() => likeFunc()}></i>)
+
+  useEffect(()=> {
+    dispatch(getPosts())
+  }, [dispatch, likePost, numberLikes])
 
   return (
       <div id="post-details-overall-container">
@@ -24,52 +54,45 @@ function PostDetails({ setShowPostDetailsModal, post }) {
             <div id="post-details-right-grid">
               <div id="post-details-owner-info-container">
                 <div id="post-details-owner-info-grid">
-                  <div id="post-details-owner-info-pic-username-container">
-                    <div id="post-details-owner-info-profile-pic-container">
-                      <img id="post-details-owner-info-profile-image" src={user.profilePicUrl} alt="post owner pic" />
-                    </div>
-                    <div id="post-details-owner-info-username">{user.username}</div>
-                    {currentUser.id == post.ownerId && (
-                      <div className='delete-edit-buttons-container'>
-                        <div classname='delete-button'>
-                            <button style={{backgroundColor:"white", color:"pink", border: "1px solid #DBDBDB"}}>DELETE</button>
-                        </div>
-                        <NavLink to={`/posts/${post.id}/edit`}>
-                          <div classname='edit-button'>
-                              <button style={{backgroundColor:"white", color:"pink", border: "1px solid #DBDBDB"}}>EDIT</button>
-                          </div>
-                        </NavLink>
+                  <div id="post-details-owner-info-pic-username-edit-delete-container">
+                    <div id="post-details-owner-info-pic-username-container">
+                      <div id="post-details-owner-info-profile-pic-container">
+                        <img id="post-details-owner-info-profile-image" src={user.profilePicUrl} alt="post owner pic" />
                       </div>
+                      <NavLink id="post-details-owner-info-username" to={`/users/${user.id}`}>{user.username}</NavLink>
+                    </div>
+                    {sessionUser.id == post.ownerId && showPostOptions && (
+                    <div id='delete-edit-buttons-container'>
+                      <NavLink id='post-details-edit-button' to={`/posts/${post.id}/edit`}>EDIT</NavLink>
+                      <div id='post-details-delete-button' onClick={() => handleDelete(post.id)}>DELETE</div>
+                    </div>
                     )}
                   </div>
-                  <div id="post-details-owner-info-three-dots">
-                    <i class="fa-solid fa-ellipsis"></i>
-                  </div>
+                  {sessionUser.id == post.ownerId && (
+                    <div id="post-details-owner-info-three-dots" onClick={() => setShowPostOptions(!showPostOptions)}>
+                      <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                  )}
                 </div>
               </div>
-              {/* <div id="post-details-caption-section">
-                <div id="post-details-caption-section-grid"></div>
-              </div> */}
               <div id="post-details-comment-component-section">
-                {/* insert comments component from Ladan */}
                 <Comments post={post}/>
               </div>
               <div id="post-details-liked-section">
                 <div className='mainpage-posts-icons'>
                     <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
-                        <i id="heart-icon" class="fa-regular fa-heart"></i>
+                        {likesComponent}
                     </div>
-                    <div className="mainpage-interface-icons">
+                    <div className="mainpage-interface-icons" onClick={() => document.getElementById("content-area-input-modal").focus()}>
                         <i id="new-comment-icon" class="fa-regular fa-comment fa-flip-horizontal"></i>
                     </div>
                 </div>
                 <div id="post-details-likes-number-section">
-                  <div id="post-details-numlikes">{numLikes} likes</div>
-                  {/* <div id="post-details-created-at">{createdAt}</div> */}
+                  <div id="post-details-numlikes">{numberLikes} likes</div>
                 </div>
               </div>
               <div id="post-details-comments-form-section">
-                <CommentForm postId={post.id} />
+                <CommentForm postId={post.id} modal={true}/>
               </div>
             </div>
           </div>
