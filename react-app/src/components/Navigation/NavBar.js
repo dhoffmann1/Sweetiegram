@@ -67,15 +67,14 @@ const NavBar = () => {
               </NavLink>
             </div>
             <div className="create-post-button" onClick={() => setPostFormModal(true)}>
-
               <i class="fa-regular fa-square-plus" >
               </i>
             </div>
-            <div>
+            {/* <div> */}
               {/* <NavLink to='/users' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>
                 <i class="fa-solid fa-magnifying-glass"></i>
               </NavLink> */}
-            </div>
+            {/* </div> */}
             <div>
               {profileMenu()}
             </div>

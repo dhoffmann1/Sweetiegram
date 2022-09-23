@@ -73,7 +73,7 @@ const SignUpForm = () => {
         </div>
         <div className='spacer-form'>
           <div className='signup-form-text'>
-            Sign up to see photoes and videos from your friends
+            Sign up to see photos and videos from your friends
           </div>
           <form onSubmit={onSignUp}>
             <div>
