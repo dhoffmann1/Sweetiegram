@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { NavLink } from "react-router-dom"
 import { getFollowings } from '../../store/following'
 import React from 'react'
+import './profile.css'
 
 const Profiles = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,9 @@ const Profiles = () => {
 
     let storiesBar = followings.map((followers) => {
         if (followers <= 0) return null
-        const { profilePicUrl, username } = followers
+        const { profilePicUrl, username, id } = followers
+
+
 
         let storiesUsername
         let maxUsername
@@ -36,12 +39,14 @@ const Profiles = () => {
                 </>
             )
         }
-        
+
         return (
             <div className='storiesBar-profile'>
-                <div className='storiesBar-profile-container'>
-                    <img src={profilePicUrl} className='storiesBar-profile-pic'></img>
-                </div>
+                <NavLink to={`/users/${id}`}>
+                    <div className='storiesBar-profile-container'>
+                        <img src={profilePicUrl} className='storiesBar-profile-pic'></img>
+                    </div>
+                </NavLink>
                 <div className='storiesBar-username'>
                     {storiesUsername}
                 </div>

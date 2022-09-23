@@ -7,7 +7,7 @@ import LogoutButton from '../auth/LogoutButton';
 import CreatePostFormModal from '../CreatePostFormModal';
 
 const NavBar = () => {
-
+  const sessionUser = useSelector((state) => state.session.user);
   const [open, setOpen] = useState(false)
   // added here
   const [postFormModal, setPostFormModal] = useState(false)
@@ -25,9 +25,11 @@ const NavBar = () => {
           <div>
             <i class="fa-regular fa-circle-user"></i>
           </div>
-          <div style={{marginLeft: '8px'}}>
-            Profile
-          </div>
+          <NavLink to={`/users/${sessionUser.id}`} className='mainpage-posts-navlink-profile'>
+            <div style={{ marginLeft: '8px' }}>
+              Profile
+            </div>
+          </NavLink>
         </div>
         <div className='dropdown-divider'></div>
         <div className='navbar-logout-button'>
@@ -39,48 +41,49 @@ const NavBar = () => {
 
     return (
       <>
-        <NavLink exact to="/profile">
+        {/* <NavLink exact to="/profile"> */}
           <button className='nav-profile-bttn' onClick={() => setOpen(!open)} >
             <i class="fa-regular fa-circle-user"></i>
           </button>
           {open && dropDownMenu}
-        </NavLink>
+        {/* </NavLink> */}
       </>
     )
   }
 
   return (
-    <nav>
-      <div className='navbar'>
-        <div className='InstaLogo'>
-          <NavLink to='/' style={{ textDecoration: 'none' }}>
-            <h1 className='Sweetiegram-logo'> Sweetiegram</h1>
-          </NavLink>
-        </div>
-        <div className='navLinks'>
-          <div>
-            <NavLink to='/' exact={true} activeClassName='active' style={{ fontSize: "20px", color: "black" }}>
-              <i class="fa-solid fa-house"></i>
+    <>
+      <nav>
+        <div className='navbar'>
+          <div className='InstaLogo'>
+            <NavLink to='/' style={{ textDecoration: 'none' }}>
+              <h1 className='Sweetiegram-logo'> Sweetiegram</h1>
             </NavLink>
           </div>
-          <div className="create-post-button" onClick={()=> setPostFormModal(true)}>
-            {/* <NavLink to='/sign-up' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}> */}
-                {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} />)}
+          <div className='navLinks'>
+            <div>
+              <NavLink to='/' exact={true} activeClassName='active' style={{ fontSize: "20px", color: "black" }}>
+                <i class="fa-solid fa-house"></i>
+              </NavLink>
+            </div>
+            <div className="create-post-button" onClick={() => setPostFormModal(true)}>
+
               <i class="fa-regular fa-square-plus" >
               </i>
-            {/* </NavLink> */}
-          </div>
-          <div>
-            <NavLink to='/users' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </NavLink>
-          </div>
-          <div>
-            {profileMenu()}
+            </div>
+            <div>
+              {/* <NavLink to='/users' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </NavLink> */}
+            </div>
+            <div>
+              {profileMenu()}
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} />)}
+    </>
   );
 }
 

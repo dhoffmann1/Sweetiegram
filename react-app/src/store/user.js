@@ -13,6 +13,7 @@ if (response.ok){
     let user = await response.json()
     console.log('user searched in thunk:', user)
     dispatch(getUser(user))
+    return user
 }
 }
 

@@ -51,7 +51,7 @@ def seed_users():
         "password": "password",
         "username": "johnbob",
         "bio": "CA",
-        "profile_pic_url": "https://flyingcdn-942385.b-cdn.net/wp-content/uploads/2018/03/Awesome-Profile-Pictures-for-Guys-look-away2.jpg"
+        "profile_pic_url": "https://www.whitehouse.gov/wp-content/uploads/2021/04/P20210303AS-1901-cropped.jpg"
     },
     {
         "email": "user6@gmail.com",
