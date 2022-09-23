@@ -13,7 +13,7 @@ def random_users_list():
 def seed_posts():
     posts = [
     {
-        "post_url": "https://images.squarespace-cdn.com/content/v1/59b8646aa803bb682a0789da/1651015840903-FQYQ4F81A6I0AH4F46Q1/IMG_1678.jpg?format=2500w",
+        "post_url": "https://hips.hearstapps.com/clv.h-cdn.co/assets/16/08/1456262739-cl-speckled-malted-coconut-cake.jpg",
         "owner_id": 1,
         "city": "Los Angeles",
         "state": "California",
