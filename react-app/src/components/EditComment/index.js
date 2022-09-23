@@ -27,12 +27,12 @@ const EditComment = ({ comment, setShowEditTextField }) => {
 
     return (
         <form id="edit-comment-form" onSubmit={editSubmitted}>
-            <input
+            <textarea
             id="edit-comment-input-textarea"
             type="textarea"
             value={commentContent}
             onChange={(e) => setCommentContent(e.target.value)}>
-            </input>
+            </textarea>
             <button id="edit-comment-submit-button" type="submit">Submit</button>
         </form>
     )

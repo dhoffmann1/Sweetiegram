@@ -4,7 +4,7 @@ import { createCommentThunk } from "../../store/comments";
 import { getPosts } from "../../store/post";
 import "./NewCommentForm.css"
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId, modal }) => {
   const dispatch = useDispatch();
 
   const [content, setContent] = useState("");
@@ -18,23 +18,31 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-
-
-        <form id="create-new-comment-form" onSubmit={handleSubmit}>
-          <label>
-            <textarea
-              id="content-area-input"
-              type="textarea"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              required
-              placeholder="Add a comment..."
-            />
-          </label>
-          <button id="comment-submit-button" type="submit">
-            Post
-          </button>
-        </form>
+    <form id="create-new-comment-form" onSubmit={handleSubmit}>
+      <label>
+        {modal &&
+        (<textarea
+          id="content-area-input-modal"
+          type="textarea"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+          placeholder="Add a comment..."
+        />)}
+        {!modal &&
+        (<textarea
+          id="content-area-input"
+          type="textarea"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+          placeholder="Add a comment..."
+        />)}
+      </label>
+      <button id="comment-submit-button" type="submit">
+        Post
+      </button>
+    </form>
   );
 };
 

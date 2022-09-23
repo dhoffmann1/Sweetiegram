@@ -5,20 +5,20 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 38px;
+    height: 8%;
     border-bottom:#DBDBDB solid 1px;
 }
-/* className='create-post-form'  */
+
 
 .create-post-back-button{
-    height:38px;
+    height:8%;
     position:absolute;
     left:0px;
     top:0px;
 }
 
 .create-post-next-button{
-    height:38px;
+    height:8%;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -26,7 +26,7 @@
 
 .create-form-post-url-main-container{
     width:100%;
-    height: 620px;
+    height: 100%;
     /* border-radius: 20px; */
     background-color: rgb(237, 171, 181);
 }
@@ -35,7 +35,7 @@
     position:absolute;
     top:0px;
     right:0px;
-    height:38px;
+    height:8%;
 }
 
 .create-post-form-profile-box{
@@ -66,11 +66,11 @@
 
 
 .create-post-form-outer-container{
-    height: 620px;
+    height: 100%;
     /* background-color: coral; */
-    width:920px;
+    width:100%;
     display:flex;
-    align-items: end;
+    align-items: flex-end;
     border-radius: 30px;
     /* justify-content: end; */
 }
@@ -80,26 +80,27 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    width: 400px;
-    align-items: end;
+    width: 40%;
+    align-items: flex-end;
 }
 
 .create-post-image-left-container{
-    width: 520px;
+    width: 60%;
     height: 100%;
 }
 
 .create-form-post-preview-image{
-    height:100%;
+    height:93%;
     width: 100%;
-    max-height: 602px;
-    min-height: 602px;
+    max-height:94%;
+    min-height: 94%;
 }
 
 .create-post-input-field{
     height: 38px;
     width:100%;
     box-sizing: border-box;
+    border: 1px #DBDBDB solid;
 }
 
 .create-post-left-pic{
@@ -111,8 +112,16 @@
     display: flex;
     flex-direction: row;
     height: 100%;
+    width:100%;
+    justify-content: center;
+}
+
+.create-post-outer-form-container{
+    width:100%;
+    height: 100%;
 }
 
 .validation-errors{
     color:red;
+
 }

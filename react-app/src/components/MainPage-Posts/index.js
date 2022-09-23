@@ -15,23 +15,12 @@ const MainPagePosts = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const posts = useSelector(state => Object.values(state.posts))
-    console.log('allPosts in mainpage', posts)
-
     const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
     const [postToShowInModal, setPostToShowInModal] = useState(null)
 
     useEffect(() => {
         dispatch(getPosts())
     }, [dispatch])
-
-    // let postForModal;
-    // const showModal = post => {
-    //     setShowPostDetailsModal(true)
-    //     // console.log(post)
-    //     postForModal = post;
-
-    //     return
-    // }
 
     const allPosts = posts.map((post) => {
         if (!post) return null
@@ -59,7 +48,6 @@ const MainPagePosts = () => {
 
         let commentsLink
         if (comments.length >= 2) {
-            console.log('post in commentsLink', post)
             commentsLink = (
                 // Going to add an onclick that directs to the profile id of that post
                 <div onClick={() => {
@@ -112,11 +100,18 @@ const MainPagePosts = () => {
         const datePosted = new Date(createdAt)
         const now = Date.now()
         const milliseconds = Math.abs(now - datePosted)
+        const minutes = Math.ceil(milliseconds / (1000 * 60))
         const hours = Math.ceil(milliseconds / (1000 * 60 * 60))
         const days = Math.ceil(milliseconds / (1000 * 60 * 60 * 24))
 
         let postTimer
-        if (hours < 24) {
+        if (minutes < 60) {
+            postTimer = (
+                <>
+                    {minutes} minutes ago
+                </>
+            )
+        } else if (hours < 24) {
             postTimer = (
                 <>
                     {hours} hours ago
@@ -187,7 +182,6 @@ const MainPagePosts = () => {
                 </div>
             </div>
         )
-
     })
 
     return (

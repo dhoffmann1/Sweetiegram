@@ -121,10 +121,7 @@ function MainPage() {
                     <div>
                         {groupMembers}
                     </div>
-
-
                 </div>
-
             </>
         )
 

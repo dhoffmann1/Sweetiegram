@@ -22,8 +22,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     #relationships
-    posts = db.relationship("Post", back_populates="user")
-    comments = db.relationship("Comment", back_populates="user")
+    posts = db.relationship("Post", back_populates="user", cascade="all, delete")
+    comments = db.relationship("Comment", back_populates="user", cascade="all, delete")
     user_likes = db.relationship("Post", back_populates="post_likes", secondary=likes, cascade="all, delete")
     # changed below: primaryjoin & secondary joins
     followers = db.relationship(
@@ -77,11 +77,11 @@ class User(db.Model, UserMixin):
 
     def to_dict_for_follows(self):
         return {
-            # want to add, username and profile picture to here? 
+            # want to add, username and profile picture to here?
                 "id": self.id,
                 "followers": [user.to_dict_for_all_posts() for user in self.followers],
                 "following_users": [user.to_dict_for_all_posts() for user in self.following],
                 "numFollowing": len(self.following),
                 "numFollowers": len(self.followers),
-                
+
         }
