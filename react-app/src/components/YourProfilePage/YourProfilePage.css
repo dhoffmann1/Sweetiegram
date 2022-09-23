@@ -234,3 +234,18 @@
     justify-content: center;
     /* align-items: cente; */
 }
+
+#profile-follow-button, #profile-unfollow-button {
+    border: lightgray solid 1px;
+    background-color: #458EFF;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

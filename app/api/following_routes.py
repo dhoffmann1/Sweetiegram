@@ -10,7 +10,7 @@ def follows(id):
     user = User.query.get(id)
     if user == None:
         return {"message": "user couldn't be found"}, 404
-    
+
     return user.to_dict_for_follows()
 
 
@@ -31,7 +31,7 @@ def add_following(id):
         return {"message": f"You are already following user {id}"}
     current_user.following.append(user)
     db.session.commit()
-    return current_user.to_dict_for_follows()
+    return current_user.to_dict()
 
 
 @follow_routes.route("/<int:id>/following", methods=["DELETE"])
