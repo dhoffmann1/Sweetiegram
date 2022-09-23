@@ -5,10 +5,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 38px;
+    height: 8%;
     border-bottom:#DBDBDB solid 1px;
 }
-/* className='create-post-form'  */
+
 
 .create-post-back-button{
     height:38px;
@@ -26,7 +26,7 @@
 
 .create-form-post-url-main-container{
     width:100%;
-    height: 620px;
+    height: 100%;
     /* border-radius: 20px; */
     background-color: rgb(237, 171, 181);
 }
@@ -66,9 +66,9 @@
 
 
 .create-post-form-outer-container{
-    height: 620px;
+    height: 100%;
     /* background-color: coral; */
-    width:920px;
+    width:100%;
     display:flex;
     align-items: end;
     border-radius: 30px;
@@ -80,20 +80,20 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 40%;
     align-items: end;
 }
 
 .create-post-image-left-container{
-    width: 520px;
+    width: 60%;
     height: 100%;
 }
 
 .create-form-post-preview-image{
-    height:100%;
+    height:93%;
     width: 100%;
-    max-height: 602px;
-    min-height: 602px;
+    max-height:93%;
+    min-height: 93%;
 }
 
 .create-post-input-field{
@@ -110,6 +110,13 @@
 .form-step-1-main-content-container{
     display: flex;
     flex-direction: row;
+    height: 100%;
+    width:100%;
+    justify-content: center;
+}
+
+.create-post-outer-form-container{
+    width:100%;
     height: 100%;
 }
 

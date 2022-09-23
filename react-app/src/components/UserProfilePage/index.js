@@ -16,7 +16,7 @@ const UserProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const {userId} = useParams();
-    const [showPostDetailsModal , setShowPostDetailsModal] = useState(false)
+    const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
     const [postToShowInModal, setPostToShowInModal] = useState(null)
 
     const posts = useSelector(state => Object.values(state.posts))
@@ -32,10 +32,10 @@ const UserProfilePage = () => {
     console.log('SEARCHED user obj:', user)
     console.log('POSTS:', posts)
 
-    const handleOpenPost = (e, post) => {
-        setPostToShowInModal(post)
-        setShowPostDetailsModal(true)
-    }
+    // const handleOpenPost = (e, post) => {
+    //     setPostToShowInModal(post)
+    //     setShowPostDetailsModal(true)
+    // }
 
     // console.log('profile pic url:', user.profilePicUrl)
     useEffect(() => {
@@ -126,13 +126,19 @@ const UserProfilePage = () => {
                         <div className="four-profile-container">
                             {
                                 posts.map(post => (
-                                    <div className="post-image-card-container">
+                                    <div key={post.id} className="post-image-card-container"
+                                        onClick={()=> {
+                                            setPostToShowInModal(post);
+                                            setShowPostDetailsModal(true);
+                                        }}
+                                    >
                                         <img className='profile-post-image-pic' src={post.postUrl}/>
                                     </div>
                                 ))
                             }
                         </div>
                     )}
+                    {showPostDetailsModal && <PostDetailsModal setShowPostDetailsModal={setShowPostDetailsModal} post={postToShowInModal}/>}
                     {posts.length <= 0 && (is_following || currentUser.id == user.id) && (
                         <div className='no-posts-message-container'>
                             <div className="no-posts-top-row">
