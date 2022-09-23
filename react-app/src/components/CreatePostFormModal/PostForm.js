@@ -14,10 +14,7 @@ const PostForm = ({setPostFormModal, post}) => {
     const [caption, setCaption] = useState('')
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
-    // you only need to check errors for post url
-    // const [postUrlErrors, setPostUrlErrors] = useState([])
-    // const [captionErrors, seCaptionErrors] = useState([])
-    // optional: video or image type
+
     const [isVideo,setVideo] = useState(false)
 
     // console.log('form step:', formStep)
@@ -113,7 +110,7 @@ const PostForm = ({setPostFormModal, post}) => {
                 <h3>Create new post</h3>
                 {formStep==1 && shareButton}
             </div>
-            <div>
+            <div className='create-post-outer-form-container'>
                 <form id='create-post-actual-form' className="create-post-form-outer-container" onSubmit={handleSubmit} >
                     {formStep === 0 && (
                         <>
@@ -122,6 +119,7 @@ const PostForm = ({setPostFormModal, post}) => {
                                     type='text'
                                     onChange={onImageChange}
                                     placeholder="Post url"
+                                    style={{height:"6%"}}
                                 />
                                 {/* <input type="file" onChange={onImageChange} className="create-post-filetype" /> */}
                                 <img className='create-form-post-preview-image' src={postUrl? postUrl: null} />

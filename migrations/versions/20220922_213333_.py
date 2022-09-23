@@ -1,7 +1,7 @@
-"""empty message
+"""create tables
 
 Revision ID: d09897fafc58
-Revises: 
+Revises:
 Create Date: 2022-09-22 21:33:33.425831
 
 """

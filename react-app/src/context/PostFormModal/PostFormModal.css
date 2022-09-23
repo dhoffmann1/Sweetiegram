@@ -1,7 +1,7 @@
 #modal-content.post-form-modal-content{
     /* background-color: green; */
-    height: 620px;
-    width: 920px;
+    height: 70%;
+    width: 70%;
     flex-direction: column;
     display: flex;
     justify-content: flex-start;
