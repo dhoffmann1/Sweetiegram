@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 const PostForm = ({post}) => {
     const dispatch = useDispatch();
     const history= useHistory();
-    console.log('post:', post)
+
     const sessionUser = useSelector(state => state.session.user)
     // const [postUrl, setPostUrl] = useState(post.postUrl? post.postUrl : '')
     const [city, setCity] = useState(post.city||'')
@@ -51,7 +51,7 @@ const PostForm = ({post}) => {
             country,
             caption
         }
-        console.log('post: ', post)
+
         dispatch(editPost(post.id, post))
         alert("Post updated!")
         setHasSubmitted(false)

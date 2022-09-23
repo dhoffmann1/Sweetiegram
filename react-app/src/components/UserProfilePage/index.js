@@ -53,11 +53,11 @@ const UserProfilePage = () => {
     useEffect(() => {
         dispatch(getUserDetail(userId))
             .then(res => {
-                console.log('THIS IS THE RES STATUS', res.statusCode)
+                
                 if (res.status >= 400 && res.status < 600) return Promise.reject(res)
             })
             .catch(async (res) => {
-                console.log('THIS IS THE RES STATUS', res.statusCode)
+                
                 history.push('/unknown')
                 return
             });

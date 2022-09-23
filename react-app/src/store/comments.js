@@ -51,7 +51,6 @@ export const readCommentsThunk = (postId) => async dispatch => {
         dispatch(readComments(comments))
         return comments
     }
-
 }
 
 export const createCommentThunk = (postId, comment) => async dispatch => {

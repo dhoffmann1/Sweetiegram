@@ -17,8 +17,6 @@ const PostForm = ({setPostFormModal, post}) => {
 
     const [isVideo, setVideo] = useState(false)
 
-    // console.log('form step:', formStep)
-    console.log('post url:', postUrl)
 
     useEffect(()=>{
         let errors=[]
@@ -66,9 +64,9 @@ const PostForm = ({setPostFormModal, post}) => {
     //       let status = request.status;
     //       if (request.status == 200) //if(statusText == OK)
     //       {
-    //         console.log("image exists");
+    //  
     //       } else {
-    //         console.log("image doesn't exist");
+    //
     //       }
     //     }
     //   }
@@ -92,8 +90,6 @@ const PostForm = ({setPostFormModal, post}) => {
         dispatch(createPost(post)).then(()=> setPostFormModal(false))
         alert('Post successfully created!')
         setHasSubmitted(false)
-        console.log('post from handleSubmit PostForm', post)
-        // console.log('post form submitted')
         return
     }
 

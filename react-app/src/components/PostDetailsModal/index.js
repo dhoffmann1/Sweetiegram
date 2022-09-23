@@ -4,7 +4,7 @@ import PostDetails from './PostDetails';
 
 function PostDetailsModal({ setShowPostDetailsModal, post }) {
   // const [showModal, setShowModal] = useState(false);
-  console.log('should go to post details modal component')
+
   return (
     <>
       {/* <div id="signup-button" onClick={() => setShowModal(true)}>Log in</div> */}

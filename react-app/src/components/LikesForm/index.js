@@ -14,7 +14,7 @@ function postLikes() {
 
     //how am i going to get the post id? 
     const posts = useSelector(state => Object.values(state.posts))
-    console.log(posts)
+
     
     useEffect(() => {
         dispatch()

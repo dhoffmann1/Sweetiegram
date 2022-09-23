@@ -91,7 +91,6 @@ export const getYourPosts = () => async dispatch => {
     const response = await fetch(`/api/users/posts`)
     if (response.ok){
         const posts = await response.json()
-        console.log('posts data from YOUR profile route in thunk:', posts )
         dispatch(loadYourPosts(posts))
     }
 
@@ -101,7 +100,6 @@ export const getUserPosts = (userId) => async dispatch => {
     const response = await fetch(`/api/users/${userId}/posts`)
     if (response.ok){
         const posts = await response.json()
-        console.log('posts data from USER profile route in thunk:', posts )
         dispatch(loadUserPosts(posts))
     }
 }
@@ -124,7 +122,7 @@ export const editPost = (id, payload) => async dispatch => {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
     })
-    console.log('response in editPost:', response)
+
     if (response.ok){
         const post = await response.json()
         dispatch(update(post))

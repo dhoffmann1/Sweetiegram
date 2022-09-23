@@ -14,8 +14,7 @@ const YourProfilePage = () => {
     const posts = useSelector(state => Object.values(state.posts))
     const user = useSelector(state => state.session.user)
     const followings = useSelector(state => Object.values(state.followings))
-    console.log('user obj:', user)
-    console.log('followings:', followings)
+   
 
     useEffect(()=>{
         dispatch(getYourPosts())

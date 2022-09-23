@@ -9,7 +9,6 @@ import "./AllPostsPage.css"
 const AllPostsPage = () => {
     const dispatch = useDispatch();
     const users = useSelector(state => Object.values(state.users))
-    console.log('all users', users)
     useEffect(() => {
         dispatch(getAllUsers())
     }, [dispatch])

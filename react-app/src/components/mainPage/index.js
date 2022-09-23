@@ -1,8 +1,7 @@
 import './main.css'
 import MainPagePosts from '../MainPage-Posts/index'
 import Profiles from '../profiles/index'
-import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink, useHistory } from "react-router-dom"
 import React from 'react'
 
@@ -133,9 +132,11 @@ function MainPage() {
                 <div className="container-page">
                     <div className="left-main">
                         <div className='left-main-container'>
+                            {/* {followings.length > 0 && ( */}
                             <div className="storiesbox">
                                 {Profiles()}
                             </div>
+                            {/* )} */}
                             <div>
                                 {MainPagePosts()}
                             </div>
