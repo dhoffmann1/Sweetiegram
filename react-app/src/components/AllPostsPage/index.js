@@ -18,7 +18,6 @@ const AllPostsPage = () => {
 
     return (
         <>
-            <h3>All Posts </h3>
             <div className="all-posts-main-container">
                 <div className='all-posts-main-grid-container'>
                     {users.length>0 && users.map(user=> (
