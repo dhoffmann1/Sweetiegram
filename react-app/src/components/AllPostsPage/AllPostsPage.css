@@ -5,22 +5,43 @@
 }
 
 .all-posts-main-container{
-    
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .all-posts-main-grid-container{
     display: grid;
-    background-color: lightblue;
+    /* background-color: lightblue; */
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(auto-fill);
     grid-column-gap: 2%;
     grid-row-gap: 5%;
     width: 80vw;
+    height:100%;
 
 }
 
 .all-posts-post-container{
-    background-color: bisque;
+    background-color: white;
     width: 100%;
+    border: 2px #DBDBDB solid;
+    /* border-radius: 3%; */
+    display: flex;
+    flex-direction: row;
+    height:100%;
 
+
+}
+
+.all-posts-user-profile-pic-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+.all-posts-navlink{
+    text-decoration: none;
 }

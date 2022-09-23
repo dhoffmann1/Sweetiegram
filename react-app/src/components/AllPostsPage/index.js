@@ -2,15 +2,16 @@ import {NavLink} from "react-router-dom"
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useState, useEffect} from 'react'
-import { getAllPosts } from "../../store/post"
+// import { getAllPosts } from "../../store/post"
+import { getAllUsers } from "../../store/user"
 import "./AllPostsPage.css"
 
 const AllPostsPage = () => {
     const dispatch = useDispatch();
-    const posts = useSelector(state => Object.values(state.posts))
-    console.log('all posts:', posts)
+    const users = useSelector(state => Object.values(state.users))
+    console.log('all users', users)
     useEffect(()=> {
-        dispatch(getAllPosts())
+        dispatch(getAllUsers())
     }, [dispatch])
 
     // const allPosts = posts.map((post)=>)
@@ -20,12 +21,18 @@ const AllPostsPage = () => {
             <h3>All Posts </h3>
             <div className="all-posts-main-container">
                 <div className='all-posts-main-grid-container'>
-                    {posts.length>0 && posts.map(post=> (
-                        <div className='all-posts-post-container'>
-                            <img className='all-posts-user-profile-pic'src={post.postUrl}/>
-                            <p> {post.user.username}</p>
-                            <p>{post.user.firstName} {post.user.lastName}</p>
-                        </div>
+                    {users.length>0 && users.map(user=> (
+                            <NavLink className='all-posts-navlink' to={user? `/users/${user.id}` : '/allposts'}>
+                                <div className='all-posts-post-container'>
+                                    <div className='all-posts-user-profile-pic-container'>
+                                        <img className='all-posts-user-profile-pic'src={user?.profilePicUrl}/>
+                                    </div>
+                                    <div>
+                                        <p> {user?.username}</p>
+                                        <p>{user?.firstName} {user?.lastName}</p>
+                                    </div>
+                                </div>
+                            </NavLink>
                     ))}
                 </div>
             </div>
