@@ -16,24 +16,26 @@ const UserProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const {userId} = useParams();
+    // console.log(userId)
     const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
     const [postToShowInModal, setPostToShowInModal] = useState(null)
 
     let posts = useSelector(state => Object.values(state.posts))
     const currentUser = useSelector(state => state.session.user)
     const user = useSelector(state => state.users.user)
+    // console.log(user)
     const followings = useSelector(state => Object.values(state.followings))
 
     const [forceRender, setForceRender] = useState(false)
     posts = posts.filter(post => post?.ownerId === user?.id)
 
-    console.log('followings:', followings)
+    // console.log('followings:', followings)
     // print('user id:', userId)
     // get user id from posts response from db
     // const user = posts[0]?.user
 
-    console.log("current user logged in:", currentUser)
-    console.log('SEARCHED user obj:', user)
+    // console.log("current user logged in:", currentUser)
+    // console.log('SEARCHED user obj:', user)
     // console.log('POSTS:', posts)
 
     // const handleOpenPost = (e, post) => {
@@ -45,7 +47,7 @@ const UserProfilePage = () => {
     useEffect(() => {
         dispatch(getUserPosts(userId))
         return () => resetUserPosts()
-    }, [dispatch, forceRender])
+    }, [dispatch, forceRender, userId])
 
     // TODO: how to stop someone from sending a bad url request (eg. with ID?)
     useEffect(() => {
@@ -59,12 +61,12 @@ const UserProfilePage = () => {
                 history.push('/unknown')
                 return
             });
-    }, [dispatch, forceRender])
+    }, [dispatch, forceRender, userId])
 
     useEffect(() => {
         dispatch(getFollowings(userId))
         return () => resetFollowings()
-    }, [dispatch, forceRender])
+    }, [dispatch, forceRender, userId])
 
     let is_following = user?.followers.includes(currentUser?.id)
     // let following_id;
@@ -83,7 +85,7 @@ const UserProfilePage = () => {
                             <img className="profile-page-profile-pic" src={user.profilePicUrl} />
                         </div>
                         <div className='profile-text-box'>
-                            <div className='username-box profile-page-text-row'>
+                            <div className='username-box profile-page-text-row' id='profile-page-username-follow-button-container'>
                                 <h3 className="username-title">{user.username}</h3>
                                 {!is_following && currentUser.id !== user.id && <div id="profile-follow-button" onClick={() => {
                                     dispatch(createFollowingsThunk(user.id))
@@ -94,12 +96,12 @@ const UserProfilePage = () => {
                                     setForceRender(!forceRender)
                                 }}>Unfollow</div>}
 
-                                <div style={{ marginLeft: "8px", border: "1px solid #DBDBDB", borderRadius: "3px", display: "flex", alignItems: "center" }}>Edit profile</div>
+                                {/* <div style={{ marginLeft: "8px", border: "1px solid #DBDBDB", borderRadius: "3px", display: "flex", alignItems: "center" }}>Edit profile</div> */}
                                 {/* <svg style={{ marginLeft: "8px" }} aria-label="Options" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" fill="none" r="8.635" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle><path d="M14.232 3.656a1.269 1.269 0 01-.796-.66L12.93 2h-1.86l-.505.996a1.269 1.269 0 01-.796.66m-.001 16.688a1.269 1.269 0 01.796.66l.505.996h1.862l.505-.996a1.269 1.269 0 01.796-.66M3.656 9.768a1.269 1.269 0 01-.66.796L2 11.07v1.862l.996.505a1.269 1.269 0 01.66.796m16.688-.001a1.269 1.269 0 01.66-.796L22 12.93v-1.86l-.996-.505a1.269 1.269 0 01-.66-.796M7.678 4.522a1.269 1.269 0 01-1.03.096l-1.06-.348L4.27 5.587l.348 1.062a1.269 1.269 0 01-.096 1.03m11.8 11.799a1.269 1.269 0 011.03-.096l1.06.348 1.318-1.317-.348-1.062a1.269 1.269 0 01.096-1.03m-14.956.001a1.269 1.269 0 01.096 1.03l-.348 1.06 1.317 1.318 1.062-.348a1.269 1.269 0 011.03.096m11.799-11.8a1.269 1.269 0 01-.096-1.03l.348-1.06-1.317-1.318-1.062.348a1.269 1.269 0 01-1.03-.096" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg> */}
 
                             </div>
                             <div className='posts-follows-following-box profile-page-text-row'>
-                                {user.numPosts && (<div><b>{user.numPosts}</b> Posts</div>)}
+                                <div><b>{user.numPosts}</b> Posts</div>
                                 <div style={{ marginLeft: "30px" }}><b>{user.numFollowers}</b> Followers</div>
                                 <div style={{ marginLeft: "30px" }}><b>{user.numFollowing}</b> Following</div>
                             </div>
@@ -113,12 +115,12 @@ const UserProfilePage = () => {
                             <div className='users-following-links-box'>
                                 {followings.map(user => (
                                     <div>
-                                        {/* <NavLink to={`/users/${user.id}`}> */}
+                                        <NavLink className='navlinks' exact to={`/users/${user.id}`}>
                                         <div className='user-following-profile-link-container'>
                                             {user && (<img className="user-following-profile-pic" src={user.profilePicUrl} />)}
                                             <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
                                         </div>
-                                        {/* </NavLink> */}
+                                        </NavLink>
                                     </div>
                                 ))}
                             </div>

@@ -15,7 +15,7 @@ const PostForm = ({setPostFormModal, post}) => {
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    const [isVideo,setVideo] = useState(false)
+    const [isVideo, setVideo] = useState(false)
 
     // console.log('form step:', formStep)
     console.log('post url:', postUrl)
@@ -92,6 +92,7 @@ const PostForm = ({setPostFormModal, post}) => {
         dispatch(createPost(post)).then(()=> setPostFormModal(false))
         alert('Post successfully created!')
         setHasSubmitted(false)
+        console.log('post from handleSubmit PostForm', post)
         // console.log('post form submitted')
         return
     }

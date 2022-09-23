@@ -59,7 +59,7 @@ function PostDetails({ setShowPostDetailsModal, post }) {
                       <div id="post-details-owner-info-profile-pic-container">
                         <img id="post-details-owner-info-profile-image" src={user.profilePicUrl} alt="post owner pic" />
                       </div>
-                      <NavLink id="post-details-owner-info-username" to={`/users/${user.id}`}>{user.username}</NavLink>
+                      <NavLink onClick={() => setShowPostDetailsModal(false)} id="post-details-owner-info-username" to={`/users/${user.id}`}>{user.username}</NavLink>
                     </div>
                     {sessionUser.id == post.ownerId && showPostOptions && (
                     <div id='delete-edit-buttons-container'>
@@ -76,7 +76,7 @@ function PostDetails({ setShowPostDetailsModal, post }) {
                 </div>
               </div>
               <div id="post-details-comment-component-section">
-                <Comments post={post}/>
+                <Comments setShowPostDetailsModal={setShowPostDetailsModal} post={post}/>
               </div>
               <div id="post-details-liked-section">
                 <div className='mainpage-posts-icons'>

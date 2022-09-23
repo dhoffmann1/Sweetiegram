@@ -40,3 +40,7 @@ form {
 #demo-user-login-button {
   margin-bottom: 15px;
 }
+
+#login-errors {
+  color: red;
+}

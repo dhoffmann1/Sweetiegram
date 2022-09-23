@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 
 
-const Comments = ({ post }) => {
+const Comments = ({ setShowPostDetailsModal, post }) => {
 
   const loggedInUser = useSelector(state => state.session.user);
   const commentsObj = useSelector((state) => state.comments);
@@ -55,7 +55,7 @@ const Comments = ({ post }) => {
           <div id="comments-caption-profile-pic-container">
             <img id="comments-caption-profile-pic-image" src={post.user.profilePicUrl} alt='userProfilePic' />
           </div>
-          <div id="comments-caption-username-caption"><NavLink id="comments-caption-username" to={`/users/${post.user.id}`}>{post.user.username}</NavLink> {post.caption}</div>
+          <div id="comments-caption-username-caption"><NavLink onClick={() => setShowPostDetailsModal(false)} id="comments-caption-username" to={`/users/${post.user.id}`}>{post.user.username}</NavLink> {post.caption}</div>
         </div>
       </div>
       <div id="comments-all-comments-section">
@@ -67,7 +67,7 @@ const Comments = ({ post }) => {
                   <img id="comments-single-comment-image" src={comment.User.profilePicUrl} alt="profilePicUrl" />
                 </div>
                 <div id="comments-single-comment-username-createdAt-wrapper">
-                  <div id="comments-single-comment-username-content"><NavLink id="comments-single-comment-username" to={`/users/${comment.User.id}`}>{comment.User.username}</NavLink> {comment.content}</div>
+                  <div id="comments-single-comment-username-content"><NavLink onClick={() => setShowPostDetailsModal(false)} id="comments-single-comment-username" to={`/users/${comment.User.id}`}>{comment.User.username}</NavLink> {comment.content}</div>
                   <div id="comments-single-comment-createAt-edit-delete-buttons-container">
                     <div id="comments-single-comment-createdAt">{postTimerFunc(comment)}</div>
                     <div id="comments-single-comment-edit-delete-buttons-container">
