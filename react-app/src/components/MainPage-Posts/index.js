@@ -100,11 +100,18 @@ const MainPagePosts = () => {
         const datePosted = new Date(createdAt)
         const now = Date.now()
         const milliseconds = Math.abs(now - datePosted)
+        const minutes = Math.ceil(milliseconds / (1000 * 60))
         const hours = Math.ceil(milliseconds / (1000 * 60 * 60))
         const days = Math.ceil(milliseconds / (1000 * 60 * 60 * 24))
 
         let postTimer
-        if (hours < 24) {
+        if (minutes < 60) {
+            postTimer = (
+                <>
+                    {minutes} minutes ago
+                </>
+            )
+        } else if (hours < 24) {
             postTimer = (
                 <>
                     {hours} hours ago
