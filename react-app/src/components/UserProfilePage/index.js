@@ -19,12 +19,13 @@ const UserProfilePage = () => {
     const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
     const [postToShowInModal, setPostToShowInModal] = useState(null)
 
-    const posts = useSelector(state => Object.values(state.posts))
+    let posts = useSelector(state => Object.values(state.posts))
     const currentUser = useSelector(state => state.session.user)
     const user = useSelector(state => state.users.user)
     const followings = useSelector(state => Object.values(state.followings))
 
     const [forceRender, setForceRender] = useState(false)
+    posts = posts.filter(post => post?.ownerId === user?.id)
 
     console.log('followings:', followings)
     // print('user id:', userId)
@@ -140,14 +141,17 @@ const UserProfilePage = () => {
                         <div className="four-profile-container">
                             {
                                 posts.map(post => (
+                                    // console.log(post.ownerId)
+                                    // console.log(user.id)
+                                    // {post.ownerId === user.id && (
                                     <div key={post.id} className="post-image-card-container"
                                         onClick={()=> {
                                             setPostToShowInModal(post);
                                             setShowPostDetailsModal(true);
-                                        }}
-                                    >
+                                        }}>
                                         <img className='profile-post-image-pic' src={post.postUrl}/>
                                     </div>
+                                    // }
                                 ))
                             }
                         </div>
