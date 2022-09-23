@@ -42,10 +42,10 @@ const NavBar = () => {
     return (
       <>
         {/* <NavLink exact to="/profile"> */}
-          <button className='nav-profile-bttn' onClick={() => setOpen(!open)} >
-            <i class="fa-regular fa-circle-user"></i>
-          </button>
-          {open && dropDownMenu}
+        <button className='nav-profile-bttn' onClick={() => setOpen(!open)} >
+          <i class="fa-regular fa-circle-user"></i>
+        </button>
+        {open && dropDownMenu}
         {/* </NavLink> */}
       </>
     )
@@ -60,12 +60,6 @@ const NavBar = () => {
               <h1 className='Sweetiegram-logo'> Sweetiegram</h1>
             </NavLink>
           </div>
-          {/* here */}
-          <NavLink to='/allposts'>
-            <div className='link-to-all-posts-container'>
-              <button className='see-all-posts-button'> See all posts </button>
-            </div>
-          </NavLink>
           <div className='navLinks'>
             <div>
               <NavLink to='/' exact={true} activeClassName='active' style={{ fontSize: "20px", color: "black" }}>
@@ -76,11 +70,11 @@ const NavBar = () => {
               <i class="fa-regular fa-square-plus" >
               </i>
             </div>
-            {/* <div> */}
-              {/* <NavLink to='/users' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>
+            <div>
+              <NavLink to='/allposts' exact={true} activeClassName='active' style={{ fontSize: "25px", color: "black" }}>
                 <i class="fa-solid fa-magnifying-glass"></i>
-              </NavLink> */}
-            {/* </div> */}
+              </NavLink>
+            </div>
             <div>
               {profileMenu()}
             </div>
