@@ -33,7 +33,7 @@ const PostForm = ({setPostFormModal, post}) => {
     //     }
     // }, [caption])
     let shareButton = (
-        <button form='create-post-actual-form' style={{fontSize:'14px',color:"#39B5F9", backgroundColor:'white', border:'none'}} type="submit" className="create-post-submit-button">
+        <button form='create-post-actual-form' style={{fontSize:'14px', boxSizing: "border-box", color:"#39B5F9", backgroundColor:'white', border:'none'}} type="submit" className="create-post-submit-button">
             Share
         </button>
     )
@@ -64,7 +64,7 @@ const PostForm = ({setPostFormModal, post}) => {
     //       let status = request.status;
     //       if (request.status == 200) //if(statusText == OK)
     //       {
-    //  
+    //
     //       } else {
     //
     //       }
@@ -100,7 +100,7 @@ const PostForm = ({setPostFormModal, post}) => {
                     <button style={{fontSize:'14px',color:"#39B5F9", backgroundColor:'white', border:'none'}} className="create-post-next-button" onClick={e=> setFormStep(prev=> prev+1)} type='button'>Next</button>
                 )}
                 {formStep == 1 && (
-                    <button style={{backgroundColor:'white', border:'none'}} type='button' className="create-post-back-button" onClick={e =>setFormStep(prev=> prev - 1)}>
+                    <button style={{boxSizing: "border-box", backgroundColor:'white', border:'none'}} type='button' className="create-post-back-button" onClick={e =>setFormStep(prev=> prev - 1)}>
                         <svg aria-label="Back" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline></svg>
                     </button>
                 )}
@@ -116,7 +116,7 @@ const PostForm = ({setPostFormModal, post}) => {
                                     type='text'
                                     onChange={onImageChange}
                                     placeholder="Post url"
-                                    style={{height:"6%"}}
+                                    style={{color:"black", backgroundColor:"#cbefef", height:"6%",boxSizing: "border-box", width: "100%"}}
                                 />
                                 {/* <input type="file" onChange={onImageChange} className="create-post-filetype" /> */}
                                 <img className='create-form-post-preview-image' src={postUrl? postUrl: null} />
