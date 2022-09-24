@@ -75,12 +75,14 @@ const AllPostsPage = () => {
 
     return (
         <>
+            {/* <div style={{ display: 'flex', flexDirection: "column" }}> */}
+            <h1 style={{ marginLeft: '5%' }}> Here are some suggested users: </h1>
             <div className="all-posts-main-container">
                 <div className='all-posts-main-grid-container'>
                     {users.length > 0 && allPostsMenu}
                 </div>
             </div>
-
+            {/* </div> */}
         </>
     )
 }
