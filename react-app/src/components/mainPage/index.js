@@ -94,16 +94,18 @@ function MainPage() {
                     <div className='mainpage-group-img-container'>
                         {/* <img src={} className='mainpage-right-img'></img> */}
                     </div>
-                    <div className='mainpage-right-username-name-container'>
-                        <div className='mainpage-suggestions-username'>
-                            Tiffany Yang
+                    <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" style={{ textDecoration: 'none' }}>
+                        <div className='mainpage-right-username-name-container'>
+                            <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
+                                Tiffany Yang
+                            </div>
+                            <div className='mainpage-suggestions-name'>
+                                Sweetiegram recommended
+                            </div>
                         </div>
-                        <div className='mainpage-suggestions-name'>
-                            Sweetiegram recommended
-                        </div>
-                    </div>
+                    </a>
                     <div className='mainpage-follow-button-container'>
-                        <a href='' target="_blank" className='github-link'> Follow</a>
+                        <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" className='github-link'> Follow</a>
                     </div>
                 </div>
 
