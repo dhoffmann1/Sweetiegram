@@ -134,11 +134,11 @@ function MainPage() {
                 <div className="container-page">
                     <div className="left-main">
                         <div className='left-main-container'>
-                            {followings.length < 0 && (
-                                <div className="storiesbox">
-                                    {Profiles()}
-                                </div>
-                            )}
+                            {/* {followings.length > 0 && ( */}
+                            <div>
+                                {Profiles()}
+                            </div>
+                            {/* )} */}
                             <div>
                                 {MainPagePosts()}
                             </div>

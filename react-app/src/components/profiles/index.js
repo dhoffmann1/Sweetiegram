@@ -9,7 +9,7 @@ const Profiles = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const followings = useSelector(state => Object.values(state.followings))
-    // console.log(sessionUser)
+    console.log(followings)
 
     useEffect(() => {
         dispatch(getFollowings(sessionUser.id))
@@ -40,27 +40,39 @@ const Profiles = () => {
             )
         }
 
+        console.log(followers)
+        // if () { }
+
+
         return (
-            <div className='storiesBar-profile'>
-                <NavLink to={`/users/${id}`}>
-                    <div className='storiesBar-profile-container'>
-                        <img src={profilePicUrl} className='storiesBar-profile-pic'></img>
+            <div className='storiesbox'>
+                <div className='storiesBar-profile'>
+                    <NavLink to={`/users/${id}`}>
+                        <div className='storiesBar-profile-container'>
+                            <img src={profilePicUrl} className='storiesBar-profile-pic'></img>
+                        </div>
+                    </NavLink>
+                    <div className='storiesBar-username'>
+                        {storiesUsername}
                     </div>
-                </NavLink>
-                <div className='storiesBar-username'>
-                    {storiesUsername}
                 </div>
             </div>
         )
 
     })
 
+    if (followings.length <= 0) {
+        return (
+            <></>
+        )
+    } else {
 
-    return (
-        <>
-            {storiesBar}
-        </>
-    )
+        return (
+            <>
+                {storiesBar}
+            </>
+        )
+    }
 }
 
 export default Profiles
