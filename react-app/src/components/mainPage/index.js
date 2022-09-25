@@ -120,6 +120,8 @@ function MainPage() {
             </div>
         )
 
+
+
         return (
             <>
                 <div className='mainpage-suggestions'>
@@ -131,6 +133,22 @@ function MainPage() {
                     </div>
                     <div>
                         {groupMembers}
+                    </div>
+                    <div style={{ marginTop: '30px', color: 'rgb(167, 157, 157)' }}>
+                        About:
+                    </div>
+                    <div style={{ marginTop: '30px', color: 'rgb(167, 157, 157)' }}>
+                        <li>
+                            <a href='https://github.com/Pepa90210/Sweetiegram' target="_blank"
+                                style={{ textDecoration: 'none', color: 'black' }}
+                            > Github Repo Link</a>
+                        </li>
+                        <li>
+                            <a href='https://github.com/Pepa90210/Sweetiegram/wiki' target="_blank"
+                                style={{ textDecoration: 'none', color: 'black' }}
+                            > Github Wiki Link</a>
+                        </li>
+
                     </div>
                 </div>
             </>
