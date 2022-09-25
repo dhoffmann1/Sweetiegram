@@ -96,7 +96,6 @@ const MainPagePosts = () => {
             )
         }
 
-
         const datePosted = new Date(createdAt)
         const now = Date.now()
         const milliseconds = Math.abs(now - datePosted)
@@ -131,8 +130,11 @@ const MainPagePosts = () => {
                     <div style={{ marginRight: '15px' }} className="mainpage-interface-icons">
                         {likesComponent}
                     </div>
-                    <div className="mainpage-interface-icons">
-                        <i class="fa-regular fa-comment fa-flip-horizontal" ></i>
+                    <div className="mainpage-interface-icons" onClick={() => {
+                        setPostToShowInModal(post)
+                        setShowPostDetailsModal(true)
+                    }}>
+                        <i id="new-comment-icon" class="fa-regular fa-comment fa-flip-horizontal"></i>
                     </div>
                 </div>
                 <div className='mainpage-posts-likes'>
