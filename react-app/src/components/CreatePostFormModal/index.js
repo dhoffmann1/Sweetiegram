@@ -1,7 +1,4 @@
-import {NavLink} from "react-router-dom"
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {useState, useEffect} from 'react'
 import { Modal } from "../../context/PostFormModal"
 // import { Modal } from "../../context/Modal"
 // import "./PostForm.css"

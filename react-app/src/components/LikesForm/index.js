@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams, useHistory } from 'react-router-dom'
-import { getLikesThunk, createLikesThunk, deleteLikesThunk } from '../../store/likes'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { createLikesThunk, deleteLikesThunk } from '../../store/likes'
 
 
 function postLikes() {
 
     const dispatch = useDispatch()
-    const { postId } = useParams()
-    const [isLoaded, setIsLoaded] = useState(false)
-    const history = useHistory()
-    const sessionUser = useSelector((state) => state.session.user);
+    // const { postId } = useParams()
+    // const [isLoaded, setIsLoaded] = useState(false)
+    // const history = useHistory()
+    // const sessionUser = useSelector((state) => state.session.user);
 
     //how am i going to get the post id? 
-    const posts = useSelector(state => Object.values(state.posts))
+    // const posts = useSelector(state => Object.values(state.posts))
 
-    
+
     useEffect(() => {
         dispatch()
     }, [dispatch])

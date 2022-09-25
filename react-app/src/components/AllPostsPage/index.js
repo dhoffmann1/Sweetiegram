@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom"
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 // import { getAllPosts } from "../../store/post"
 import { getAllUsers } from "../../store/user"
 import "./AllPostsPage.css"

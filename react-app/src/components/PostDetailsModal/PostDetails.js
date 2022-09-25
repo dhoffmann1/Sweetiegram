@@ -8,7 +8,7 @@ import { createLikesThunk, deleteLikesThunk } from "../../store/likes";
 import './PostDetails.css';
 
 function PostDetails({ setShowPostDetailsModal, post }) {
-  const { caption, comments, numLikes, postUrl, user, createdAt, likesUserId } = post
+  const { numLikes, postUrl, user, likesUserId } = post
   const sessionUser = useSelector(state => state.session.user)
   const [showPostOptions, setShowPostOptions] = useState(false)
   const [likePost, setLikePost] = useState(likesUserId.includes(sessionUser.id))

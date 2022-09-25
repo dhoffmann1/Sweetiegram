@@ -11,7 +11,7 @@ import Tiff_photo from './images/tiff.png'
 
 function MainPage() {
     const sessionUser = useSelector((state) => state.session.user);
-    const followings = useSelector(state => Object.values(state.followings))
+    // const followings = useSelector(state => Object.values(state.followings))
     const history = useHistory()
     // console.log(sessionUser)
 

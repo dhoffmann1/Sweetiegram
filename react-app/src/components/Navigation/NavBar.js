@@ -1,8 +1,8 @@
 import './navbar.css'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
+import { useState } from 'react'
 import LogoutButton from '../auth/LogoutButton';
 import CreatePostFormModal from '../CreatePostFormModal';
 // import AllPostsPage from '../AllPostsPage';
@@ -13,9 +13,9 @@ const NavBar = () => {
   // added here
   const [postFormModal, setPostFormModal] = useState(false)
 
-  const handleCreatePost = e => {
-    setPostFormModal(true)
-  }
+  // const handleCreatePost = e => {
+  //   setPostFormModal(true)
+  // }
 
   const profileMenu = () => {
 

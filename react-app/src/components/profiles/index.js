@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { NavLink } from "react-router-dom"
 import { getFollowings } from '../../store/following'
 import React from 'react'
@@ -9,7 +9,7 @@ const Profiles = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const followings = useSelector(state => Object.values(state.followings))
-    console.log(followings)
+    // console.log(followings)
 
     useEffect(() => {
         dispatch(getFollowings(sessionUser.id))
@@ -41,7 +41,7 @@ const Profiles = () => {
         }
 
         return (
-                <div className='storiesBar-profile'>
+                <div className='storiesBar-profile' key={id}>
                     <NavLink to={`/users/${id}`}>
                         <div className='storiesBar-profile-container'>
                             <img src={profilePicUrl} className='storiesBar-profile-pic'></img>

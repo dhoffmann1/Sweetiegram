@@ -26,8 +26,9 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(username, email, password, firstName, lastName, profilePicUrl, bio));
       if (data) {
         setErrors(data)
+      } else {
+        history.push('/allposts')
       }
-      history.push('/allposts')
 
     } else {
       setErrors(['Passwords need to match'])

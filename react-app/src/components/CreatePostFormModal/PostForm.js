@@ -15,7 +15,7 @@ const PostForm = ({setPostFormModal, post}) => {
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
-    const [isVideo, setVideo] = useState(false)
+    // const [isVideo, setVideo] = useState(false)
 
 
     useEffect(()=>{

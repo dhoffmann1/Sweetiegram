@@ -10,6 +10,7 @@
 }
 
 .InstaLogo {
+    display: flex;
     margin-left: 5%;
     font-family: cursive;
     font-size: 22px;
