@@ -14,9 +14,12 @@
 
 .InstaLogo {
     margin-left: 5%;
-    font-family: BillabongW00-Regular;
+    font-family: cursive;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .Sweetiegram-logo {

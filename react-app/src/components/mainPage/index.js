@@ -4,6 +4,10 @@ import Profiles from '../profiles/index'
 import { useSelector } from 'react-redux'
 import { NavLink, useHistory } from "react-router-dom"
 import React from 'react'
+import JB_photo from './images/jb.jpeg'
+import Daniel_photo from './images/daniel.jpg'
+import Ladan_photo from './images/ladan.png'
+import Tiff_photo from './images/tiff.png'
 
 function MainPage() {
     const sessionUser = useSelector((state) => state.session.user);
@@ -39,35 +43,37 @@ function MainPage() {
             <div>
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        {/* <img src={} className='mainpage-right-img'></img> */}
+                        <img src={Daniel_photo} className='mainpage-right-img'></img>
                     </div>
                     <div className='mainpage-right-username-name-container'>
-                        <div className='mainpage-suggestions-username'>
-                            Daniel Hoffmann
-                        </div>
-                        <div className='mainpage-suggestions-name'>
-                            Sweetiegram recommended
-                        </div>
+                        <a href='https://www.linkedin.com/in/danielhoffmann-1/' target="_blank" style={{ textDecoration: 'none' }}>
+                            <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
+                                Daniel Hoffmann
+                            </div>
+                            <div className='mainpage-suggestions-name'>
+                                Sweetiegram recommended
+                            </div>
+                        </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='' target="_blank" className='github-link'> Follow</a>
+                        <a href='https://www.linkedin.com/in/danielhoffmann-1/' target="_blank" className='github-link'> Follow</a>
                     </div>
                 </div>
 
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        {/* <img src={} className='mainpage-right-img'></img> */}
+                        <img src={JB_photo} className='mainpage-right-img'></img>
                     </div>
-                    <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" style={{ textDecoration: 'none' }}>
-                        <div className='mainpage-right-username-name-container'>
+                    <div className='mainpage-right-username-name-container'>
+                        <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" style={{ textDecoration: 'none' }}>
                             <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
                                 JB Kam
                             </div>
                             <div className='mainpage-suggestions-name'>
                                 Sweetiegram recommended
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                     <div className='mainpage-follow-button-container'>
                         <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" className='github-link'> Follow</a>
                     </div>
@@ -75,35 +81,37 @@ function MainPage() {
 
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        {/* <img src={} className='mainpage-right-img'></img> */}
+                        <img src={Ladan_photo} className='mainpage-right-img'></img>
                     </div>
                     <div className='mainpage-right-username-name-container'>
-                        <div className='mainpage-suggestions-username'>
-                            Ladan Nazari
-                        </div>
-                        <div className='mainpage-suggestions-name'>
-                            Sweetiegram recommended
-                        </div>
+                        <a href='https://www.linkedin.com/in/ladan-nazari/ ' target="_blank" style={{ textDecoration: 'none' }}>
+                            <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
+                                Ladan Nazari
+                            </div>
+                            <div className='mainpage-suggestions-name'>
+                                Sweetiegram recommended
+                            </div>
+                        </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='' target="_blank" className='github-link'> Follow</a>
+                        <a href='https://www.linkedin.com/in/ladan-nazari/ ' target="_blank" className='github-link'> Follow</a>
                     </div>
                 </div>
 
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        {/* <img src={} className='mainpage-right-img'></img> */}
+                        <img src={Tiff_photo} className='mainpage-right-img'></img>
                     </div>
-                    <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" style={{ textDecoration: 'none' }}>
-                        <div className='mainpage-right-username-name-container'>
+                    <div className='mainpage-right-username-name-container'>
+                        <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" style={{ textDecoration: 'none' }}>
                             <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
                                 Tiffany Yang
                             </div>
                             <div className='mainpage-suggestions-name'>
                                 Sweetiegram recommended
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                     <div className='mainpage-follow-button-container'>
                         <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" className='github-link'> Follow</a>
                     </div>

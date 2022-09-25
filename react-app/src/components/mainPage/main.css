@@ -8,7 +8,6 @@
 
 .container-page {
 
-
     display: flex;
     width: 75%;
 
@@ -97,13 +96,14 @@
     margin-top: 1.5rem;
     display: flex;
     align-items: center;
+    height: 40px;
 }
 
 
 .mainpage-group-img-container {
-    height: 25px;
-    width: 25px;
-    border: 1px solid black;
+    height: 40px;
+    width: 40px;
+    /* border: 1px solid black; */
     border-radius: 50%;
 }
 
