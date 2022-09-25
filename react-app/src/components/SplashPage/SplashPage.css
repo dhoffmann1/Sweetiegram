@@ -1,5 +1,3 @@
-@import url(//db.onlinewebfonts.com/c/6d32b8e06f40fb7698cfb714b9e7975d?family=BillabongW00-Regular);
-
 html {
   background-color: rgb(241, 241, 241);
 }
@@ -59,7 +57,7 @@ html {
 #splashpage-sweetiegram-logo {
   font-weight: 700;
   font-size: 3em;
-  font-family: BillabongW00-Regular;
+  font-family: cursive;
 }
 
 #splashpage-login-form-textfields {

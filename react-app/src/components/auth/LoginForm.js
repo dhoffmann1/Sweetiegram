@@ -62,15 +62,16 @@ const LoginForm = () => {
           />
         </label>
       </div>
-      {email.length > 0  && password.length > 0 &&
-      <button className='login-form-buttons' id='login-form-submit-button' type='submit'>Log In</button>}
-      {(email.length === 0  || password.length === 0) &&
-      <button className='login-form-buttons' id='login-form-submit-button-disabled' type='submit' disabled={true} >Log In</button>}
+      {email.length > 0 && password.length > 0 &&
+        <button className='login-form-buttons' id='login-form-submit-button' type='submit'>Log In</button>}
+      {(email.length === 0 || password.length === 0) &&
+        <button className='login-form-buttons' id='login-form-submit-button-disabled' type='submit' disabled={true} >Log In</button>}
 
       <button className='login-form-buttons' id='demo-user-login-button' onClick={(e) => {
-        e.preventDefault();
+        // e.preventDefault();
         setEmail('user1@gmail.com');
         setPassword('password')
+        // onLogin()
       }}>Log In as Demo User</button>
     </form>
 
