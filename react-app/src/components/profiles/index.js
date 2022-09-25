@@ -40,12 +40,7 @@ const Profiles = () => {
             )
         }
 
-        console.log(followers)
-        // if () { }
-
-
         return (
-            <div className='storiesbox'>
                 <div className='storiesBar-profile'>
                     <NavLink to={`/users/${id}`}>
                         <div className='storiesBar-profile-container'>
@@ -56,7 +51,6 @@ const Profiles = () => {
                         {storiesUsername}
                     </div>
                 </div>
-            </div>
         )
 
     })
@@ -68,9 +62,9 @@ const Profiles = () => {
     } else {
 
         return (
-            <>
+            <div className='storiesbox'>
                 {storiesBar}
-            </>
+            </div>
         )
     }
 }

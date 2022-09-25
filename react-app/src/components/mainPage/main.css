@@ -27,6 +27,13 @@
     margin-top: 2.8%;
 }
 
+@media screen and (max-width: 900px) {
+    .right-main {
+        display: none;
+    }
+}
+
+
 .mainpage-suggestions {
     margin-left: 5%;
 
