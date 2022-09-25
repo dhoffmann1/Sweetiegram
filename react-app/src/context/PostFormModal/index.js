@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import '../Modal.css';
 import { ModalContext } from '../Modal';

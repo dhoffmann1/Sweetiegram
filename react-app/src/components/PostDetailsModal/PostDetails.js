@@ -47,7 +47,7 @@ function PostDetails({ setShowPostDetailsModal, post }) {
         <div id="post-details-main-grid">
           <div id="post-details-left-main-container">
             <div id="post-details-image-container">
-              <img id="post-details-post-image" src={postUrl} alt="post image"/>
+              <img id="post-details-post-image" src={postUrl} alt="post"/>
             </div>
           </div>
           <div id="post-details-right-main-container">
@@ -61,14 +61,14 @@ function PostDetails({ setShowPostDetailsModal, post }) {
                       </div>
                       <NavLink onClick={() => setShowPostDetailsModal(false)} id="post-details-owner-info-username" to={`/users/${user.id}`}>{user.username}</NavLink>
                     </div>
-                    {sessionUser.id == post.ownerId && showPostOptions && (
+                    {sessionUser.id === post.ownerId && showPostOptions && (
                     <div id='delete-edit-buttons-container'>
                       <NavLink id='post-details-edit-button' to={`/posts/${post.id}/edit`}>EDIT</NavLink>
                       <div id='post-details-delete-button' onClick={() => handleDelete(post.id)}>DELETE</div>
                     </div>
                     )}
                   </div>
-                  {sessionUser.id == post.ownerId && (
+                  {sessionUser.id === post.ownerId && (
                     <div id="post-details-owner-info-three-dots" onClick={() => setShowPostOptions(!showPostOptions)}>
                       <i class="fa-solid fa-ellipsis"></i>
                     </div>

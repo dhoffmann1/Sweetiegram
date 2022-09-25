@@ -25,15 +25,15 @@ const PostForm = ({post}) => {
 
     }, [caption])
 
-    let shareButton = (
-        <button form='update-post-actual-form' style={{fontSize:'14px',color:"#39B5F9", backgroundColor:'white', border:'none'}} type="submit" className="create-post-submit-button">
-            Done
-        </button>
-    )
+    // let shareButton = (
+    //     <button form='update-post-actual-form' style={{fontSize:'14px',color:"#39B5F9", backgroundColor:'white', border:'none'}} type="submit" className="create-post-submit-button">
+    //         Done
+    //     </button>
+    // )
 
-    function isImage(url) {
-        return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-    }
+    // function isImage(url) {
+    //     return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+    // }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -73,14 +73,14 @@ const PostForm = ({post}) => {
                 </div>
                 <div className='update-post-main-content-container'>
                     <div className='update-post-image-container'>
-                        {post && (<img className='update-post-left-pic' src={post.post_url? post.post_url: null}/>)}
+                        {post && (<img className='update-post-left-pic' src={post.post_url? post.post_url: null} alt="post" />)}
                     </div>
                     <form id='update-post-actual-form' onSubmit={handleSubmit} className='update-post-form-outer-container' >
                         {/* copy and pasted */}
                         <div className='update-post-inside-form-container'>
                             <div className='create-post-form-profile-box update-page-small-container'>
                                 <div className='create-post-form-profile-image-container'>
-                                    <img src={sessionUser.profilePicUrl} className='create-post-form-profile-pic'/>
+                                    <img src={sessionUser.profilePicUrl} className='create-post-form-profile-pic' alt="profile" />
                                 </div>
                                 <div className='create-post-form-username-text '>
                                     {sessionUser.username}

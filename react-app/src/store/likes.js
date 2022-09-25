@@ -1,4 +1,4 @@
-const GET_LIKES = 'likes/getLikes'
+// const GET_LIKES = 'likes/getLikes'
 const CREATE_LIKE = 'likes/createLikes'
 const DELETE_LIKE = 'likes/deleteLikes'
 

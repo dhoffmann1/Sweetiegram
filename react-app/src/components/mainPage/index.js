@@ -22,7 +22,7 @@ function MainPage() {
             <div className='mainpage-right-user-container'>
                 <NavLink to={`/users/${sessionUser.id}`}>
                     <div className='mainpage-right-img-container'>
-                        <img src={sessionUser.profilePicUrl} className='mainpage-right-img'></img>
+                        <img src={sessionUser.profilePicUrl} className='mainpage-right-img' alt="right" ></img>
                     </div>
                 </NavLink>
                 <div className='mainpage-right-username-name-container'>
@@ -43,10 +43,10 @@ function MainPage() {
             <div>
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        <img src={Daniel_photo} className='mainpage-right-img'></img>
+                        <img src={Daniel_photo} className='mainpage-right-img' alt="Daniel" ></img>
                     </div>
                     <div className='mainpage-right-username-name-container'>
-                        <a href='https://www.linkedin.com/in/danielhoffmann-1/' target="_blank" style={{ textDecoration: 'none' }}>
+                        <a href='https://www.linkedin.com/in/danielhoffmann-1/' target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
                             <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
                                 Daniel Hoffmann
                             </div>
@@ -56,16 +56,16 @@ function MainPage() {
                         </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='https://www.linkedin.com/in/danielhoffmann-1/' target="_blank" className='github-link'> Follow</a>
+                        <a href='https://www.linkedin.com/in/danielhoffmann-1/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
                 </div>
 
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        <img src={JB_photo} className='mainpage-right-img'></img>
+                        <img src={JB_photo} className='mainpage-right-img' alt="JB" ></img>
                     </div>
                     <div className='mainpage-right-username-name-container'>
-                        <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" style={{ textDecoration: 'none' }}>
+                        <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
                             <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
                                 JB Kam
                             </div>
@@ -75,16 +75,16 @@ function MainPage() {
                         </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" className='github-link'> Follow</a>
+                        <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
                 </div>
 
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        <img src={Ladan_photo} className='mainpage-right-img'></img>
+                        <img src={Ladan_photo} className='mainpage-right-img' alt="Ladan" ></img>
                     </div>
                     <div className='mainpage-right-username-name-container'>
-                        <a href='https://www.linkedin.com/in/ladan-nazari/ ' target="_blank" style={{ textDecoration: 'none' }}>
+                        <a href='https://www.linkedin.com/in/ladan-nazari/ ' target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
                             <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
                                 Ladan Nazari
                             </div>
@@ -94,16 +94,16 @@ function MainPage() {
                         </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='https://www.linkedin.com/in/ladan-nazari/ ' target="_blank" className='github-link'> Follow</a>
+                        <a href='https://www.linkedin.com/in/ladan-nazari/ ' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
                 </div>
 
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
-                        <img src={Tiff_photo} className='mainpage-right-img'></img>
+                        <img src={Tiff_photo} className='mainpage-right-img' alt="Tiffany" ></img>
                     </div>
                     <div className='mainpage-right-username-name-container'>
-                        <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" style={{ textDecoration: 'none' }}>
+                        <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
                             <div className='mainpage-suggestions-username' style={{ color: 'black' }}>
                                 Tiffany Yang
                             </div>
@@ -113,7 +113,7 @@ function MainPage() {
                         </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" className='github-link'> Follow</a>
+                        <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
                 </div>
 
@@ -139,12 +139,12 @@ function MainPage() {
                     </div>
                     <div style={{ marginTop: '30px', color: 'rgb(167, 157, 157)' }}>
                         <li>
-                            <a href='https://github.com/Pepa90210/Sweetiegram' target="_blank"
+                            <a href='https://github.com/Pepa90210/Sweetiegram' target="_blank" rel="noreferrer"
                                 style={{ textDecoration: 'none', color: 'black' }}
                             > Github Repo Link</a>
                         </li>
                         <li>
-                            <a href='https://github.com/Pepa90210/Sweetiegram/wiki' target="_blank"
+                            <a href='https://github.com/Pepa90210/Sweetiegram/wiki' target="_blank" rel="noreferrer"
                                 style={{ textDecoration: 'none', color: 'black' }}
                             > Github Wiki Link</a>
                         </li>

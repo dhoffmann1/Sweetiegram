@@ -13,7 +13,7 @@ const Profiles = () => {
 
     useEffect(() => {
         dispatch(getFollowings(sessionUser.id))
-    }, [dispatch])
+    }, [dispatch, sessionUser.id])
 
 
     let storiesBar = followings.map((followers) => {
@@ -44,7 +44,7 @@ const Profiles = () => {
                 <div className='storiesBar-profile' key={id}>
                     <NavLink to={`/users/${id}`}>
                         <div className='storiesBar-profile-container'>
-                            <img src={profilePicUrl} className='storiesBar-profile-pic'></img>
+                            <img src={profilePicUrl} className='storiesBar-profile-pic' alt="profiles" ></img>
                         </div>
                     </NavLink>
                     <div className='storiesBar-username'>

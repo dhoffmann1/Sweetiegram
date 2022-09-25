@@ -33,7 +33,7 @@ const YourProfilePage = () => {
             <div className="profile-page-main-container">
                 <div className="first-profile-container">
                     <div className="profile-pic-box">
-                        <img className="profile-page-profile-pic" src={user.profilePicUrl} />
+                        <img className="profile-page-profile-pic" src={user.profilePicUrl} alt="profile" />
                     </div>
                     <div className='profile-text-box'>
                         <div className='username-box profile-page-text-row'>
@@ -57,7 +57,7 @@ const YourProfilePage = () => {
                         <div className='users-following-links-box'>
                             {followings.length > 0 && followings.map(user => (
                                 <div className='user-following-profile-link-container'>
-                                    {user && (<img className="user-following-profile-pic" src={user.profilePicUrl} />)}
+                                    {user && (<img className="user-following-profile-pic" src={user.profilePicUrl} alt="profile" />)}
                                     <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
                                 </div>
                             ))}
@@ -82,7 +82,7 @@ const YourProfilePage = () => {
                         {
                             posts.map(post => (
                                 <div className="post-image-card-container">
-                                    <img className='profile-post-image-pic' src={post.postUrl} />
+                                    <img className='profile-post-image-pic' src={post.postUrl} alt="post" />
                                 </div>
                             ))
                         }

@@ -99,13 +99,13 @@ const PostForm = ({setPostFormModal, post}) => {
                 {formStep === 0 && postUrl && (
                     <button style={{fontSize:'14px',color:"#39B5F9", backgroundColor:'white', border:'none'}} className="create-post-next-button" onClick={e=> setFormStep(prev=> prev+1)} type='button'>Next</button>
                 )}
-                {formStep == 1 && (
+                {formStep === 1 && (
                     <button style={{boxSizing: "border-box", backgroundColor:'white', border:'none'}} type='button' className="create-post-back-button" onClick={e =>setFormStep(prev=> prev - 1)}>
                         <svg aria-label="Back" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline></svg>
                     </button>
                 )}
                 <h3>Create new post</h3>
-                {formStep==1 && shareButton}
+                {formStep === 1 && shareButton}
             </div>
             <div className='create-post-outer-form-container'>
                 <form id='create-post-actual-form' className="create-post-form-outer-container" onSubmit={handleSubmit} >
@@ -119,20 +119,20 @@ const PostForm = ({setPostFormModal, post}) => {
                                     style={{color:"black", backgroundColor:"#cbefef", height:"6%",boxSizing: "border-box", width: "100%"}}
                                 />
                                 {/* <input type="file" onChange={onImageChange} className="create-post-filetype" /> */}
-                                <img className='create-form-post-preview-image' src={postUrl? postUrl: null} />
+                                <img className='create-form-post-preview-image' src={postUrl? postUrl: null} alt="preview" />
                             </div>
                         </>
                     )}
                     {formStep === 1 && postUrl && (
                         <div className='form-step-1-main-content-container'>
                             <div className='create-post-image-left-container'>
-                                <img className='create-post-left-pic'src={postUrl}/>
+                                <img className='create-post-left-pic'src={postUrl} alt="create-post-left-pic" />
                             </div>
                             <div className='create-post-form'>
-                                {formStep==1 && (
+                                {formStep === 1 && (
                                     <div className='create-post-form-profile-box'>
                                         <div className='create-post-form-profile-image-container'>
-                                            <img src={sessionUser.profilePicUrl} className='create-post-form-profile-pic'/>
+                                            <img src={sessionUser.profilePicUrl} className='create-post-form-profile-pic' alt="profile-pic" />
                                         </div>
                                         <div className='create-post-form-username-text'>
                                             {sessionUser.username}

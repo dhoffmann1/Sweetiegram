@@ -59,7 +59,7 @@ const AllPostsPage = () => {
                 <NavLink className='all-posts-navlink' to={user ? `/users/${id}` : '/unknown'}>
                     <div className='all-posts-post-container'>
                         <div className='all-posts-user-profile-pic-container'>
-                            <img className='all-posts-user-profile-pic' src={profilePicUrl} />
+                            <img className='all-posts-user-profile-pic' src={profilePicUrl} alt="user-profile" />
                         </div>
                         <div className="allposts-name-container">
                             {maxUsernNameLength}

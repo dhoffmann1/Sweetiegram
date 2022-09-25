@@ -24,12 +24,12 @@ const MainPagePosts = () => {
 
     const allPosts = posts.map((post) => {
         if (!post) return null
-        const { id, caption, comments, numLikes, postUrl, user, createdAt, likesUserId, likesUername } = post
+        const { id, caption, comments, numLikes, postUrl, user, createdAt, likesUserId } = post
         let postHeader = (
 
             <div className='mainpage-post-header'>
                 <div className='image-container'>
-                    <img src={user.profilePicUrl} className='mainpage-profile-pic'></img>
+                    <img src={user.profilePicUrl} className='mainpage-profile-pic' alt="profile"></img>
                 </div>
                 <NavLink to={`/users/${user.id}`} className='mainpage-posts-navlink-profile'>
                     <div className='mainpage-username'>
@@ -42,7 +42,7 @@ const MainPagePosts = () => {
 
         let body = (
             <>
-                <img src={postUrl} className='mainpage-body-image'></img>
+                <img src={postUrl} className='mainpage-body-image' alt="body"></img>
             </>
         )
 
