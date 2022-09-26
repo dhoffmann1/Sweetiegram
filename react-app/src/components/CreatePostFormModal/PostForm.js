@@ -116,7 +116,7 @@ const PostForm = ({setPostFormModal, post}) => {
                                     type='text'
                                     onChange={onImageChange}
                                     placeholder="Post url"
-                                    style={{color:"black", backgroundColor:"#cbefef", height:"6%",boxSizing: "border-box", width: "100%"}}
+                                    style={{color:"black", border: "3px solid #E38B29", backgroundColor:"#FECD70", height:"6%",boxSizing: "border-box", width: "100%"}}
                                 />
                                 {/* <input type="file" onChange={onImageChange} className="create-post-filetype" /> */}
                                 <img className='create-form-post-preview-image' src={postUrl? postUrl: null} alt="preview" />
@@ -171,11 +171,13 @@ const PostForm = ({setPostFormModal, post}) => {
                                     className ='create-post-input-field'
                                 />
                                 {errors.length>0 && hasSubmitted && (
-                                    <ul className='validation-errors'>
-                                        {errors.map((error, idx) => (
-                                        <li key={idx}>{error}</li>
-                                        ))}
-                                    </ul>
+                                    <div className="validation-errors-container">
+                                        <ul className='validation-errors'>
+                                            {errors.map((error, idx) => (
+                                            <li key={idx}>{error}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 )}
                             </div>
                         </div>
