@@ -91,7 +91,7 @@ const MainPagePosts = () => {
         } else {
             likesComponent = (
                 <>
-                    <i class="fa-regular fa-heart" onClick={() => { dispatch(createLikesThunk(id)).then(() => dispatch(getPosts())) }}></i>
+                    <i class="fa-regular fa-heart" id="unlikedHeart" onClick={() => { dispatch(createLikesThunk(id)).then(() => dispatch(getPosts())) }}></i>
                 </>
             )
         }

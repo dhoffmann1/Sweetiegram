@@ -12,7 +12,7 @@
 .InstaLogo {
     display: flex;
     margin-left: 5%;
-    font-family: cursive;
+    font-family: Brush Script MT, cursive;
     font-size: 22px;
     font-weight: 700;
     justify-content: center;
@@ -22,6 +22,7 @@
 
 .Sweetiegram-logo {
     color: black;
+    /* font-family: cursive; */
 
 }
 

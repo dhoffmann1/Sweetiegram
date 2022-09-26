@@ -43,32 +43,38 @@ const UserProfilePage = () => {
     //     setShowPostDetailsModal(true)
     // }
 
+    let is_following = user?.followers.includes(currentUser?.id)
     // console.log('profile pic url:', user.profilePicUrl)
     useEffect(() => {
-        dispatch(getUserPosts(userId))
+        setTimeout(() => {
+            dispatch(getUserPosts(userId))
+        }, 2)
         return () => resetUserPosts()
-    }, [dispatch, forceRender, userId])
+    }, [dispatch, forceRender, userId, is_following])
 
     // TODO: how to stop someone from sending a bad url request (eg. with ID?)
     useEffect(() => {
-        dispatch(getUserDetail(userId))
-            .then(res => {
+        setTimeout(() => {
+            dispatch(getUserDetail(userId))
+                .then(res => {
 
-                if (res.status >= 400 && res.status < 600) return Promise.reject(res)
-            })
-            .catch(async (res) => {
+                    if (res.status >= 400 && res.status < 600) return Promise.reject(res)
+                })
+                .catch(async (res) => {
 
-                history.push('/unknown')
-                return
-            });
-    }, [dispatch, forceRender, userId, history])
+                    history.push('/unknown')
+                    return
+                });
+        }, 2)
+    }, [dispatch, forceRender, userId, history, is_following])
 
     useEffect(() => {
-        dispatch(getFollowings(userId))
+        setTimeout(() => {
+            dispatch(getFollowings(userId))
+        }, 2)
         return () => resetFollowings()
-    }, [dispatch, forceRender, userId])
+    }, [dispatch, forceRender, userId, is_following])
 
-    let is_following = user?.followers.includes(currentUser?.id)
     // let following_id;
     // if (user) {
     //     following_id = currentUser.users_following.find(id => id == user.id)

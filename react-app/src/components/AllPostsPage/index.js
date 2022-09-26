@@ -56,7 +56,7 @@ const AllPostsPage = () => {
 
         return (
             <>
-                <NavLink className='all-posts-navlink' to={user ? `/users/${id}` : '/unknown'}>
+                <NavLink key={user?.id} className='all-posts-navlink' to={user ? `/users/${id}` : '/unknown'}>
                     <div className='all-posts-post-container'>
                         <div className='all-posts-user-profile-pic-container'>
                             <img className='all-posts-user-profile-pic' src={profilePicUrl} alt="user-profile" />
