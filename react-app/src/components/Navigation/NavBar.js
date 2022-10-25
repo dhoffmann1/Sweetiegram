@@ -1,10 +1,11 @@
 import './navbar.css'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react'
 import LogoutButton from '../auth/LogoutButton';
 import CreatePostFormModal from '../CreatePostFormModal';
+import SearchBar from '../SearchBar';
 // import AllPostsPage from '../AllPostsPage';
 
 const NavBar = () => {
@@ -60,6 +61,13 @@ const NavBar = () => {
               <h1 className='Sweetiegram-logo'> Sweetiegram</h1>
             </NavLink>
           </div>
+          <div className='navbar-searchbar-container'>
+          <div className='navbar-searchbar'>
+            <i class="fa-solid fa-magnifying-glass" style={{ marginLeft: '8px' }}></i>
+            {<SearchBar />}
+          </div>
+        </div>
+
           <div className='navLinks'>
             <div>
               <NavLink to='/' exact={true} activeClassName='active' style={{ fontSize: "20px", color: "black" }}>

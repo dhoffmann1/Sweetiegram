@@ -1,0 +1,63 @@
+.search-bar-container {
+    margin-left: 8px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    width: 95%;
+}
+
+.search-bar-input-container {
+    width: 8000%;
+}
+
+.search-bar-input {
+    height: 28px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgb(249, 249, 249);
+}
+
+.clear-button {
+    background-color: rgb(249, 249, 249);
+    border: none;
+}
+
+
+/* .shoe-search-results-container {
+    border: 1px solid black;
+    width: 500px;
+} */
+
+
+.shoe-search-results {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 60px;
+    left: 13%;
+    background-color: white;
+    width: 48.5%;
+}
+
+.dropdown-searchbar-results {
+    display: flex;
+}
+
+.searchbar-image-container {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+}
+
+.searchbar-image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.searchbar-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

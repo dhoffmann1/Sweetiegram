@@ -26,6 +26,34 @@
 
 }
 
+
+.navbar-searchbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    /* border: 1px solid black; */
+    height: 80px;
+    /* background-color: rgb(243, 232, 232); */
+}
+
+
+.navbar-searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 95%;
+    height: 30px;
+    background-color: rgb(249, 249, 249);
+
+}
+
+
+
+
+
+
 .navLinks {
     margin-right: 5%;
     display: flex;
