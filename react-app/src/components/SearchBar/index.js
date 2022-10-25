@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react"
 import { NavLink, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllUsers } from "../../store/user";
+import { searchAllUsers } from "../../store/searchbar";
 import './SearchBar.css'
 
 const SearchBar = () => {
 
     const history = useHistory()
     const dispatch = useDispatch()
-    const allProfiles = useSelector(state => state.users)
+    const allProfiles = useSelector(state => state.search)
     const [filterProfiles, setFilterProfiles] = useState([])
     const [search, setSearch] = useState('')
 
-    console.log(allProfiles)
-
     useEffect(() => {
-        dispatch(getAllUsers())
-    })
+        dispatch(searchAllUsers())
+    }, [dispatch])
 
 
     const handleSearch = (e) => {
@@ -29,7 +27,7 @@ const SearchBar = () => {
 
     }
     const handleSubmit = () => {
-        history.push(`/shoe/${filterProfiles[0].id}`)
+        history.push(`/users/${filterProfiles[0]?.id}`)
         setFilterProfiles([])
         setSearch('')
     }
@@ -55,16 +53,17 @@ const SearchBar = () => {
             </div>
             <div className='shoe-search-results'>
                 {
-                    filterProfiles.slice(0, 10).map((shoe, idx) => (
-                        <NavLink to={`/shoe/${shoe.id}`} style={{ textDecoration: 'none' }}>
+                    filterProfiles.slice(0, 10).map((user, idx) => (
+                        <NavLink to={`/users/${user.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                             <div className='dropdown-searchbar-results' key={idx} onClick={clearSearch} >
                                 <div className='searchbar-image-container'>
-                                    <img src={shoe.imageUrl} alt='shoe' className="searchbar-image"></img>
+                                    <img src={user.profilePicUrl} alt='user' className="searchbar-image"></img>
                                 </div>
                                 <div className="searchbar-text-container">
-                                    <div>{shoe.name}</div>
-                                    <div>{shoe.colorway}</div>
+                                    <div>{user.username}</div>
+                                    <div style={{ fontSize: '10px' }}> {user.firstName} {user.lastName}</div>
                                 </div>
+
                             </div>
                         </NavLink>
                     ))

@@ -17,6 +17,7 @@ import SplashPage from './components/SplashPage';
 import UpdatePostFormModal from './components/UpdatePostFormModal';
 import AllPostsPage from './components/AllPostsPage';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const loggedInUser = useSelector((state) => state.session.user);
