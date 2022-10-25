@@ -51,7 +51,7 @@ const SearchBar = () => {
             <div>
                 {search.length !== 0 ? <button className="clear-button" onClick={clearSearch}>X</button> : <button style={{ border: 'none' }}></button>}
             </div>
-            <div className='shoe-search-results'>
+            <div className='user-search-results'>
                 {
                     filterProfiles.slice(0, 10).map((user, idx) => (
                         <NavLink to={`/users/${user.id}`} style={{ textDecoration: 'none', color: 'black' }}>

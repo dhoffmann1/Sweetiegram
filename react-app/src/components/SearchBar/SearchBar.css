@@ -30,7 +30,7 @@
 } */
 
 
-.shoe-search-results {
+.user-search-results {
     position: fixed;
     display: flex;
     flex-direction: column;
