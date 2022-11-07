@@ -1,16 +1,19 @@
-from .db import db, likes
+from .db import db, likes, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 follows = db.Table(
     'follows',
     db.Model.metadata,
-    db.Column('follower_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-    db.Column('following_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    db.Column('follower_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True),
+    db.Column('following_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True)
 )
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
