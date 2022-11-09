@@ -2,26 +2,13 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy.sql import func
 
-
-# add import and set variable to access flask environment
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get('SCHEMA')
-
 db = SQLAlchemy()
-
-# add function to add a prefix to table names in production environment only
-def add_prefix_for_prod(attr):
-    if environment == "production":
-        return f"{SCHEMA}.{attr}"
-    else:
-        return attr
 
 likes = db.Table(
     'likes',
     db.Model.metadata,
-    db.Column('posts', db.Integer, db.ForeignKey(add_prefix_for_prod('posts.id')), primary_key=True),
-    db.Column('users', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True)
+    db.Column('posts', db.Integer, db.ForeignKey('posts.id'), primary_key=True),
+    db.Column('users', db.Integer, db.ForeignKey('users.id'), primary_key=True)
 )
 
 class Post(db.Model):
@@ -29,7 +16,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key= True)
     # erased unique = true on post_url
     post_url = db.Column(db.String, nullable= False)
-    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    owner_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     city = db.Column(db.String)
     state = db.Column(db.String)
     country = db.Column(db.String)
@@ -83,8 +70,8 @@ class Post(db.Model):
 class Comment(db.Model):
     __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key= True)
-    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("posts.id")))
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     content = db.Column(db.String(250), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
