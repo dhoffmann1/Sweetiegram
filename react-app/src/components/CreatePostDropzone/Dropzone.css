@@ -8,6 +8,7 @@
   width: 100%;
   border-radius: 0 0 16px 16px;
   position: relative;
+  cursor:pointer
 }
 
 .create-post-img{
