@@ -14,11 +14,11 @@ const CreatePostFormModal = ({setPostFormModal, postFormModal}) => {
         caption: ""
     }
     return (
-        <>
-            <Modal onClose={()=> setPostFormModal(false)}>
-                <PostForm post={post} setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>
-            </Modal>
-        </>
+      <>
+        <Modal onClose={()=> setPostFormModal(false)}>
+            <PostForm post={post} setPostFormModal={setPostFormModal} postFormModal={postFormModal}/>
+        </Modal>
+      </>
     )
 }
 

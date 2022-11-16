@@ -1,14 +1,13 @@
 #modal-content.post-form-modal-content{
-    /* background-color: green; */
-    height: 70%;
-    width: 70%;
-    flex-direction: column;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* box-sizing: border-box; */
-    /* align-items: flex-end; */
-    /* border: 30px red solid;
-    border-radius: 50%; */
+  /* background-color: green; */
+  height: 70%;
+  width: 70%;
+  height: 48em;
+  width: 46em;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 16px;
 
 }

@@ -48,7 +48,7 @@ def valid_post_url(form, field):
 
 
 class PostForm(FlaskForm):
-    post_url  = StringField("Image/Video Url", validators=[DataRequired(), valid_post_url])
+    post_url  = StringField("Image/Video Url", validators=[DataRequired()])
     # post_url2 = StringField("Video Url", validators=[DataRequired(), valid_video_url])
     city = StringField("City")
     state = StringField("State")

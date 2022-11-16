@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { createPost } from '../../store/post';
+import MyDropzone from '../CreatePostDropzone';
 import "./PostForm.css"
 
 const PostForm = ({setPostFormModal, post}) => {
@@ -14,83 +15,62 @@ const PostForm = ({setPostFormModal, post}) => {
     const [caption, setCaption] = useState('')
     const [errors, setErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
-
-    // const [isVideo, setVideo] = useState(false)
-
+    const [preview, setPreview] = useState('')
+    const [imageType, setImageType] = useState(false)
+    console.log("post url:", postUrl)
 
     useEffect(()=>{
         let errors=[]
-        if (!isImage(postUrl)) errors.push("Image post url is not valid")
+        if (!isImage(imageType)) errors.push("Image post url is not valid")
         if (caption.length>500) errors.push("Caption must be no longer than 500 characters")
         setErrors(errors)
 
     }, [postUrl, caption])
 
-    // useEffect(()=> {
-    //     let errors = []
-    //     if (postUrlErrors.length == 0 && captionErrors.length ==0){
 
-    //     }
-    // }, [caption])
     let shareButton = (
         <button form='create-post-actual-form' style={{fontSize:'14px', boxSizing: "border-box", color:"#39B5F9", backgroundColor:'white', border:'none'}} type="submit" className="create-post-submit-button">
             Share
         </button>
     )
 
-    const onImageChange = event => {
-        // if (event.target.files && event.target.files[0]) {
-        //   setPostUrl(URL.createObjectURL(event.target.files[0]));
-        // }
-        setPostUrl(event.target.value)
-    }
-    function isImage(url) {
-        return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-    }
-
-    // async function checkImage(url){
-
-    //     const res = await fetch(url);
-    //     const buff = await res.blob();
-
-    //     return buff.type.startsWith('image/')
+    // const onImageChange = event => {
+    //     setPostUrl(event.target.value)
     // }
 
-    // function checkImage(url) {
-    //     let request = new XMLHttpRequest();
-    //     request.open("GET", url, true);
-    //     request.send();
-    //     request.onload = function() {
-    //       let status = request.status;
-    //       if (request.status == 200) //if(statusText == OK)
-    //       {
-    //
-    //       } else {
-    //
-    //       }
-    //     }
-    //   }
+
+    // function isImage(url) {
+    //   return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+    // }
+
+    const isImage = (contentType) => {
+      let validEx = ["image/gif", "image/jpeg", "image/png", "image/tiff"]
+      if (validEx.includes(contentType)) return true
+      else return false
+    }
 
 
     const handleSubmit = e => {
-        e.preventDefault();
-        setHasSubmitted(true)
-        if (errors.length>0){
-            alert('Cannot submit post')
-            return
-        }
-        post = {
-            ...post,
-            post_url: postUrl,
-            city,
-            state,
-            country,
-            caption
-        }
-        dispatch(createPost(post)).then(()=> setPostFormModal(false))
-        alert('Post successfully created!')
-        setHasSubmitted(false)
-        return
+      e.preventDefault();
+      setHasSubmitted(true)
+      if (errors.length>0){
+          alert('Cannot submit post')
+          return
+      }
+      console.log("post urll:", postUrl)
+      console.log("image type: ", imageType)
+      post = {
+          ...post,
+          post_url: postUrl,
+          city,
+          state,
+          country,
+          caption
+      }
+      dispatch(createPost(post)).then(()=> setPostFormModal(false))
+      alert('Post successfully created!')
+      setHasSubmitted(false)
+      return
     }
 
     return (
@@ -104,24 +84,17 @@ const PostForm = ({setPostFormModal, post}) => {
                         <svg aria-label="Back" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polyline></svg>
                     </button>
                 )}
-                <h3>Create new post</h3>
+                <div style={{fontSize: '16px', fontFamily: "Montserrat", fontWeight: "600"}}>Create new post</div>
                 {formStep === 1 && shareButton}
             </div>
-            <div className='create-post-outer-form-container'>
+            {/* <div className='create-post-outer-form-container'> */}
                 <form id='create-post-actual-form' className="create-post-form-outer-container" onSubmit={handleSubmit} >
                     {formStep === 0 && (
-                        <>
-                            <div className ='create-form-post-url-main-container'>
-                                <input
-                                    type='text'
-                                    onChange={onImageChange}
-                                    placeholder="Post url"
-                                    style={{color:"black", border: "3px solid #E38B29", backgroundColor:"#FECD70", height:"6%",boxSizing: "border-box", width: "100%"}}
-                                />
-                                {/* <input type="file" onChange={onImageChange} className="create-post-filetype" /> */}
-                                <img className='create-form-post-preview-image' src={postUrl? postUrl: null} alt="preview" />
-                            </div>
-                        </>
+                      <>
+                        <div className='create-form-post-url-main-container'>
+                          <MyDropzone postUrl={postUrl} setPostUrl={setPostUrl} setImageType={setImageType}/>
+                        </div>
+                      </>
                     )}
                     {formStep === 1 && postUrl && (
                         <div className='form-step-1-main-content-container'>
@@ -184,7 +157,7 @@ const PostForm = ({setPostFormModal, post}) => {
 
                     )}
                 </form>
-            </div>
+            {/* </div> */}
         </>
     )
 }
