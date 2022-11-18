@@ -8,6 +8,7 @@
   height: 100%;
   grid-gap: 17px;
   grid-auto-flow: row dense;
+  margin-top: 5em;
 }
 
 .explore-page-post-card{
@@ -15,21 +16,21 @@
   min-height: 20em;
   width: 100%;
   object-fit: cover;
-  position: relative
+  position: relative;
 }
 
 .explore-page-img-wrapper{
   position: absolute;
   height: 100%;
   width: 100%;
-  z-index: 20;
+  /* z-index: 20; */
   background-color: black;
 }
 
 .explore-page-img-wrapper:hover{
   /* opacity: 70% */
-  z-index: 2
-  /* display:none; */
+  z-index: 1.1;
+
 }
 
 .explore-page-img{
@@ -37,30 +38,33 @@
   width: 100%;
   object-fit: cover;
   position:absolute;
-  z-index: 15;
+  z-index: 20;
 
 }
 
 .explore-page-img:hover{
   opacity: 70%;
-  z-index: 3
+  z-index: 1.1;
+  background-color: black;
 }
 
 .explore-page-hover-display:hover{
-  z-index: 20;
+  z-index: 10;
+  opacity: 100%;
+  /* background-color: black;
+  opacity: 40%; */
 }
 
 .explore-page-hover-display{
   position: absolute;
   z-index: 10;
-  /* background-color: lightblue; */
   width: 100%;
   height: 100%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5
+  z-index: 1.5
 }
 
 .explore-page-hover-display-content-container{
@@ -79,6 +83,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  opacity: 120%;
 }
 
 .regular{

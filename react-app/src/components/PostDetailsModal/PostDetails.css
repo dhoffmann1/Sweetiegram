@@ -36,6 +36,7 @@
   display: block;
   max-height: 95%;
   width: 100%;
+  object-fit: cover;
 }
 
 #post-details-right-main-container {
@@ -123,7 +124,7 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: blue;
+  color: #3CADF7;
   font-weight: bold;
 }
 

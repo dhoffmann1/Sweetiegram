@@ -73,11 +73,12 @@
     height: 100%;
     width: 100%;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .mainpage-right-username-name-container {
     margin-left: 14px;
-    width: 160px;
+    width: 190px;
     font-size: 12px;
     cursor: pointer;
 }
@@ -108,12 +109,12 @@
 }
 
 .mainpage-follow-button-container {
-    margin-left: 3rem;
+    margin-left: 1.5rem;
 }
 
 .mainpage-suggestions-username {
-    font-weight: bold;
-    font-size: 13px;
+    font-weight: 550;
+    font-size: 12.5px;
 }
 
 .mainpage-suggestions-name {
@@ -123,6 +124,7 @@
 
 .github-link {
     text-decoration: none;
-    color: rgb(88, 116, 241);
+    color: #3CADF7;
+    font-weight: 550;
     font-size: 14px;
 }

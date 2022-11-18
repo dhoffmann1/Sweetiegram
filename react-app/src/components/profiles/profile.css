@@ -50,7 +50,8 @@
 
 .storiesBar-username {
     margin-top: 8px;
-    font-size: 13px;
+    font-size: 11.5px;
     font-weight: 500;
-    font-family: Georgia, 'Times New Roman', Times, serif
+    font-family: Montserrat;
+    /* font-family: Georgia, 'Times New Roman', Times, serif */
 }
