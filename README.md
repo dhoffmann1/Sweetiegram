@@ -19,5 +19,5 @@ Our group project aims to clone the website Instagram -- a popular social media 
 
 ## View mainpage
 
-
+![login page](./images/mainpage.png)
 
