@@ -16,6 +16,7 @@ import PageNotFound from './components/PageNotFound';
 import SplashPage from './components/SplashPage';
 import UpdatePostFormModal from './components/UpdatePostFormModal';
 import AllPostsPage from './components/AllPostsPage';
+import ExplorePage from './components/Explore';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,9 @@ function App() {
         <ProtectedRoute exact path='/users/:userId'>
           <UserProfilePage/>
         </ProtectedRoute>
+        <ProtectedRoute exact path='/explore'>
+          <ExplorePage/>
+        </ProtectedRoute>
         <ProtectedRoute exact path='/posts/new'>
           <CreatePostForm/>
         </ProtectedRoute>
@@ -65,10 +69,9 @@ function App() {
           <MainPage />
         </ProtectedRoute>
         {/* here */}
-        <ProtectedRoute exact path='/allposts'>
+        <ProtectedRoute exact path='/allusers'>
           <AllPostsPage/>
         </ProtectedRoute>
-
         <Route exact path= '/unknown'>
           <PageNotFound/>
         </Route>
