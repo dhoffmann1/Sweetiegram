@@ -79,7 +79,7 @@ function MainPage() {
                     </div>
                 </div>
 
-                <div className='mainpage-groupMembers'>
+                {/* <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
                         <img src={Ladan_photo} className='mainpage-right-img' alt="Ladan" ></img>
                     </div>
@@ -96,7 +96,7 @@ function MainPage() {
                     <div className='mainpage-follow-button-container'>
                         <a href='https://www.linkedin.com/in/ladan-nazari/ ' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
-                </div>
+                </div> */}
 
                 <div className='mainpage-groupMembers'>
                     <div className='mainpage-group-img-container'>
