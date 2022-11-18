@@ -51,5 +51,5 @@ You can search all users of the platform by clicking the magnifying glass in the
 ![search page](./images/searchpage1.png)
 
 
-##That's all folks!
+## That's all folks!
 ### Thank you for visiting our website, please feel free to interact with it as much as you like and email tiffanyang2015@gmail.com or any contributors listed for further information. 
