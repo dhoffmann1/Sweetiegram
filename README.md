@@ -40,11 +40,12 @@ After clicking a post, click the top right button with 3 dots to toggle the edit
 
 ### Viewing profile page
 You can view your own page by clicking the dropdown menu and clicking "profile". You can also view other people's profile pages you're following by clicking the profile links in the middle section of the page.
-![edit post](./images/followingpage.png)
+![profile page](./images/followingpage.png)
 
 ### Explore page
 You can browse through different photos by clicking the compass icon in the navbar. These photos are available to the public, regardless of whom you're following.
-![edit post](./images/explorepage.png)
+![explore page](./images/explorepage.png)
 
 ### Search page
 You can search all users of the platform by clicking the magnifying glass in the navbar. This will be refactored in the near weeks as a proper search engine (for the purposes of emphasizing other features, we chose to prioritize this last). 
+![search page](./images/searchpage1.png)
