@@ -9,7 +9,7 @@ Our group project aims to clone the website Instagram -- a popular social media 
 
 ## Instructions for running locally:
 
-1. run ```git clone https://github.com/tyang2015/Backup-for-tiff-s-airbnb.git ``` to have it downloaded to your local repo and run ```code .``` to have it open in vscode
+1. run ```git clone https://github.com/Pepa90210/Sweetiegram.git``` to have it downloaded to your local repo and run ```code .``` to have it open in vscode
 2. Download the necessary packages from package.json in backend by running ```pipenv install -r requirements.txt``` 
 3. To download packages in frontend, cd into react-app folder and run ```npm i``` to install all dependencies
 4. From root of project directory, run ```pipenv flask run``` or enter virtual environment first with ```pipenv shell``` then ```flask run``` . The backend should now be running on port 5000
@@ -42,4 +42,9 @@ After clicking a post, click the top right button with 3 dots to toggle the edit
 You can view your own page by clicking the dropdown menu and clicking "profile". You can also view other people's profile pages you're following by clicking the profile links in the middle section of the page.
 ![edit post](./images/followingpage.png)
 
+### Explore page
+You can browse through different photos by clicking the compass icon in the navbar. These photos are available to the public, regardless of whom you're following.
+![edit post](./images/explorepage.png)
 
+### Search page
+You can search all users of the platform by clicking the magnifying glass in the navbar. This will be refactored in the near weeks as a proper search engine (for the purposes of emphasizing other features, we chose to prioritize this last). 
