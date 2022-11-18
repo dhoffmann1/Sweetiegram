@@ -7,7 +7,7 @@ Our group project aims to clone the website Instagram -- a popular social media 
 ### Backend: Flask, WTForms, Alembic, SQL-Alchemy, SQlite
 ### Frontend: React, Redux, HTML & CSS
 
-### Instructions for running locally:
+## Instructions for running locally:
 
 1. run ```git clone https://github.com/tyang2015/Backup-for-tiff-s-airbnb.git ``` to have it downloaded to your local repo and run ```code .``` to have it open in vscode
 2. Download the necessary packages from package.json in backend by running ```pipenv install -r requirements.txt``` 
@@ -15,9 +15,31 @@ Our group project aims to clone the website Instagram -- a popular social media 
 4. From root of project directory, run ```pipenv flask run``` or enter virtual environment first with ```pipenv shell``` then ```flask run``` . The backend should now be running on port 5000
 5. In another terminal, from react-app subdirectory, run ```npm start``` to run frontend port on 3000.
 
-### Instructions for navigating the website
+## Instructions for navigating the website
 
-## View mainpage
+### Login Page
+Login in through Demo User (preferred) or sign in with a new user
 
-![login page](./images/mainpage.png)
+![login page](./images/loginpage.png)
+
+### Main Page
+Once logged in, you will see the thread of Sweetiegram posts, as well as the contributors' names on the right. This page can be directly accessed from the navbar by clicking the home icon button. For each post, you can directly create a comment in each post, inside the input box displayed, or click on the magnify glass icon to view the post modal.
+![mainpage page](./images/mainpage.png)
+
+### Editing Comment
+While viewing the post, users can edit and delete their own posts by clicking the 'edit' or 'delete' button. Simple!
+![comments](./images/editcomment.png)
+
+### Creating a post
+On the Navbar, click the plus button to create your own post and share it. Only your followers can see your post details, while your picture will be public to all.
+![create post](./images/createpost.png)
+
+### Editing a Post
+After clicking a post, click the top right button with 3 dots to toggle the edit and delete buttons (for your posts only). Click "edit", and edit your post details. The image itself is not changeable, similar to Instagram.
+![edit post](./images/editpost.png)
+
+### Viewing profile page
+You can view your own page by clicking the dropdown menu and clicking "profile". You can also view other people's profile pages you're following by clicking the profile links in the middle section of the page.
+![edit post](./images/followingpage.png)
+
 
