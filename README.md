@@ -2,7 +2,7 @@
 
 ## Purpose of Project
 
-Our group project aims to clone the website Instagram -- a popular social media platform knowing for sharing pictures. It is a full stack project that utilizes the following technologies:
+Our group project aims to clone the website Instagram -- a popular social media platform known for sharing pictures. It is a full stack project that utilizes the following technologies:
 
 ### Backend: Flask, WTForms, Alembic, SQL-Alchemy, SQlite
 ### Frontend: React, Redux, HTML & CSS
