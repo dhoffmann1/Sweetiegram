@@ -56,7 +56,7 @@ function MainPage() {
                         </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='https://www.linkedin.com/in/danielhoffmann-1/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
+                        <a href='https://pepa90210.github.io/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
                 </div>
 
@@ -75,7 +75,7 @@ function MainPage() {
                         </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='https://www.linkedin.com/in/justin-b-kam-4105961a5/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
+                        <a href='https://jb3k.github.io/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@ function MainPage() {
                         </a>
                     </div>
                     <div className='mainpage-follow-button-container'>
-                        <a href='https://www.linkedin.com/in/tiffany-yang-373140133/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
+                        <a href='https://tiffany-yang-personal-site.herokuapp.com/' target="_blank" rel="noreferrer" className='github-link'> Follow</a>
                     </div>
                 </div>
 
