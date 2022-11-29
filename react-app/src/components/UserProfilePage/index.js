@@ -15,7 +15,7 @@ import PostDetailsModal from '../PostDetailsModal'
 const UserProfilePage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const {userId} = useParams();
+    const { userId } = useParams();
     // console.log(userId)
     const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
     const [postToShowInModal, setPostToShowInModal] = useState(null)
@@ -66,7 +66,7 @@ const UserProfilePage = () => {
                     return
                 });
         }, 2)
-    }, [dispatch, forceRender, userId, history, is_following])
+    }, [dispatch, forceRender, userId, is_following])
 
     useEffect(() => {
         setTimeout(() => {
@@ -122,10 +122,10 @@ const UserProfilePage = () => {
                                 {followings.map(user => (
                                     <div key={user.id}>
                                         <NavLink className='navlinks' exact to={`/users/${user.id}`}>
-                                        <div className='user-following-profile-link-container'>
-                                            {user && (<img className="user-following-profile-pic" src={user.profilePicUrl} alt="profile" />)}
-                                            <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
-                                        </div>
+                                            <div className='user-following-profile-link-container'>
+                                                {user && (<img className="user-following-profile-pic" src={user.profilePicUrl} alt="profile" />)}
+                                                <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
+                                            </div>
                                         </NavLink>
                                     </div>
                                 ))}
@@ -153,7 +153,7 @@ const UserProfilePage = () => {
                                     // console.log(user.id)
                                     // {post.ownerId === user.id && (
                                     <div key={post.id} className="post-image-card-container"
-                                        onClick={()=> {
+                                        onClick={() => {
                                             setPostToShowInModal(post);
                                             setShowPostDetailsModal(true);
                                         }}>
@@ -164,7 +164,7 @@ const UserProfilePage = () => {
                             }
                         </div>
                     )}
-                    {showPostDetailsModal && <PostDetailsModal setShowPostDetailsModal={setShowPostDetailsModal} post={postToShowInModal}/>}
+                    {showPostDetailsModal && <PostDetailsModal setShowPostDetailsModal={setShowPostDetailsModal} post={postToShowInModal} />}
                     {posts.length <= 0 && (is_following || currentUser.id === user.id) && (
                         <div className='no-posts-message-container'>
                             <div className="no-posts-top-row">

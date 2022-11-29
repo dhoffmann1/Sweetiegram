@@ -18,6 +18,7 @@ import UpdatePostFormModal from './components/UpdatePostFormModal';
 import AllPostsPage from './components/AllPostsPage';
 import ExplorePage from './components/Explore';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const loggedInUser = useSelector((state) => state.session.user);

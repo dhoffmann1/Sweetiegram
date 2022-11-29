@@ -134,7 +134,7 @@ const MainPagePosts = () => {
                         setPostToShowInModal(post)
                         setShowPostDetailsModal(true)
                     }}>
-                        <i id="new-comment-icon" class="fa-regular fa-comment fa-flip-horizontal"></i>
+                        <i id="new-comment-icon-mainpage" class="fa-regular fa-comment fa-flip-horizontal"></i>
                     </div>
                 </div>
                 <div className='mainpage-posts-likes'>

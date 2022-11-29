@@ -1,3 +1,10 @@
+header {
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+}
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -6,7 +13,8 @@
     margin-left: -10px;
     margin-right: -10px;
     margin-top: -10px;
-    height: 80px
+    height: 80px;
+
 }
 
 .InstaLogo {
@@ -25,6 +33,34 @@
     /* font-family: cursive; */
 
 }
+
+
+.navbar-searchbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    /* border: 1px solid black; */
+    height: 80px;
+    /* background-color: rgb(243, 232, 232); */
+}
+
+
+.navbar-searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 95%;
+    height: 30px;
+    background-color: rgb(249, 249, 249);
+
+}
+
+
+
+
+
 
 .navLinks {
     margin-right: 5%;
@@ -46,7 +82,7 @@
     position: absolute;
     margin-top: 1.4em;
     width: 12em;
-    right: 4em;
+    right: 3em;
     z-index: 1;
     background-color: white;
     height: 5em;

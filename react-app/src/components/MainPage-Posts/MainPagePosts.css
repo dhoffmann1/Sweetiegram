@@ -21,7 +21,7 @@
     font-weight: bolder;
 }
 
-.mainpage-posts-navlink-profile{
+.mainpage-posts-navlink-profile {
     text-decoration: none;
     color: black;
 }
@@ -117,4 +117,8 @@
 
 #unlikedHeart {
     cursor: pointer;
+}
+
+#new-comment-icon-mainpage {
+    z-index: -1;
 }
