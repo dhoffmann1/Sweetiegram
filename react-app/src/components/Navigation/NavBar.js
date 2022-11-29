@@ -53,7 +53,7 @@ const NavBar = () => {
   }
 
   return (
-    <>
+    <header>
       <nav>
         <div className='navbar'>
           <div className='InstaLogo'>
@@ -90,7 +90,7 @@ const NavBar = () => {
         </div>
       </nav>
       {postFormModal && (<CreatePostFormModal setPostFormModal={setPostFormModal} />)}
-    </>
+    </header>
   );
 }
 
