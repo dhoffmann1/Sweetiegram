@@ -6,6 +6,7 @@ import React from 'react'
 import './YourProfilePage.css'
 import { resetFollowings } from '../../store/following'
 import { resetPosts } from '../../store/post'
+import cake1 from "../../images/cake1.png"
 
 const YourProfilePage = () => {
     const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const YourProfilePage = () => {
                         <div className='users-following-links-box'>
                             {followings.length > 0 && followings.map(user => (
                                 <div className='user-following-profile-link-container'>
-                                    {user && (<img className="user-following-profile-pic" src={user.profilePicUrl} alt="profile" />)}
+                                    {user && (<img className="user-following-profile-pic" onError={e=> { e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} src={user.profilePicUrl} alt="profile" />)}
                                     <p className="user-following-full-name"><b>{user.firstName} {user.lastName}</b></p>
                                 </div>
                             ))}
@@ -82,7 +83,7 @@ const YourProfilePage = () => {
                         {
                             posts.map(post => (
                                 <div className="post-image-card-container">
-                                    <img className='profile-post-image-pic' src={post.postUrl} alt="post" />
+                                    <img onError={e=> e.currentTarget.src = cake1 } className='profile-post-image-pic' src={post.postUrl} alt="post" />
                                 </div>
                             ))
                         }

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from '../../store/post';
 import PostDetailsModal from '../PostDetailsModal';
 import "./Explore.css"
+// import cake1 from "./images/cake1.png"
+import cake1 from "../../images/cake1.png"
 
 const ExplorePage = () => {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ const ExplorePage = () => {
           setPostModal(true);
         }} key={post.id} className={`explore-page-post-card ${i} ${String(i)[String(i).length - 1]==0 ? "bigger-box-1": String(i)[String(i).length - 1]==6? "bigger-box-2" : 'regular'}`} >
           <div className="explore-page-img-wrapper">
-            <img className='explore-page-img' src= {post.postUrl}/>
+            <img onError={e=> e.currentTarget.src = cake1 } className='explore-page-img' src= {post.postUrl}/>
           </div>
           <div className='explore-page-hover-display'>
             <div className='explore-page-hover-display-content-container'>

@@ -53,7 +53,7 @@ const Comments = ({ setShowPostDetailsModal, post }) => {
       <div id="comments-caption-section">
         <div id="profileimg-username-container">
           <div id="comments-caption-profile-pic-container">
-            <img id="comments-caption-profile-pic-image" src={post.user.profilePicUrl} alt='userProfilePic' />
+            <img onError={e=>  { e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} id="comments-caption-profile-pic-image" src={post.user.profilePicUrl} alt='userProfilePic' />
           </div>
           <div id="comments-caption-username-caption"><NavLink onClick={() => setShowPostDetailsModal(false)} id="comments-caption-username" to={`/users/${post.user.id}`}>{post.user.username}</NavLink> {post.caption}</div>
         </div>
@@ -64,7 +64,7 @@ const Comments = ({ setShowPostDetailsModal, post }) => {
             <div id="comments-single-comment-container" key={comment.id}>
               <div id="comments-single-comment-image-username-createdAt-container">
                 <div id="comments-single-comment-image-container">
-                  <img id="comments-single-comment-image" src={comment.User.profilePicUrl} alt="profilePicUrl" />
+                  <img onError={e=> {e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} id="comments-single-comment-image" src={comment.User.profilePicUrl} alt="profilePicUrl" />
                 </div>
                 <div id="comments-single-comment-username-createdAt-wrapper">
                   <div id="comments-single-comment-username-content"><NavLink onClick={() => setShowPostDetailsModal(false)} id="comments-single-comment-username" to={`/users/${comment.User.id}`}>{comment.User.username}</NavLink> {comment.content}</div>

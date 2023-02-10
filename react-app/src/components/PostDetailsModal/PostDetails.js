@@ -57,7 +57,7 @@ function PostDetails({ setShowPostDetailsModal, post }) {
                   <div id="post-details-owner-info-pic-username-edit-delete-container">
                     <div id="post-details-owner-info-pic-username-container">
                       <div id="post-details-owner-info-profile-pic-container">
-                        <img id="post-details-owner-info-profile-image" src={user.profilePicUrl} alt="post owner pic" />
+                        <img id="post-details-owner-info-profile-image" src={user.profilePicUrl} onError={e=>  { e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} alt="post owner pic" />
                       </div>
                       <NavLink onClick={() => setShowPostDetailsModal(false)} id="post-details-owner-info-username" to={`/users/${user.id}`}>{user.username}</NavLink>
                     </div>

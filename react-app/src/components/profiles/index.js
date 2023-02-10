@@ -44,7 +44,7 @@ const Profiles = () => {
                 <div className='storiesBar-profile' key={id}>
                     <NavLink to={`/users/${id}`}>
                         <div className='storiesBar-profile-container'>
-                            <img src={profilePicUrl} className='storiesBar-profile-pic' alt="profiles" ></img>
+                            <img onError={e=> { e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} src={profilePicUrl} className='storiesBar-profile-pic' alt="profiles" ></img>
                         </div>
                     </NavLink>
                     <div className='storiesBar-username'>

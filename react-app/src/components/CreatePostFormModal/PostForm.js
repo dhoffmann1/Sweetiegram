@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPost } from '../../store/post';
 import MyDropzone from '../CreatePostDropzone';
 import "./PostForm.css"
-import UploadPicture from '../aws_upload';
+import cake1 from "../../images/cake1.png"
+
 
 const PostForm = ({ setPostFormModal, post }) => {
     const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const PostForm = ({ setPostFormModal, post }) => {
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [preview, setPreview] = useState('')
     const [imageType, setImageType] = useState(false)
-    console.log("post url:", postUrl)
+    // console.log("post url:", postUrl)
 
     useEffect(()=>{
         let errors=[]
@@ -100,13 +101,13 @@ const PostForm = ({ setPostFormModal, post }) => {
                     {formStep === 1 && postUrl && (
                         <div className='form-step-1-main-content-container'>
                             <div className='create-post-image-left-container'>
-                                <img className='create-post-left-pic' src={postUrl} alt="create-post-left-pic" />
+                                <img onError={e=> { e.currentTarget.src =cake1; }} className='create-post-left-pic' src={postUrl} alt="create-post-left-pic" />
                             </div>
                             <div className='create-post-form'>
                                 {formStep === 1 && (
                                     <div className='create-post-form-profile-box'>
                                         <div className='create-post-form-profile-image-container'>
-                                            <img src={sessionUser.profilePicUrl} className='create-post-form-profile-pic' alt="profile-pic" />
+                                            <img onError={e=> { e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} src={sessionUser.profilePicUrl} className='create-post-form-profile-pic' alt="profile-pic" />
                                         </div>
                                         <div className='create-post-form-username-text'>
                                             {sessionUser.username}

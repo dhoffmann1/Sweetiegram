@@ -22,7 +22,7 @@ function MainPage() {
             <div className='mainpage-right-user-container'>
                 <NavLink to={`/users/${sessionUser.id}`}>
                     <div className='mainpage-right-img-container'>
-                        <img src={sessionUser.profilePicUrl} className='mainpage-right-img' alt="right" ></img>
+                        <img onError={e=> { e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} src={sessionUser.profilePicUrl} className='mainpage-right-img' alt="right" ></img>
                     </div>
                 </NavLink>
                 <div className='mainpage-right-username-name-container'>

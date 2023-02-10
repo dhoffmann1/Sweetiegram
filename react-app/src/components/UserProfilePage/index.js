@@ -11,6 +11,7 @@ import '../YourProfilePage/YourProfilePage.css'
 import { resetFollowings } from '../../store/following'
 import { resetUserPosts } from '../../store/user'
 import PostDetailsModal from '../PostDetailsModal'
+import cake1 from "../../images/cake1.png"
 
 const UserProfilePage = () => {
     const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const UserProfilePage = () => {
                 <div className="profile-page-main-container">
                     <div className="first-profile-container">
                         <div className="profile-pic-box">
-                            <img className="profile-page-profile-pic" src={user.profilePicUrl} alt="profile" />
+                            <img onError={e=> e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"} className="profile-page-profile-pic" src={user.profilePicUrl} alt="profile" />
                         </div>
                         <div className='profile-text-box'>
                             <div className='username-box profile-page-text-row' id='profile-page-username-follow-button-container'>
@@ -157,7 +158,7 @@ const UserProfilePage = () => {
                                             setPostToShowInModal(post);
                                             setShowPostDetailsModal(true);
                                         }}>
-                                        <img className='profile-post-image-pic' src={post.postUrl} alt="post" />
+                                        <img onError={e=> e.currentTarget.src = cake1 } className='profile-post-image-pic' src={post.postUrl} alt="post" />
                                     </div>
                                     // }
                                 ))

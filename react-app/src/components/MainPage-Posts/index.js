@@ -29,7 +29,7 @@ const MainPagePosts = () => {
 
             <div className='mainpage-post-header'>
                 <div className='image-container'>
-                    <img src={user.profilePicUrl} className='mainpage-profile-pic' alt="profile"></img>
+                    <img onError={e=>  { e.currentTarget.src = "https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"; }} src={user.profilePicUrl} className='mainpage-profile-pic' alt="profile"></img>
                 </div>
                 <NavLink to={`/users/${user.id}`} className='mainpage-posts-navlink-profile'>
                     <div className='mainpage-username'>
@@ -42,7 +42,7 @@ const MainPagePosts = () => {
 
         let body = (
             <>
-                <img src={postUrl} className='mainpage-body-image' alt="body"></img>
+                <img src={postUrl} onError={e=> {e.currentTarget.src =""; }} className='mainpage-body-image' alt="body"></img>
             </>
         )
 

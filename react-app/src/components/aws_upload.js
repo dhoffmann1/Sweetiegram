@@ -17,7 +17,7 @@ const UploadPicture = () => {
         // some sort of loading message is a good idea
         setImageLoading(true);
 
-        console.log('HELLLOOOOOOO THIS IS THE IMAGEEEEEEEEEEEEE', image)
+        // console.log('HELLLOOOOOOO THIS IS THE IMAGEEEEEEEEEEEEE', image)
 
         return image
         // const res = await fetch('/api/images', {
@@ -39,7 +39,7 @@ const UploadPicture = () => {
 
     const updateImage = (e) => {
         const file = e.target.files[0];
-        console.log('CHANGED THE IMAGE TO!!!!!!!', file)
+        // console.log('CHANGED THE IMAGE TO!!!!!!!', file)
         setImage(file);
     }
 
