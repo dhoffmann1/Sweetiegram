@@ -1,9 +1,10 @@
 # Start with the python:3.9 image
 FROM python:3.9
 # Set the following enviroment variables
-#
+#pls
 # REACT_APP_BASE_URL -> Your deployment URL
-ENV REACT_APP_BASE_URL=https://sweetiegram.onrender.com/
+# ENV REACT_APP_BASE_URL=https://sweetiegram.onrender.com/
+ENV REACT_APP_BASE_URL=https://sweetiegram-9e59.onrender.com
 # FLASK_APP -> entry point to your flask app
 ENV FLASK_APP=app
 # FLASK_ENV -> Tell flask to use the production server
