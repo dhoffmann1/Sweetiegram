@@ -44,11 +44,12 @@ Migrate(app, db)
 # Application Security
 CORS(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-    print("created all tables")
-    seed()
+# @app.before_first_request
+# def create_tables():
+#     db.create_all()
+#     print("created all tables")
+#     seed()
+#     print("seeded all seeders")
 
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.
