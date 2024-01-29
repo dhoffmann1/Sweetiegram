@@ -13,6 +13,7 @@ from .api.comment_routes import comment_routes
 from .api.following_routes import follow_routes
 
 from .seeds import seed_commands
+from .seeds import seed
 
 from .config import Config
 
@@ -47,7 +48,7 @@ CORS(app)
 def create_tables():
     db.create_all()
     print("created all tables")
-    seed_commands.seed()
+    seed()
 
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.
